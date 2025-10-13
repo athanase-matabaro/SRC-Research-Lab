@@ -1,0 +1,26 @@
+{
+  "submitter": "jane_doe_institute",
+  "date": "2025-10-14",
+  "dataset": "text_medium",
+  "codec": "src-engine:v0.3.0",
+  "version": "v0.3.0",
+  "compression_ratio": 5.63,
+  "cpu_seconds": 0.26,
+  "runs": [
+    {
+      "ratio": 5.60,
+      "cpu_seconds": 0.25
+    },
+    {
+      "ratio": 5.64,
+      "cpu_seconds": 0.26
+    },
+    {
+      "ratio": 5.65,
+      "cpu_seconds": 0.27
+    }
+  ],
+  "variance": 0.89,
+  "caq": 4.44,
+  "notes": "Local run on i5 CPU; bridge-sdk compress invocation: ./scripts/src_bridge.py compress --input datasets/text_medium/corpus.txt --output /tmp/out.cxe --care"
+}

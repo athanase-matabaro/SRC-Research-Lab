@@ -1,0 +1,77 @@
+{
+  "generated_at": "2025-10-13T21:15:49.838979",
+  "datasets": {
+    "text_medium": {
+      "entries": [
+        {
+          "report_file": "jane_doe_institute_2025-10-13_21-15-49.json",
+          "submitter": "jane_doe_institute",
+          "dataset": "text_medium",
+          "codec": "src-engine:v0.3.0",
+          "version": "v0.3.0",
+          "computed_caq": 4.468253968253968,
+          "mean_ratio": 5.63,
+          "mean_cpu": 0.26,
+          "variance": 0.38370282406204426,
+          "timestamp": "2025-10-13 21:15:49"
+        },
+        {
+          "report_file": "jane_doe_institute_2025-10-13_21-08-23.json",
+          "submitter": "jane_doe_institute",
+          "dataset": "text_medium",
+          "codec": "src-engine:v0.3.0",
+          "version": "v0.3.0",
+          "computed_caq": 4.468253968253968,
+          "mean_ratio": 5.63,
+          "mean_cpu": 0.26,
+          "variance": 0.38370282406204426,
+          "timestamp": "2025-10-13 21:08:23"
+        }
+      ],
+      "stats": {
+        "count": 2,
+        "mean_caq": 4.47,
+        "median_caq": 4.47,
+        "stddev_caq": 0.0,
+        "max_caq": 4.47,
+        "min_caq": 4.47
+      }
+    }
+  },
+  "global": {
+    "top": [
+      {
+        "report_file": "jane_doe_institute_2025-10-13_21-15-49.json",
+        "submitter": "jane_doe_institute",
+        "dataset": "text_medium",
+        "codec": "src-engine:v0.3.0",
+        "version": "v0.3.0",
+        "computed_caq": 4.468253968253968,
+        "mean_ratio": 5.63,
+        "mean_cpu": 0.26,
+        "variance": 0.38370282406204426,
+        "timestamp": "2025-10-13 21:15:49"
+      },
+      {
+        "report_file": "jane_doe_institute_2025-10-13_21-08-23.json",
+        "submitter": "jane_doe_institute",
+        "dataset": "text_medium",
+        "codec": "src-engine:v0.3.0",
+        "version": "v0.3.0",
+        "computed_caq": 4.468253968253968,
+        "mean_ratio": 5.63,
+        "mean_cpu": 0.26,
+        "variance": 0.38370282406204426,
+        "timestamp": "2025-10-13 21:08:23"
+      }
+    ],
+    "stats": {
+      "count": 2,
+      "mean_caq": 4.47,
+      "median_caq": 4.47,
+      "stddev_caq": 0.0,
+      "max_caq": 4.47,
+      "min_caq": 4.47
+    }
+  }
+}
