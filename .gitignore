@@ -1,0 +1,8 @@
+# Ignore private core and binaries
+/src_engine_private/
+/*.bin
+/*.pkl
+/*.tar.gz
+*.log
+__pycache__/
+.env

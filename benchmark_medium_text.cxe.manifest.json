@@ -1,0 +1,31 @@
+{
+  "layers": [
+    {
+      "codec": "zlib",
+      "params": {
+        "level": 6
+      }
+    }
+  ],
+  "decision_trace": [
+    {
+      "chain": "zlib_only",
+      "status": "accepted",
+      "before": 10240,
+      "after": 98
+    },
+    {
+      "decision": "early_exit",
+      "reason": "zlib_only strong enough",
+      "ratio": 104.48979591836735,
+      "threshold": 0.98
+    }
+  ],
+  "policy": {
+    "EARLY_EXIT_RATIO": 0.98,
+    "MIN_RUNLEN_FOR_RLE": 4
+  },
+  "original_size": 10240,
+  "compressed_size": 98,
+  "roundtrip_ok": true
+}

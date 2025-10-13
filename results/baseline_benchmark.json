@@ -1,0 +1,42 @@
+{
+  "benchmark": "baseline",
+  "version": "0.1",
+  "engine_version": "0.3.0",
+  "tests": [
+    {
+      "test": "small_text",
+      "size": 1024,
+      "pattern": "text",
+      "ratio": 16.5161,
+      "elapsed": 0.2706
+    },
+    {
+      "test": "medium_text",
+      "size": 10240,
+      "pattern": "text",
+      "ratio": 104.4898,
+      "elapsed": 0.2622
+    },
+    {
+      "test": "large_text",
+      "size": 102400,
+      "pattern": "text",
+      "ratio": 226.1307,
+      "elapsed": 0.3335
+    },
+    {
+      "test": "small_mixed",
+      "size": 1024,
+      "pattern": "mixed",
+      "ratio": 32.0,
+      "elapsed": 0.248
+    },
+    {
+      "test": "medium_mixed",
+      "size": 10240,
+      "pattern": "mixed",
+      "ratio": 142.2222,
+      "elapsed": 0.306
+    }
+  ]
+}

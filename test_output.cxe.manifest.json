@@ -1,0 +1,16 @@
+{
+  "algo": "zlib",
+  "size_before": 107,
+  "size_after": 100,
+  "layers": [
+    {
+      "codec": "zlib",
+      "params": {
+        "level": 6
+      }
+    }
+  ],
+  "original_size": 107,
+  "compressed_size": 100,
+  "roundtrip_ok": true
+}
