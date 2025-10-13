@@ -70,7 +70,7 @@ def run_src_compression(input_file: Path, output_file: Path) -> Dict[str, Any]:
 
         return {
             "task": "compress",
-            "file": str(input_file.relative_to(Path.cwd())),
+            "file": str(input_file),
             "backend": "src_engine_private",
             "ratio": result.get("ratio", 0.0),
             "runtime_sec": result.get("runtime_sec", 0.0),
@@ -81,7 +81,7 @@ def run_src_compression(input_file: Path, output_file: Path) -> Dict[str, Any]:
     except BridgeError as e:
         return {
             "task": "compress",
-            "file": str(input_file.relative_to(Path.cwd())),
+            "file": str(input_file),
             "backend": "src_engine_private",
             "status": "error",
             "message": e.message
@@ -89,7 +89,7 @@ def run_src_compression(input_file: Path, output_file: Path) -> Dict[str, Any]:
     except Exception as e:
         return {
             "task": "compress",
-            "file": str(input_file.relative_to(Path.cwd())),
+            "file": str(input_file),
             "backend": "src_engine_private",
             "status": "error",
             "message": f"Unexpected error: {type(e).__name__}"
@@ -121,7 +121,7 @@ def run_zstd_compression(input_file: Path, output_file: Path) -> Dict[str, Any]:
 
         return {
             "task": "compress",
-            "file": str(input_file.relative_to(Path.cwd())),
+            "file": str(input_file),
             "backend": "reference_zstd",
             "ratio": ratio,
             "runtime_sec": runtime_sec,
@@ -132,7 +132,7 @@ def run_zstd_compression(input_file: Path, output_file: Path) -> Dict[str, Any]:
     except CodecError as e:
         return {
             "task": "compress",
-            "file": str(input_file.relative_to(Path.cwd())),
+            "file": str(input_file),
             "backend": "reference_zstd",
             "status": "error",
             "message": str(e)
@@ -140,7 +140,7 @@ def run_zstd_compression(input_file: Path, output_file: Path) -> Dict[str, Any]:
     except Exception as e:
         return {
             "task": "compress",
-            "file": str(input_file.relative_to(Path.cwd())),
+            "file": str(input_file),
             "backend": "reference_zstd",
             "status": "error",
             "message": f"Unexpected error: {type(e).__name__}"
@@ -172,7 +172,7 @@ def run_lz4_compression(input_file: Path, output_file: Path) -> Dict[str, Any]:
 
         return {
             "task": "compress",
-            "file": str(input_file.relative_to(Path.cwd())),
+            "file": str(input_file),
             "backend": "reference_lz4",
             "ratio": ratio,
             "runtime_sec": runtime_sec,
@@ -183,7 +183,7 @@ def run_lz4_compression(input_file: Path, output_file: Path) -> Dict[str, Any]:
     except CodecError as e:
         return {
             "task": "compress",
-            "file": str(input_file.relative_to(Path.cwd())),
+            "file": str(input_file),
             "backend": "reference_lz4",
             "status": "error",
             "message": str(e)
@@ -191,7 +191,7 @@ def run_lz4_compression(input_file: Path, output_file: Path) -> Dict[str, Any]:
     except Exception as e:
         return {
             "task": "compress",
-            "file": str(input_file.relative_to(Path.cwd())),
+            "file": str(input_file),
             "backend": "reference_lz4",
             "status": "error",
             "message": f"Unexpected error: {type(e).__name__}"
