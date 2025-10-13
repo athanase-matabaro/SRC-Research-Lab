@@ -1,0 +1,127 @@
+# Bridge Manifest - Task Definitions and Resource Limits (Phase H.1)
+#
+# This manifest defines:
+# - Available tasks (compress, decompress, analyze)
+# - Argument schemas (type, required, defaults, choices)
+# - Resource limits (time, CPU, memory)
+#
+# The SDK validates all operations against this schema before execution.
+
+version: 1
+
+tasks:
+  # Compress task
+  - name: compress
+    description: Compress a file using SRC Engine or reference codecs
+    args:
+      - name: input
+        type: path
+        required: true
+        description: Input file path (workspace-relative)
+
+      - name: output
+        type: path
+        required: true
+        description: Output file path (workspace-relative)
+
+      - name: backend
+        type: enum
+        required: false
+        default: src_engine_private
+        choices:
+          - src_engine_private
+          - reference_zstd
+          - reference_lz4
+        description: Backend to use for compression
+
+      - name: workers
+        type: int
+        required: false
+        default: 1
+        min: 1
+        max: 16
+        description: Number of parallel workers
+
+      - name: care
+        type: bool
+        required: false
+        default: false
+        description: Enable CARE (Context-Aware Recursive Encoding)
+
+      - name: beam_width
+        type: int
+        required: false
+        min: 1
+        max: 100
+        description: Beam search width (optional, advanced)
+
+      - name: max_depth
+        type: int
+        required: false
+        min: 1
+        max: 20
+        description: Maximum recursion depth (optional, advanced)
+
+    # Resource limits
+    time_limit_sec: 300  # 5 minutes
+    cpu_limit: null      # No CPU limit (uses all available cores)
+    memory_limit_mb: null  # No memory limit
+
+  # Decompress task
+  - name: decompress
+    description: Decompress a CXE archive
+    args:
+      - name: input
+        type: path
+        required: true
+        description: Input CXE file path (workspace-relative)
+
+      - name: output
+        type: path
+        required: true
+        description: Output file path (workspace-relative)
+
+    # Resource limits
+    time_limit_sec: 300  # 5 minutes
+    cpu_limit: null
+    memory_limit_mb: null
+
+  # Analyze task (future)
+  - name: analyze
+    description: Analyze a CXE archive (Phase H.2+)
+    args:
+      - name: input
+        type: path
+        required: true
+        description: Input CXE file path (workspace-relative)
+
+      - name: output
+        type: path
+        required: true
+        description: Output JSON file path (workspace-relative)
+
+      - name: mode
+        type: enum
+        required: false
+        default: summary
+        choices:
+          - summary
+          - detailed
+          - tree
+        description: Analysis mode
+
+    # Resource limits
+    time_limit_sec: 60  # 1 minute
+    cpu_limit: null
+    memory_limit_mb: null
+
+# Security policies
+security:
+  allow_network: false
+  allow_traversal: false
+  workspace_only: true
+
+# Determinism settings
+determinism:
+  default_seed: 42
+  reproducible_mode: true

@@ -1,0 +1,19 @@
+# Bridge SDK Requirements (Phase H.1)
+#
+# Python dependencies for the SRC Research Lab Bridge SDK.
+# All dependencies are standard or widely-available packages.
+
+# Manifest parsing
+PyYAML>=6.0
+
+# Testing framework
+pytest>=7.0
+
+# No other dependencies required - uses Python standard library only
+# for core functionality (subprocess, pathlib, json, time, signal)
+
+# System requirements (not installed via pip):
+# - Python 3.8+
+# - zstd (command-line tool)
+# - lz4 (command-line tool)
+# - src-engine binary (proprietary, at ../src_engine_private/)

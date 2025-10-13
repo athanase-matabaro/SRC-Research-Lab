@@ -1,8 +1,59 @@
-# Ignore private core and binaries
-/src_engine_private/
-/*.bin
-/*.pkl
-/*.tar.gz
-*.log
+# Python
 __pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment
 .env
+.venv
+venv/
+ENV/
+
+# Private core and binaries
+/src_engine_private/
+*.bin
+*.pkl
+*.claude.md
+
+# Logs
+*.log
+
+# Compressed files
+*.gz
+*.bz2
+*.xz
+*.zst
+*.lz4
+
+# Generated test/benchmark files
+/benchmark_*.txt
+/benchmark_*.cxe
+/benchmark_*.gz
+/benchmark_*.bz2
+/benchmark_*.xz
+/benchmark_*.zst
+/benchmark_*.lz4
+/test_*.txt
+/test_*.cxe
+!/tests/fixtures/
+
+# Results (except example)
+/results/*.json
+!/results/README.md
+!/results/.gitkeep
+
+# Temporary files
+*.tmp
+.DS_Store
