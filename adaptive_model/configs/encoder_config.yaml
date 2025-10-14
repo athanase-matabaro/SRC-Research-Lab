@@ -1,0 +1,10 @@
+quantization:
+  base_precision: 8
+  min_precision: 4
+
+pruning:
+  threshold_init: 0.01
+  max_drop_ratio: 0.25
+
+backend: "bridge"
+timeout_seconds: 300
