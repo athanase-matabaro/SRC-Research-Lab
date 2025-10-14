@@ -1,33 +1,74 @@
+#!/usr/bin/env python3
 """
-CAQ metric helper (CPU-Aware Quality metric).
-This is a lightweight reference implementation intended for reproducible, CPU-first experiments.
+CAQ Metric (Compression-Accuracy Quotient)
+
+The CAQ metric balances compression ratio with computational cost:
+    CAQ = compression_ratio / (cpu_seconds + 1)
+
+Higher CAQ scores indicate better overall performance.
+The +1 in denominator prevents division by zero and ensures
+even instantaneous compression has a finite score.
 """
 
-import json
-import math
 
-
-def caq_score(compression_ratio: float, cpu_seconds: float, memory_mb: float = 0.0) -> float:
-    """Compute a simple CAQ score.
-
-    Higher is better. This reference formula balances compression ratio against CPU time.
-
-    CAQ = compression_ratio / (1 + log(1 + cpu_seconds))
+def compute_caq(compression_ratio: float, cpu_seconds: float) -> float:
     """
+    Compute the Compression-Accuracy Quotient (CAQ).
+
+    Args:
+        compression_ratio: Ratio of original size to compressed size (must be > 0)
+        cpu_seconds: CPU time in seconds (must be >= 0)
+
+    Returns:
+        float: CAQ score
+
+    Raises:
+        ValueError: If inputs are invalid
+    """
+    if compression_ratio <= 0:
+        raise ValueError(f"compression_ratio must be > 0, got {compression_ratio}")
     if cpu_seconds < 0:
-        raise ValueError("cpu_seconds must be non-negative")
-    return compression_ratio / (1.0 + math.log1p(cpu_seconds))
+        raise ValueError(f"cpu_seconds must be >= 0, got {cpu_seconds}")
+
+    return compression_ratio / (cpu_seconds + 1.0)
+
+
+def compute_variance(values: list) -> float:
+    """
+    Compute variance percentage across multiple runs.
+
+    Variance = (max - min) / mean * 100
+
+    Args:
+        values: List of numeric values
+
+    Returns:
+        float: Variance as a percentage
+
+    Raises:
+        ValueError: If list is empty or mean is zero
+    """
+    if not values:
+        raise ValueError("Cannot compute variance of empty list")
+
+    mean_val = sum(values) / len(values)
+    if mean_val == 0:
+        raise ValueError("Cannot compute variance when mean is zero")
+
+    max_val = max(values)
+    min_val = min(values)
+
+    return (max_val - min_val) / mean_val * 100.0
 
 
 if __name__ == "__main__":
-    import argparse
+    # Example usage
+    ratio = 5.63
+    cpu_time = 0.26
+    caq = compute_caq(ratio, cpu_time)
+    print(f"CAQ({ratio}, {cpu_time}) = {caq:.2f}")
 
-    p = argparse.ArgumentParser(description="Compute CAQ score from JSON input")
-    p.add_argument("input", help="Path to JSON file with keys: compression_ratio, cpu_seconds, memory_mb")
-    args = p.parse_args()
-
-    with open(args.input, "r") as f:
-        data = json.load(f)
-
-    score = caq_score(data.get("compression_ratio", 1.0), data.get("cpu_seconds", 1.0), data.get("memory_mb", 0.0))
-    print(f"caq_score: {score:.6f}")
+    # Example variance
+    runs = [5.60, 5.64, 5.65]
+    var = compute_variance(runs)
+    print(f"Variance({runs}) = {var:.2f}%")

@@ -1,0 +1,93 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SRC Leaderboard Submission",
+  "description": "Schema for submitting CAQ benchmark results to the SRC Research Lab leaderboard",
+  "type": "object",
+  "required": [
+    "submitter",
+    "date",
+    "dataset",
+    "codec",
+    "version",
+    "compression_ratio",
+    "cpu_seconds",
+    "runs",
+    "notes"
+  ],
+  "properties": {
+    "submitter": {
+      "type": "string",
+      "description": "Submitter identifier (e.g., username, institution)",
+      "minLength": 1
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "description": "Submission date in YYYY-MM-DD format"
+    },
+    "dataset": {
+      "type": "string",
+      "enum": ["text_medium", "image_small", "mixed_stream"],
+      "description": "Dataset used for benchmarking"
+    },
+    "codec": {
+      "type": "string",
+      "description": "Codec identifier (e.g., src-engine:v0.3.0)",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "description": "Codec version",
+      "minLength": 1
+    },
+    "compression_ratio": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "description": "Mean compression ratio across runs"
+    },
+    "cpu_seconds": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "description": "Mean CPU time in seconds across runs"
+    },
+    "runs": {
+      "type": "array",
+      "description": "Individual run measurements for reproducibility verification",
+      "items": {
+        "type": "object",
+        "required": ["ratio", "cpu_seconds"],
+        "properties": {
+          "ratio": {
+            "type": "number",
+            "exclusiveMinimum": 0,
+            "description": "Compression ratio for this run"
+          },
+          "cpu_seconds": {
+            "type": "number",
+            "exclusiveMinimum": 0,
+            "description": "CPU time in seconds for this run"
+          }
+        },
+        "additionalProperties": false
+      },
+      "minItems": 3,
+      "description": "At least 3 runs required for reproducibility"
+    },
+    "variance": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Variance percentage across runs"
+    },
+    "caq": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "description": "Compression-Accuracy Quotient (CAQ = ratio / (cpu_seconds + 1))"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Additional notes, including reproducible command if available"
+    }
+  },
+  "additionalProperties": false
+}
