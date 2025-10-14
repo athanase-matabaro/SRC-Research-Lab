@@ -1,0 +1,40 @@
+{
+  "computed_metrics": {
+    "computed_caq": 4.468253968253968,
+    "mean_cpu": 0.26,
+    "mean_ratio": 5.63,
+    "variance": 0.38370282406204426
+  },
+  "message": "All validation checks passed",
+  "signature": "4c0e356c84feaec7c92568c20dbf2aa5ec7b940ca1fd0be12d3eb046fa77f9a4",
+  "status": "PASS",
+  "submission": {
+    "caq": 4.44,
+    "codec": "src-engine:v0.3.0",
+    "compression_ratio": 5.63,
+    "cpu_seconds": 0.26,
+    "dataset": "text_medium",
+    "date": "2025-10-14",
+    "notes": "Local run on i5 CPU; bridge-sdk compress invocation: ./scripts/src_bridge.py compress --input datasets/text_medium/corpus.txt --output /tmp/out.cxe --care",
+    "runs": [
+      {
+        "cpu_seconds": 0.25,
+        "ratio": 5.6
+      },
+      {
+        "cpu_seconds": 0.26,
+        "ratio": 5.64
+      },
+      {
+        "cpu_seconds": 0.27,
+        "ratio": 5.65
+      }
+    ],
+    "submitter": "jane_doe_institute",
+    "variance": 0.89,
+    "version": "v0.3.0"
+  },
+  "submission_file": "jane_doe_institute",
+  "timestamp": "2025-10-13 21:37:56",
+  "validator_version": "1.0.0"
+}
