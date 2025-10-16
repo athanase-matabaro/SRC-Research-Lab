@@ -216,7 +216,7 @@ CONTACT & SUPPORT
 ================================================================================
 
 Research Inquiries:
-  Email: athanase678@gmail.com
+  Email: matabaro.n.athanase@gmail.com
   GitHub: https://github.com/athanase-matabaro/SRC-Research-Lab
 
 Technical Support:
@@ -316,7 +316,7 @@ principles, enabling:
 - Transparent methodology and metrics
 - Reproducible results across platforms
 
-Questions or concerns: athanase678@gmail.com
+Questions or concerns: matabaro.n.athanase@gmail.com
 
 ================================================================================
 END OF README
