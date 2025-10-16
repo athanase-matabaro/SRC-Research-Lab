@@ -262,8 +262,8 @@ This incident was identified through user review and addressed immediately with 
 ---
 
 **Related Files**:
-- [`.git-workflow-checklist.md`](.git-workflow-checklist.md)
-- [`.ai-assistant-protocol.md`](.ai-assistant-protocol.md)
-- [`docs/engineeringculture.md`](docs/engineeringculture.md)
+- [`.git-workflow-checklist.md`](../.git-workflow-checklist.md)
+- [`.ai-assistant-protocol.md`](../.ai-assistant-protocol.md)
+- [`docs/engineeringculture.md`](engineeringculture.md)
 
 **Branch**: `chore/add-git-workflow-safeguards` (proper feature branch ✓)
