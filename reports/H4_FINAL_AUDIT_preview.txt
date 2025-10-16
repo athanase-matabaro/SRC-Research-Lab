@@ -1,0 +1,98 @@
+{
+  "audit_timestamp": "2025-10-16T10:20:24.533915Z",
+  "commit": "b3ccf2c",
+  "commit_full": "b3ccf2c974aff646b3879743a6a613513abdd372",
+  "tag": "no-tag",
+  "branch": "master",
+  "pytest": {
+    "summary": "99 passed in 2.67s",
+    "first_lines": [
+      "........................................................................ [ 72%]",
+      "...........................                                              [100%]",
+      "99 passed in 2.67s"
+    ]
+  },
+  "adaptive_reports": {
+    "total_checked": 7,
+    "adaptive_with_delta": 2,
+    "details": [
+      "OK: athanase_lab_2025-10-16_12-32-07-879368.json (delta=15.2%)",
+      "SKIP: jane_doe_institute_2025-10-13_21-37-38.json (not adaptive)",
+      "SKIP: jane_doe_institute_2025-10-13_21-38-48.json (not adaptive)",
+      "OK: athanase_lab_2025-10-16_12-32-07-879884.json (delta=20.3%)",
+      "SKIP: jane_doe_institute_2025-10-13_21-37-56.json (not adaptive)",
+      "SKIP: jane_doe_institute_2025-10-13_21-15-49.json (not adaptive)",
+      "SKIP: jane_doe_institute_2025-10-13_21-08-23.json (not adaptive)"
+    ]
+  },
+  "bundles": [
+    {
+      "bundle": "image_small_bundle",
+      "path": "release/public_benchmarks/image_small_bundle",
+      "example_submission": {
+        "submitter": "external_researcher",
+        "dataset": "image_small",
+        "caq": 3.12
+      },
+      "test_run": "completed",
+      "test_output": [
+        "Mean CAQ: 1.05",
+        "Mean Ratio: 1.05",
+        "Mean CPU: .0020 s",
+        "",
+        "✓ Benchmark complete. Check example_submission.json for expected output format."
+      ]
+    },
+    {
+      "bundle": "mixed_stream_bundle",
+      "path": "release/public_benchmarks/mixed_stream_bundle",
+      "example_submission": {
+        "submitter": "external_researcher",
+        "dataset": "mixed_stream",
+        "caq": 4.2
+      },
+      "test_run": "completed",
+      "test_output": [
+        "Mean CAQ: 3.29",
+        "Mean Ratio: 3.30",
+        "Mean CPU: .0012 s",
+        "",
+        "✓ Benchmark complete. Check example_submission.json for expected output format."
+      ]
+    },
+    {
+      "bundle": "text_medium_bundle",
+      "path": "release/public_benchmarks/text_medium_bundle",
+      "example_submission": {
+        "submitter": "external_researcher",
+        "dataset": "text_medium",
+        "caq": 4.85
+      },
+      "test_run": "completed",
+      "test_output": [
+        "Mean CAQ: 1.96",
+        "Mean Ratio: 1.96",
+        "Mean CPU: .0015 s",
+        "",
+        "✓ Benchmark complete. Check example_submission.json for expected output format."
+      ]
+    }
+  ],
+  "leaderboard": {
+    "datasets": [
+      "synthetic_gradients",
+      "text_medium"
+    ],
+    "total_entries": 7,
+    "generated_at": "2025-10-16T13:19:36.230630",
+    "adaptive_entries": 2
+  },
+  "validation_summary": {
+    "pytest_passed": true,
+    "adaptive_reports_ok": true,
+    "bundles_created": true,
+    "all_bundles_tested": true,
+    "leaderboard_updated": true
+  },
+  "overall_status": "PASS"
+}

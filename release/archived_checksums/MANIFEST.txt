@@ -1,0 +1,62 @@
+================================================================================
+ARCHIVED BUNDLE CHECKSUMS - Phase H.4
+================================================================================
+
+Release: v0.4.0-H4
+Date: 2025-10-16
+Commit: b3ccf2c974aff646b3879743a6a613513abdd372
+
+This directory contains immutable SHA256 checksums for all public benchmark
+bundles released in Phase H.4. These checksums enable external verification
+of bundle integrity and ensure reproducibility.
+
+================================================================================
+BUNDLES
+================================================================================
+
+1. text_medium_bundle
+   Location: release/public_benchmarks/text_medium_bundle/
+   Checksum File: text_medium_bundle_checksums.txt
+   Files: 11 (dataset files, outputs, scripts, README)
+   Dataset: text_medium (3 text samples)
+
+2. image_small_bundle
+   Location: release/public_benchmarks/image_small_bundle/
+   Checksum File: image_small_bundle_checksums.txt
+   Files: 11 (dataset files, outputs, scripts, README)
+   Dataset: image_small (3 binary image samples)
+
+3. mixed_stream_bundle
+   Location: release/public_benchmarks/mixed_stream_bundle/
+   Checksum File: mixed_stream_bundle_checksums.txt
+   Files: 9 (dataset files, outputs, scripts, README)
+   Dataset: mixed_stream (text + binary samples)
+
+================================================================================
+VERIFICATION PROCEDURE
+================================================================================
+
+To verify a bundle's integrity:
+
+1. Navigate to the bundle directory:
+   cd release/public_benchmarks/<bundle_name>/
+
+2. Verify against archived checksums:
+   sha256sum -c ../../archived_checksums/<bundle_name>_checksums.txt
+
+3. All files should report: OK
+
+================================================================================
+NOTES
+================================================================================
+
+- All checksums generated on: 2025-10-16
+- Platform: Linux 6.14.0-33-generic (x86_64)
+- Tool: sha256sum (GNU coreutils)
+- These checksums are immutable and serve as the canonical reference
+- Any modifications to bundles invalidate these checksums
+
+================================================================================
+Generated: 2025-10-16T16:10:00Z
+Phase H.4 Final Release
+================================================================================

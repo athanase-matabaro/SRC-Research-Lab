@@ -1,0 +1,2 @@
+athanase_lab synthetic_gradients CAQ:1.6 Delta:20.3%
+athanase_lab synthetic_gradients CAQ:1.52 Delta:15.15%

@@ -1,0 +1,7 @@
+OK: athanase_lab_2025-10-16_12-32-07-879368.json (delta=15.2%)
+SKIP: jane_doe_institute_2025-10-13_21-37-38.json (not adaptive)
+SKIP: jane_doe_institute_2025-10-13_21-38-48.json (not adaptive)
+OK: athanase_lab_2025-10-16_12-32-07-879884.json (delta=20.3%)
+SKIP: jane_doe_institute_2025-10-13_21-37-56.json (not adaptive)
+SKIP: jane_doe_institute_2025-10-13_21-15-49.json (not adaptive)
+SKIP: jane_doe_institute_2025-10-13_21-08-23.json (not adaptive)
