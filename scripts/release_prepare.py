@@ -308,7 +308,7 @@ MIT License — See main repository for details
 
 - [CAQ Leaderboard](../../leaderboard/leaderboard.md)
 - [Phase H.4 Release Notes](../../docs/release_notes_H4.md)
-- [Main Repository](https://github.com/SRC-Research-Lab/compression-lab)
+- [Main Repository](https://github.com/athanase-matabaro/SRC-Research-Lab)
 
 ## Contact
 

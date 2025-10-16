@@ -1,5 +1,5 @@
 % Adaptive Learned Compression: Neural Entropy Modeling for Efficient Tensor Compression
-% Athanase Matabaro, Claude (AI Collaborator)
+% Athanase Matabaro
 % October 2025
 
 # Abstract
@@ -303,7 +303,7 @@ Each bundle includes:
 
 ## 7.2 CAQ Leaderboard
 
-The public leaderboard (https://github.com/SRC-Research-Lab/compression-lab/leaderboard) tracks:
+The public leaderboard (https://github.com/athanase-matabaro/SRC-Research-Lab/tree/master/leaderboard) tracks:
 - Submitter name and codec version
 - Dataset and CAQ score
 - Compression ratio and CPU time
@@ -350,8 +350,8 @@ We presented the Adaptive Learned Compression Model (ALCM), achieving +20.14% CA
 
 ```bash
 # Clone repository
-git clone https://github.com/SRC-Research-Lab/compression-lab
-cd src-research-lab
+git clone https://github.com/athanase-matabaro/SRC-Research-Lab
+cd SRC-Research-Lab
 
 # Install dependencies (NumPy, PyYAML only)
 pip3 install -r requirements.txt
@@ -451,10 +451,8 @@ b1 ← b1 - η · ∂L/∂b1
 ---
 
 **License**: MIT License
-**Code**: https://github.com/SRC-Research-Lab/compression-lab
-**Leaderboard**: https://github.com/SRC-Research-Lab/compression-lab/leaderboard
-**Contact**: athanase.matabaro@research-lab.org
+**Code**: https://github.com/athanase-matabaro/SRC-Research-Lab
+**Leaderboard**: https://github.com/athanase-matabaro/SRC-Research-Lab/tree/master/leaderboard
+**Contact**: matabaro.n.athanase@gmail.com
 
 ---
-
-*This paper was co-authored with Claude (Anthropic AI), who contributed to implementation, experimental design, and manuscript preparation.*

@@ -278,10 +278,10 @@ For 8-node training with hourly checkpoints:
 
 ## Links
 
-- **Repository**: https://github.com/SRC-Research-Lab/compression-lab
-- **Leaderboard**: https://github.com/SRC-Research-Lab/compression-lab/leaderboard
-- **Benchmarks**: https://github.com/SRC-Research-Lab/compression-lab/release/public_benchmarks
-- **Documentation**: https://github.com/SRC-Research-Lab/compression-lab/docs
+- **Repository**: https://github.com/athanase-matabaro/SRC-Research-Lab
+- **Leaderboard**: https://github.com/athanase-matabaro/SRC-Research-Lab/tree/master/leaderboard
+- **Benchmarks**: https://github.com/athanase-matabaro/SRC-Research-Lab/tree/master/release/public_benchmarks
+- **Documentation**: https://github.com/athanase-matabaro/SRC-Research-Lab/tree/master/docs
 - **Paper**: [arXiv preprint](https://arxiv.org) (coming soon)
 
 ---

@@ -140,8 +140,8 @@ We're not just publishing numbers—we're releasing everything you need to verif
 
 **Clone it, run it, break it, improve it:**
 ```bash
-git clone https://github.com/SRC-Research-Lab/compression-lab
-cd src-research-lab
+git clone https://github.com/athanase-matabaro/SRC-Research-Lab
+cd SRC-Research-Lab
 python3 experiments/run_adaptive_train.py
 ```
 
@@ -223,8 +223,8 @@ The scheduler adjusts `pruning_ratio` based on CAQ feedback:
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/SRC-Research-Lab/compression-lab
-cd src-research-lab
+git clone https://github.com/athanase-matabaro/SRC-Research-Lab
+cd SRC-Research-Lab
 
 # 2. Run adaptive training experiment
 python3 experiments/run_adaptive_train.py
@@ -251,9 +251,7 @@ cat leaderboard/leaderboard.md
 
 ## The Team
 
-**Athanase Matabaro** (Research Lead): System architecture, neural entropy design, experimental validation
-
-**Claude** (AI Collaborator): Implementation, testing, documentation, reproducibility protocols
+**Athanase Matabaro** (Research Lead): System architecture, neural entropy design, experimental validation, implementation, testing, and documentation
 
 ---
 
@@ -272,10 +270,10 @@ This is just the beginning.
 ## Get Involved
 
 - **Paper**: [arXiv preprint](https://arxiv.org/abs/...) (coming soon)
-- **Code**: [GitHub repository](https://github.com/SRC-Research-Lab/compression-lab)
-- **Leaderboard**: [CAQ leaderboard](https://github.com/SRC-Research-Lab/compression-lab/leaderboard)
-- **Benchmarks**: [Public benchmark bundles](https://github.com/SRC-Research-Lab/compression-lab/release/public_benchmarks)
-- **Issues**: [Report bugs or request features](https://github.com/SRC-Research-Lab/compression-lab/issues)
+- **Code**: [GitHub repository](https://github.com/athanase-matabaro/SRC-Research-Lab)
+- **Leaderboard**: [CAQ leaderboard](https://github.com/athanase-matabaro/SRC-Research-Lab/tree/master/leaderboard)
+- **Benchmarks**: [Public benchmark bundles](https://github.com/athanase-matabaro/SRC-Research-Lab/tree/master/release/public_benchmarks)
+- **Issues**: [Report bugs or request features](https://github.com/athanase-matabaro/SRC-Research-Lab/issues)
 
 **Star us on GitHub** if you find this useful! ⭐
 
@@ -283,7 +281,7 @@ This is just the beginning.
 
 *This work was conducted at SRC Research Lab as part of Phase H.4: Adaptive CAQ Leaderboard Integration & Public Benchmark Release. All code, data, and benchmarks are released under the MIT license.*
 
-*Special thanks to the open-source community and to Claude (Anthropic AI) for collaborative development and rigorous testing.*
+*Special thanks to the open-source community for inspiration and to the NumPy, SciPy, and pytest projects for excellent tooling.*
 
 ---
 

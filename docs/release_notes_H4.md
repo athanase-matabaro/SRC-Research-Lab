@@ -409,7 +409,7 @@ python3 scripts/validate_release.py \
 # As an external researcher:
 
 # 1. Download bundle
-curl -LO https://github.com/SRC-Research-Lab/.../text_medium_bundle.tar.xz
+curl -LO https://github.com/athanase-matabaro/SRC-Research-Lab/releases/download/v0.4.0-H4/text_medium_bundle.tar.xz
 tar -xf text_medium_bundle.tar.xz
 cd text_medium_bundle
 
@@ -583,11 +583,11 @@ MIT License — See LICENSE.md for details
 
 ## Links
 
-- **Repository**: https://github.com/SRC-Research-Lab/compression-lab
-- **Leaderboard**: https://github.com/SRC-Research-Lab/compression-lab/leaderboard
-- **Public Benchmarks**: https://github.com/SRC-Research-Lab/compression-lab/release/public_benchmarks
+- **Repository**: https://github.com/athanase-matabaro/SRC-Research-Lab
+- **Leaderboard**: https://github.com/athanase-matabaro/SRC-Research-Lab/tree/master/leaderboard
+- **Public Benchmarks**: https://github.com/athanase-matabaro/SRC-Research-Lab/tree/master/release/public_benchmarks
 - **Paper Preprint**: [arXiv](https://arxiv.org) (coming soon)
-- **Issues & Discussion**: https://github.com/SRC-Research-Lab/compression-lab/issues
+- **Issues & Discussion**: https://github.com/athanase-matabaro/SRC-Research-Lab/issues
 
 ---
 

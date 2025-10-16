@@ -100,8 +100,8 @@ All artifacts released under MIT license:
 • Comprehensive documentation (paper skeleton + Medium article)
 • CAQ leaderboard with submission guidelines
 
-Repository: https://github.com/SRC-Research-Lab/compression-lab
-Leaderboard: https://github.com/SRC-Research-Lab/compression-lab/leaderboard
+Repository: https://github.com/athanase-matabaro/SRC-Research-Lab
+Leaderboard: https://github.com/athanase-matabaro/SRC-Research-Lab/tree/master/leaderboard
 
 ==============================================================================
 EXPERIMENTAL RESULTS
@@ -176,8 +176,8 @@ Research Inquiries: athanase.matabaro@research-lab.org
 Technical Support: GitHub Issues
 Collaboration: Pull requests welcome
 
-Repository: https://github.com/SRC-Research-Lab/compression-lab
-Documentation: https://github.com/SRC-Research-Lab/compression-lab/docs
+Repository: https://github.com/athanase-matabaro/SRC-Research-Lab
+Documentation: https://github.com/athanase-matabaro/SRC-Research-Lab/tree/master/docs
 
 ==============================================================================
 
