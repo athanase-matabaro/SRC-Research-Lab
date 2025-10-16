@@ -1,0 +1,93 @@
+{
+  "generated_at": "2025-10-16T12:33:29.890013",
+  "status": "FAIL",
+  "bundles": [
+    {
+      "bundle": "image_small_bundle",
+      "timestamp": "2025-10-16T12:33:29.151514",
+      "status": "FAIL",
+      "checks": [
+        {
+          "check": "checksums",
+          "status": "PASS",
+          "message": "OK"
+        },
+        {
+          "check": "canonical_run",
+          "status": "PASS",
+          "message": "OK",
+          "metrics": {
+            "mean_caq": 1.05,
+            "mean_ratio": 1.05,
+            "mean_cpu": 0.002
+          }
+        },
+        {
+          "check": "expected_match",
+          "status": "FAIL",
+          "message": "CAQ variance 66.35% exceeds tolerance 1.50%"
+        }
+      ]
+    },
+    {
+      "bundle": "mixed_stream_bundle",
+      "timestamp": "2025-10-16T12:33:29.428000",
+      "status": "FAIL",
+      "checks": [
+        {
+          "check": "checksums",
+          "status": "PASS",
+          "message": "OK"
+        },
+        {
+          "check": "canonical_run",
+          "status": "PASS",
+          "message": "OK",
+          "metrics": {
+            "mean_caq": 3.29,
+            "mean_ratio": 3.3,
+            "mean_cpu": 0.0012
+          }
+        },
+        {
+          "check": "expected_match",
+          "status": "FAIL",
+          "message": "CAQ variance 21.67% exceeds tolerance 1.50%"
+        }
+      ]
+    },
+    {
+      "bundle": "text_medium_bundle",
+      "timestamp": "2025-10-16T12:33:29.606991",
+      "status": "FAIL",
+      "checks": [
+        {
+          "check": "checksums",
+          "status": "PASS",
+          "message": "OK"
+        },
+        {
+          "check": "canonical_run",
+          "status": "PASS",
+          "message": "OK",
+          "metrics": {
+            "mean_caq": 1.96,
+            "mean_ratio": 1.96,
+            "mean_cpu": 0.0015
+          }
+        },
+        {
+          "check": "expected_match",
+          "status": "FAIL",
+          "message": "CAQ variance 59.59% exceeds tolerance 1.50%"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total": 3,
+    "passed": 0,
+    "failed": 3
+  },
+  "signature": "0ee07a7b6a2355d8"
+}

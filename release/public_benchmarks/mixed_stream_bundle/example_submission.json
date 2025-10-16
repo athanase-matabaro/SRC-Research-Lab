@@ -1,0 +1,22 @@
+{
+  "submitter": "external_researcher",
+  "dataset": "mixed_stream",
+  "codec": "src-engine:v0.3.0",
+  "version": "v0.3.0",
+  "timestamp": "2025-10-16T00:00:00",
+  "results": [
+    {
+      "file": "sample_1",
+      "ratio": 5.05,
+      "cpu_seconds": 0.201,
+      "caq": 4.2
+    }
+  ],
+  "computed_metrics": {
+    "computed_caq": 4.2,
+    "mean_ratio": 5.05,
+    "mean_cpu": 0.201,
+    "variance": 0.5
+  },
+  "notes": "Expected output from canonical run script with mock bridge"
+}

@@ -1,6 +1,48 @@
 {
-  "generated_at": "2025-10-13T21:38:48.484914",
+  "generated_at": "2025-10-16T12:33:49.635042",
   "datasets": {
+    "synthetic_gradients": {
+      "entries": [
+        {
+          "report_file": "athanase_lab_2025-10-16_12-32-07-879884.json",
+          "submitter": "athanase_lab",
+          "dataset": "synthetic_gradients",
+          "codec": "src-adaptive:v0.3.0",
+          "version": "v0.3.0",
+          "computed_caq": 1.6,
+          "mean_ratio": 1.6,
+          "mean_cpu": 0.005,
+          "variance": 4.37,
+          "timestamp": "2025-10-16T12:32:07.879824",
+          "adaptive_flag": true,
+          "delta_vs_src_baseline": 20.3,
+          "validated_by": "leaderboard/reports/athanase_lab_2025-10-16_12-32-07-879884.json"
+        },
+        {
+          "report_file": "athanase_lab_2025-10-16_12-32-07-879368.json",
+          "submitter": "athanase_lab",
+          "dataset": "synthetic_gradients",
+          "codec": "src-adaptive:v0.3.0",
+          "version": "v0.3.0",
+          "computed_caq": 1.52,
+          "mean_ratio": 1.52,
+          "mean_cpu": 0.005,
+          "variance": 7.87,
+          "timestamp": "2025-10-16T12:32:07.879292",
+          "adaptive_flag": true,
+          "delta_vs_src_baseline": 15.15,
+          "validated_by": "leaderboard/reports/athanase_lab_2025-10-16_12-32-07-879368.json"
+        }
+      ],
+      "stats": {
+        "count": 2,
+        "mean_caq": 1.56,
+        "median_caq": 1.56,
+        "stddev_caq": 0.04,
+        "max_caq": 1.6,
+        "min_caq": 1.52
+      }
+    },
     "text_medium": {
       "entries": [
         {
@@ -13,7 +55,10 @@
           "mean_ratio": 5.63,
           "mean_cpu": 0.26,
           "variance": 0.38370282406204426,
-          "timestamp": "2025-10-13 21:37:38"
+          "timestamp": "2025-10-13 21:37:38",
+          "adaptive_flag": false,
+          "delta_vs_src_baseline": 0.0,
+          "validated_by": ""
         },
         {
           "report_file": "jane_doe_institute_2025-10-13_21-38-48.json",
@@ -25,7 +70,10 @@
           "mean_ratio": 5.63,
           "mean_cpu": 0.26,
           "variance": 0.38370282406204426,
-          "timestamp": "2025-10-13 21:38:48"
+          "timestamp": "2025-10-13 21:38:48",
+          "adaptive_flag": false,
+          "delta_vs_src_baseline": 0.0,
+          "validated_by": ""
         },
         {
           "report_file": "jane_doe_institute_2025-10-13_21-37-56.json",
@@ -37,7 +85,10 @@
           "mean_ratio": 5.63,
           "mean_cpu": 0.26,
           "variance": 0.38370282406204426,
-          "timestamp": "2025-10-13 21:37:56"
+          "timestamp": "2025-10-13 21:37:56",
+          "adaptive_flag": false,
+          "delta_vs_src_baseline": 0.0,
+          "validated_by": ""
         },
         {
           "report_file": "jane_doe_institute_2025-10-13_21-15-49.json",
@@ -49,7 +100,10 @@
           "mean_ratio": 5.63,
           "mean_cpu": 0.26,
           "variance": 0.38370282406204426,
-          "timestamp": "2025-10-13 21:15:49"
+          "timestamp": "2025-10-13 21:15:49",
+          "adaptive_flag": false,
+          "delta_vs_src_baseline": 0.0,
+          "validated_by": ""
         },
         {
           "report_file": "jane_doe_institute_2025-10-13_21-08-23.json",
@@ -61,7 +115,10 @@
           "mean_ratio": 5.63,
           "mean_cpu": 0.26,
           "variance": 0.38370282406204426,
-          "timestamp": "2025-10-13 21:08:23"
+          "timestamp": "2025-10-13 21:08:23",
+          "adaptive_flag": false,
+          "delta_vs_src_baseline": 0.0,
+          "validated_by": ""
         }
       ],
       "stats": {
@@ -86,7 +143,10 @@
         "mean_ratio": 5.63,
         "mean_cpu": 0.26,
         "variance": 0.38370282406204426,
-        "timestamp": "2025-10-13 21:37:38"
+        "timestamp": "2025-10-13 21:37:38",
+        "adaptive_flag": false,
+        "delta_vs_src_baseline": 0.0,
+        "validated_by": ""
       },
       {
         "report_file": "jane_doe_institute_2025-10-13_21-38-48.json",
@@ -98,7 +158,10 @@
         "mean_ratio": 5.63,
         "mean_cpu": 0.26,
         "variance": 0.38370282406204426,
-        "timestamp": "2025-10-13 21:38:48"
+        "timestamp": "2025-10-13 21:38:48",
+        "adaptive_flag": false,
+        "delta_vs_src_baseline": 0.0,
+        "validated_by": ""
       },
       {
         "report_file": "jane_doe_institute_2025-10-13_21-37-56.json",
@@ -110,7 +173,10 @@
         "mean_ratio": 5.63,
         "mean_cpu": 0.26,
         "variance": 0.38370282406204426,
-        "timestamp": "2025-10-13 21:37:56"
+        "timestamp": "2025-10-13 21:37:56",
+        "adaptive_flag": false,
+        "delta_vs_src_baseline": 0.0,
+        "validated_by": ""
       },
       {
         "report_file": "jane_doe_institute_2025-10-13_21-15-49.json",
@@ -122,7 +188,10 @@
         "mean_ratio": 5.63,
         "mean_cpu": 0.26,
         "variance": 0.38370282406204426,
-        "timestamp": "2025-10-13 21:15:49"
+        "timestamp": "2025-10-13 21:15:49",
+        "adaptive_flag": false,
+        "delta_vs_src_baseline": 0.0,
+        "validated_by": ""
       },
       {
         "report_file": "jane_doe_institute_2025-10-13_21-08-23.json",
@@ -134,16 +203,49 @@
         "mean_ratio": 5.63,
         "mean_cpu": 0.26,
         "variance": 0.38370282406204426,
-        "timestamp": "2025-10-13 21:08:23"
+        "timestamp": "2025-10-13 21:08:23",
+        "adaptive_flag": false,
+        "delta_vs_src_baseline": 0.0,
+        "validated_by": ""
+      },
+      {
+        "report_file": "athanase_lab_2025-10-16_12-32-07-879884.json",
+        "submitter": "athanase_lab",
+        "dataset": "synthetic_gradients",
+        "codec": "src-adaptive:v0.3.0",
+        "version": "v0.3.0",
+        "computed_caq": 1.6,
+        "mean_ratio": 1.6,
+        "mean_cpu": 0.005,
+        "variance": 4.37,
+        "timestamp": "2025-10-16T12:32:07.879824",
+        "adaptive_flag": true,
+        "delta_vs_src_baseline": 20.3,
+        "validated_by": "leaderboard/reports/athanase_lab_2025-10-16_12-32-07-879884.json"
+      },
+      {
+        "report_file": "athanase_lab_2025-10-16_12-32-07-879368.json",
+        "submitter": "athanase_lab",
+        "dataset": "synthetic_gradients",
+        "codec": "src-adaptive:v0.3.0",
+        "version": "v0.3.0",
+        "computed_caq": 1.52,
+        "mean_ratio": 1.52,
+        "mean_cpu": 0.005,
+        "variance": 7.87,
+        "timestamp": "2025-10-16T12:32:07.879292",
+        "adaptive_flag": true,
+        "delta_vs_src_baseline": 15.15,
+        "validated_by": "leaderboard/reports/athanase_lab_2025-10-16_12-32-07-879368.json"
       }
     ],
     "stats": {
-      "count": 5,
-      "mean_caq": 4.47,
+      "count": 7,
+      "mean_caq": 3.64,
       "median_caq": 4.47,
-      "stddev_caq": 0.0,
+      "stddev_caq": 1.31,
       "max_caq": 4.47,
-      "min_caq": 4.47
+      "min_caq": 1.52
     }
   }
 }

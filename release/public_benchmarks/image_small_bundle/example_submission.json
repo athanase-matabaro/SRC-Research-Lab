@@ -1,0 +1,22 @@
+{
+  "submitter": "external_researcher",
+  "dataset": "image_small",
+  "codec": "src-engine:v0.3.0",
+  "version": "v0.3.0",
+  "timestamp": "2025-10-16T00:00:00",
+  "results": [
+    {
+      "file": "sample_1",
+      "ratio": 3.75,
+      "cpu_seconds": 0.199,
+      "caq": 3.12
+    }
+  ],
+  "computed_metrics": {
+    "computed_caq": 3.12,
+    "mean_ratio": 3.75,
+    "mean_cpu": 0.199,
+    "variance": 0.5
+  },
+  "notes": "Expected output from canonical run script with mock bridge"
+}

@@ -22,20 +22,20 @@ WORKSPACE_ROOT = Path(__file__).parent.parent.resolve()
 def load_pass_reports(reports_dir: Path) -> list:
     """Load all PASS reports from directory."""
     reports = []
-    
+
     if not reports_dir.exists():
         return reports
-    
+
     for report_file in reports_dir.glob("*.json"):
         try:
             with open(report_file, 'r') as f:
                 report = json.load(f)
-            
+
             if report.get("status") == "PASS":
                 # Extract key fields
                 submission = report.get("submission", {})
                 computed = report.get("computed_metrics", report.get("computed", {}))
-                
+
                 entry = {
                     "report_file": report_file.name,
                     "submitter": submission.get("submitter", "unknown"),
@@ -46,13 +46,17 @@ def load_pass_reports(reports_dir: Path) -> list:
                     "mean_ratio": computed.get("mean_ratio", 0.0),
                     "mean_cpu": computed.get("mean_cpu", 0.0),
                     "variance": computed.get("variance", 0.0),
-                    "timestamp": report.get("timestamp", "")
+                    "timestamp": report.get("timestamp", ""),
+                    # New adaptive fields
+                    "adaptive_flag": report.get("adaptive_flag", False),
+                    "delta_vs_src_baseline": computed.get("delta_vs_src_baseline", 0.0),
+                    "validated_by": report.get("validated_by", "")
                 }
                 reports.append(entry)
         except (json.JSONDecodeError, KeyError) as e:
             print(f"Warning: Skipping invalid report {report_file.name}: {e}", file=sys.stderr)
             continue
-    
+
     return reports
 
 
@@ -141,38 +145,62 @@ def generate_markdown(datasets: dict, output_path: Path):
     lines = []
     lines.append("# SRC Research Lab — CAQ Leaderboard\n\n")
     lines.append(f"*Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}*\n\n")
-    
+
     lines.append("## Overview\n\n")
     lines.append("This leaderboard ranks compression algorithms by their CAQ (Compression-Accuracy Quotient) score.\n")
     lines.append("CAQ balances compression ratio with computational efficiency:\n\n")
     lines.append("```\nCAQ = compression_ratio / (cpu_seconds + 1)\n```\n\n")
-    
-    for dataset_name in ["text_medium", "image_small", "mixed_stream"]:
+
+    # Collect all adaptive entries for Adaptive Top 5
+    all_entries = []
+    for dataset_entries in datasets.values():
+        all_entries.extend(dataset_entries)
+
+    adaptive_entries = [e for e in all_entries if e.get("adaptive_flag", False)]
+
+    if adaptive_entries:
+        adaptive_entries.sort(key=lambda x: x["computed_caq"], reverse=True)
+        lines.append("## 🔬 Adaptive Top 5\n\n")
+        lines.append("*Adaptive Learned Compression Model (ALCM) results with neural entropy modeling*\n\n")
+        lines.append("| Rank | Submitter | Dataset | CAQ | Δ vs Baseline | Ratio | Variance (%) |\n")
+        lines.append("|------|-----------|---------|-----|---------------|-------|-------------|\n")
+
+        for rank, entry in enumerate(adaptive_entries[:5], 1):
+            delta = entry.get("delta_vs_src_baseline", 0.0)
+            delta_str = f"+{delta:.1f}%" if delta > 0 else f"{delta:.1f}%"
+            lines.append(f"| {rank} | {entry['submitter']} | {entry['dataset']} | ")
+            lines.append(f"{entry['computed_caq']:.2f} | {delta_str} | ")
+            lines.append(f"{entry['mean_ratio']:.2f} | {entry['variance']:.2f} |\n")
+
+        lines.append("\n")
+
+    for dataset_name in ["text_medium", "image_small", "mixed_stream", "synthetic_gradients"]:
         if dataset_name not in datasets or not datasets[dataset_name]:
             continue
-        
+
         entries = datasets[dataset_name]
         stats = compute_stats(entries)
-        
+
         lines.append(f"## Dataset: {dataset_name}\n\n")
         lines.append(f"**Submissions:** {stats['count']} | ")
         lines.append(f"**Mean CAQ:** {stats['mean_caq']:.2f} | ")
         lines.append(f"**Median CAQ:** {stats['median_caq']:.2f}\n\n")
-        
+
         lines.append("| Rank | Submitter | Codec | CAQ | Ratio | CPU (s) | Variance (%) |\n")
         lines.append("|------|-----------|-------|-----|-------|---------|-------------|\n")
-        
+
         for rank, entry in enumerate(entries[:10], 1):
-            lines.append(f"| {rank} | {entry['submitter']} | {entry['codec']} | ")
+            adaptive_marker = " 🔬" if entry.get("adaptive_flag", False) else ""
+            lines.append(f"| {rank} | {entry['submitter']}{adaptive_marker} | {entry['codec']} | ")
             lines.append(f"{entry['computed_caq']:.2f} | {entry['mean_ratio']:.2f} | ")
             lines.append(f"{entry['mean_cpu']:.3f} | {entry['variance']:.2f} |\n")
-        
+
         lines.append("\n")
-    
+
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with open(output_path, 'w') as f:
         f.writelines(lines)
-    
+
     print(f"✓ Generated {output_path}")
 
 

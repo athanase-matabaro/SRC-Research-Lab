@@ -1,0 +1,25 @@
+{
+  "timestamp": "2025-10-16T12:32:07.879824",
+  "source_file": "run_20251016_120121.json",
+  "status": "PASS",
+  "submission": {
+    "submitter": "athanase_lab",
+    "dataset": "synthetic_gradients",
+    "codec": "src-adaptive:v0.3.0",
+    "version": "v0.3.0"
+  },
+  "computed_metrics": {
+    "computed_caq": 1.6,
+    "baseline_caq": 1.33,
+    "delta_vs_src_baseline": 20.3,
+    "mean_ratio": 1.6,
+    "mean_cpu": 0.005,
+    "variance": 4.37,
+    "entropy_loss": 0.007403,
+    "epochs_tested": 10
+  },
+  "adaptive_flag": true,
+  "validated_by": "leaderboard/reports/athanase_lab_2025-10-16_12-32-07-879884.json",
+  "notes": "Adaptive ALCM with neural entropy predictor. Entropy model MLP64, adaptive quantization + pruning",
+  "signature": "886b113a8ab32446"
+}

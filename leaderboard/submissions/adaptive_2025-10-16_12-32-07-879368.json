@@ -1,0 +1,79 @@
+{
+  "submitter": "athanase_lab",
+  "dataset": "synthetic_gradients",
+  "codec": "src-adaptive:v0.3.0",
+  "version": "v0.3.0",
+  "timestamp": "2025-10-16T12:32:07.879292",
+  "results": [
+    {
+      "status": "PASS",
+      "baseline_caq": 1.3,
+      "adaptive_caq": 1.44,
+      "gain_percent": 10.47,
+      "variance": 30.8,
+      "notes": "Epoch 1, threshold=0.0100",
+      "entropy_loss": 0.0015,
+      "epoch": 1,
+      "compression_ratio": 1.5664773839827688,
+      "cpu_time": 0.0884706974029541,
+      "baseline_ratio": 1.3333333333333333,
+      "dropped_ratio": 30.800000000000004
+    },
+    {
+      "status": "PASS",
+      "baseline_caq": 1.32,
+      "adaptive_caq": 1.54,
+      "gain_percent": 15.98,
+      "variance": 31.7,
+      "notes": "Epoch 2, threshold=0.0095",
+      "entropy_loss": 0.0015,
+      "epoch": 2,
+      "compression_ratio": 1.570598397989634,
+      "cpu_time": 0.02229022979736328,
+      "baseline_ratio": 1.3424620754463685,
+      "dropped_ratio": 31.699999999999996
+    },
+    {
+      "status": "PASS",
+      "baseline_caq": 1.31,
+      "adaptive_caq": 1.55,
+      "gain_percent": 17.81,
+      "variance": 30.71,
+      "notes": "Epoch 3, threshold=0.0090",
+      "entropy_loss": 0.0015,
+      "epoch": 3,
+      "compression_ratio": 1.5849744422871181,
+      "cpu_time": 0.02494335174560547,
+      "baseline_ratio": 1.328374070138151,
+      "dropped_ratio": 30.710000000000004
+    },
+    {
+      "status": "PASS",
+      "baseline_caq": 1.31,
+      "adaptive_caq": 1.49,
+      "gain_percent": 13.57,
+      "variance": 30.63,
+      "notes": "Epoch 4, threshold=0.0086",
+      "entropy_loss": 0.0015,
+      "epoch": 4,
+      "compression_ratio": 1.5259604013275856,
+      "cpu_time": 0.0221560001373291,
+      "baseline_ratio": 1.3300525370752145,
+      "dropped_ratio": 30.630000000000003
+    },
+    {
+      "status": "PASS",
+      "baseline_caq": 1.32,
+      "adaptive_caq": 1.55,
+      "gain_percent": 16.86,
+      "variance": 31.42,
+      "notes": "Epoch 5, threshold=0.0081",
+      "entropy_loss": 0.0015,
+      "epoch": 5,
+      "compression_ratio": 1.577660329731009,
+      "cpu_time": 0.019066333770751953,
+      "baseline_ratio": 1.3404825737265416,
+      "dropped_ratio": 31.42
+    }
+  ]
+}
