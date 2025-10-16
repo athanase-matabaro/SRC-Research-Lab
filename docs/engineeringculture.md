@@ -408,3 +408,12 @@ If you have questions about these guidelines, please:
 - [Conventional Commits](https://www.conventionalcommits.org/)
 - [PEP 8 Style Guide](https://pep8.org/)
 - [Git Best Practices](https://git-scm.com/book/en/v2)
+
+## Workflow Safeguards
+
+**IMPORTANT**: Before making any changes, consult these workflow guides:
+
+- **For all contributors**: [`.git-workflow-checklist.md`](../.git-workflow-checklist.md) - Step-by-step workflow checklist
+- **For AI assistants**: [`.ai-assistant-protocol.md`](../.ai-assistant-protocol.md) - Mandatory protocol for AI agents
+
+These documents provide detailed procedures to ensure proper feature branch workflow and prevent direct commits to master branch

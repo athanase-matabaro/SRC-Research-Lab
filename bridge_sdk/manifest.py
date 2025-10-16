@@ -28,9 +28,8 @@ class ManifestLoader:
             manifest_path: Path to bridge_manifest.yaml (default: workspace root)
         """
         if manifest_path is None:
-            # Default to workspace root
-            from bridge_sdk.security import WORKSPACE_ROOT
-            manifest_path = WORKSPACE_ROOT / "bridge_manifest.yaml"
+            # Default to bridge_sdk directory
+            manifest_path = Path(__file__).parent / "bridge_manifest.yaml"
 
         self.manifest_path = manifest_path
         self.manifest = self._load_manifest()
