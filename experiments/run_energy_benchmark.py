@@ -21,6 +21,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from energy.profiler import EnergyProfiler
 from energy.datasets.generate_gradients import load_gradient_dataset
+from energy.runtime_guard import RuntimeGuard, compute_variance_statistics
 from metrics.caq_energy_metric import (
     compute_caq_and_caqe,
     compute_caqe_delta,
@@ -98,10 +99,18 @@ def run_single_benchmark(
         else compress_gradient_adaptive
     )
 
+    # Initialize runtime guard
+    guard = RuntimeGuard(enable_rollback=True, strict_mode=False)
+
     original_size = gradient_data.nbytes
     results = {
         "method": method,
         "runs": [],
+        "guardrails": {
+            "all_valid": True,
+            "variance_gate_pass": True,
+            "sanity_violations": [],
+        }
     }
 
     for run_idx in range(num_runs):
@@ -124,6 +133,17 @@ def run_single_benchmark(
             **metrics,
         }
 
+        # VALIDATE RUN with RuntimeGuard
+        is_valid, guard_status = guard.validate_run(run_result)
+        run_result["guardrail_status"] = guard_status
+
+        if not is_valid:
+            results["guardrails"]["all_valid"] = False
+            if "sanity_violations" in guard_status.get("details", {}):
+                results["guardrails"]["sanity_violations"].extend(
+                    guard_status["details"]["sanity_violations"]
+                )
+
         results["runs"].append(run_result)
 
     # Compute averages
@@ -140,6 +160,19 @@ def run_single_benchmark(
         relative=True
     )
 
+    # VARIANCE GATE: Check CAQ-E stability across runs
+    caqe_values = [r["caq_e"] for r in results["runs"]]
+    variance_pass, variance_stats = guard.check_variance_gate(
+        caqe_values,
+        threshold_percent=RuntimeGuard.MAX_VARIANCE_PERCENT
+    )
+
+    results["guardrails"]["variance_gate_pass"] = variance_pass
+    results["guardrails"]["variance_stats"] = variance_stats
+
+    # Store variance statistics for CAQ-E
+    caqe_variance_stats = compute_variance_statistics(caqe_values)
+
     results["averages"] = {
         "compression_ratio": avg_ratio,
         "caq": avg_caq,
@@ -148,6 +181,7 @@ def run_single_benchmark(
         "cpu_seconds": avg_seconds,
         "avg_power_watts": avg_power,
         "energy_variance_percent": energy_variance,
+        "caqe_variance_stats": caqe_variance_stats,
     }
 
     return results
@@ -231,6 +265,20 @@ def run_energy_benchmark_suite(
             adaptive_caqe, baseline_caqe, PHASE_H5_CAQE_THRESHOLD
         )
 
+        # Check for performance rollback
+        guard = RuntimeGuard()
+        guard.create_checkpoint(baseline_caqe, metadata={"method": "baseline"})
+        should_rollback, rollback_info = guard.check_rollback_trigger(adaptive_caqe)
+
+        # Aggregate guardrail status
+        all_guards_pass = (
+            baseline_results["guardrails"]["all_valid"] and
+            adaptive_results["guardrails"]["all_valid"] and
+            baseline_results["guardrails"]["variance_gate_pass"] and
+            adaptive_results["guardrails"]["variance_gate_pass"] and
+            not should_rollback
+        )
+
         dataset_result = {
             "dataset_path": str(dataset_path),
             "gradient_shape": list(gradient.shape),
@@ -242,6 +290,13 @@ def run_energy_benchmark_suite(
                 "threshold_percent": float(PHASE_H5_CAQE_THRESHOLD),
                 "threshold_met": bool(threshold_met),
             },
+            "guardrails": {
+                "all_guards_pass": bool(all_guards_pass),
+                "rollback_triggered": bool(should_rollback),
+                "rollback_info": rollback_info,
+                "baseline_variance_pass": baseline_results["guardrails"]["variance_gate_pass"],
+                "adaptive_variance_pass": adaptive_results["guardrails"]["variance_gate_pass"],
+            },
         }
 
         all_results["datasets"][dataset_name] = dataset_result
@@ -252,6 +307,16 @@ def run_energy_benchmark_suite(
         print(f"    Adaptive CAQ-E:  {adaptive_caqe:.6f}")
         print(f"    Delta:           {delta_caqe:+.2f}%")
         print(f"    Threshold Met:   {'✓ YES' if threshold_met else '✗ NO'}")
+        print(f"  Guardrails:")
+        print(f"    Variance Gate:   {'✓ PASS' if all_guards_pass else '✗ FAIL'}")
+        print(f"    Rollback Check:  {'⚠ TRIGGERED' if should_rollback else '✓ OK'}")
+        if not all_guards_pass:
+            if not baseline_results["guardrails"]["variance_gate_pass"]:
+                baseline_var = baseline_results["guardrails"]["variance_stats"]["variance_percent"]
+                print(f"    ⚠ Baseline variance too high: {baseline_var:.1f}%")
+            if not adaptive_results["guardrails"]["variance_gate_pass"]:
+                adaptive_var = adaptive_results["guardrails"]["variance_stats"]["variance_percent"]
+                print(f"    ⚠ Adaptive variance too high: {adaptive_var:.1f}%")
         print()
 
     # Compute overall statistics
@@ -263,6 +328,14 @@ def run_energy_benchmark_suite(
         r["comparison"]["threshold_met"]
         for r in all_results["datasets"].values()
     ]
+    all_guards_pass = [
+        r["guardrails"]["all_guards_pass"]
+        for r in all_results["datasets"].values()
+    ]
+    rollbacks_triggered = [
+        r["guardrails"]["rollback_triggered"]
+        for r in all_results["datasets"].values()
+    ]
 
     all_results["summary"] = {
         "num_datasets": len(datasets),
@@ -271,6 +344,12 @@ def run_energy_benchmark_suite(
         "max_delta_caqe_percent": float(np.max(all_deltas)),
         "num_threshold_met": int(sum(all_thresholds_met)),
         "all_thresholds_met": bool(all(all_thresholds_met)),
+        "guardrails": {
+            "num_guards_pass": int(sum(all_guards_pass)),
+            "all_guards_pass": bool(all(all_guards_pass)),
+            "num_rollbacks": int(sum(rollbacks_triggered)),
+            "no_rollbacks": bool(not any(rollbacks_triggered)),
+        }
     }
 
     # Save results
@@ -287,6 +366,12 @@ def run_energy_benchmark_suite(
           f"{all_results['summary']['max_delta_caqe_percent']:.2f}%")
     print(f"Threshold Met: {all_results['summary']['num_threshold_met']}/{len(datasets)}")
     print(f"Overall Status: {'✓ PASS' if all_results['summary']['all_thresholds_met'] else '✗ FAIL'}")
+    print()
+    print("GUARDRAIL STATUS (Phase H.5.1)")
+    print("=" * 70)
+    print(f"Variance Gate: {all_results['summary']['guardrails']['num_guards_pass']}/{len(datasets)} passed")
+    print(f"Rollback Checks: {all_results['summary']['guardrails']['num_rollbacks']} triggered")
+    print(f"Guardrails Overall: {'✓ PASS' if all_results['summary']['guardrails']['all_guards_pass'] else '✗ FAIL'}")
     print(f"\nResults saved to: {output_path}")
     print("=" * 70)
 

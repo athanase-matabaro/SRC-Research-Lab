@@ -5,9 +5,12 @@ Leaderboard Energy Extension for SRC Research Lab
 Extends leaderboard schema and updates with CAQ-E (Energy-Aware) metrics.
 Adds energy_joules, caq_e, and device_info fields to submissions.
 
+Phase H.5.1: Adds variance gate filtering to reject unstable runs.
+
 Author: Athanase Nshombo (Matabaro)
 Date: 2025-10-17
 Phase: H.5 - Energy-Aware Compression
+Phase: H.5.1 - Runtime Guardrails and Variance Gate
 """
 
 import sys
@@ -17,13 +20,34 @@ from pathlib import Path
 from datetime import datetime
 from typing import Dict, List, Optional
 
+# Add parent directory to path for imports
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
+from energy.runtime_guard import RuntimeGuard
+
 
 WORKSPACE_ROOT = Path(__file__).parent.parent.resolve()
 
+# Phase H.5.1: Variance gate threshold (IQR/median ≤ 25%)
+VARIANCE_GATE_THRESHOLD = 25.0
 
-def load_pass_reports(reports_dir: Path) -> List[Dict]:
-    """Load all PASS reports from directory."""
+
+def load_pass_reports(reports_dir: Path, enforce_variance_gate: bool = True) -> List[Dict]:
+    """
+    Load all PASS reports from directory.
+
+    Phase H.5.1: Filters out reports with high variance (IQR/median > 25%).
+
+    Args:
+        reports_dir: Directory containing validation reports.
+        enforce_variance_gate: If True, reject reports with high variance.
+
+    Returns:
+        List of valid report entries.
+    """
     reports = []
+    rejected_count = 0
+    guard = RuntimeGuard()
 
     if not reports_dir.exists():
         return reports
@@ -37,6 +61,44 @@ def load_pass_reports(reports_dir: Path) -> List[Dict]:
                 # Extract key fields
                 submission = report.get("submission", {})
                 computed = report.get("computed_metrics", report.get("computed", {}))
+
+                # Phase H.5.1: Check variance gate if guardrail info available
+                variance_gate_pass = True
+                variance_stats = None
+
+                if enforce_variance_gate:
+                    # Check if report has guardrail data
+                    guardrails = report.get("guardrails")
+                    if guardrails:
+                        variance_gate_pass = guardrails.get("all_guards_pass", True)
+                        variance_stats = guardrails.get("variance_stats")
+                    else:
+                        # Fallback: check if we have raw run data
+                        runs = report.get("runs", [])
+                        if runs and len(runs) >= 2:
+                            # Extract CAQ-E or CAQ values
+                            if "caq_e" in runs[0]:
+                                values = [r["caq_e"] for r in runs]
+                            elif "caq" in runs[0]:
+                                values = [r["caq"] for r in runs]
+                            else:
+                                values = None
+
+                            if values:
+                                variance_gate_pass, variance_stats = guard.check_variance_gate(
+                                    values, threshold_percent=VARIANCE_GATE_THRESHOLD
+                                )
+
+                # REJECT if variance gate failed
+                if not variance_gate_pass:
+                    rejected_count += 1
+                    variance_pct = variance_stats.get("variance_percent", 0) if variance_stats else 0
+                    print(
+                        f"⚠ REJECTED (high variance): {report_file.name} "
+                        f"(variance: {variance_pct:.1f}% > {VARIANCE_GATE_THRESHOLD}%)",
+                        file=sys.stderr
+                    )
+                    continue  # Skip this report
 
                 entry = {
                     "report_file": report_file.name,
@@ -57,11 +119,17 @@ def load_pass_reports(reports_dir: Path) -> List[Dict]:
                     "energy_joules": computed.get("energy_joules"),
                     "caq_e": computed.get("caq_e"),
                     "device_info": computed.get("device_info"),
+                    # Guardrail fields (Phase H.5.1)
+                    "variance_gate_pass": variance_gate_pass,
+                    "variance_stats": variance_stats,
                 }
                 reports.append(entry)
         except (json.JSONDecodeError, KeyError) as e:
             print(f"Warning: Skipping invalid report {report_file.name}: {e}", file=sys.stderr)
             continue
+
+    if rejected_count > 0:
+        print(f"\n⚠ Rejected {rejected_count} reports due to high variance (>{VARIANCE_GATE_THRESHOLD}%)", file=sys.stderr)
 
     return reports
 
@@ -374,7 +442,7 @@ def update_schema(schema_path: Path):
 
 def main():
     parser = argparse.ArgumentParser(
-        description='Generate energy-aware leaderboard from validated reports'
+        description='Generate energy-aware leaderboard from validated reports (Phase H.5.1: with variance gate)'
     )
     parser.add_argument(
         '--reports-dir',
@@ -395,6 +463,11 @@ def main():
         '--schema',
         help='Path to schema file to update (optional)'
     )
+    parser.add_argument(
+        '--no-variance-gate',
+        action='store_true',
+        help='Disable variance gate filtering (Phase H.5.1)'
+    )
 
     args = parser.parse_args()
 
@@ -408,8 +481,14 @@ def main():
         else:
             print(f"Warning: Schema file not found: {schema_path}", file=sys.stderr)
 
-    # Load PASS reports
-    reports = load_pass_reports(reports_dir)
+    # Load PASS reports with variance gate (Phase H.5.1)
+    enforce_variance_gate = not args.no_variance_gate
+    if enforce_variance_gate:
+        print(f"Phase H.5.1: Variance gate enabled (threshold: {VARIANCE_GATE_THRESHOLD}%)")
+    else:
+        print("Variance gate disabled")
+
+    reports = load_pass_reports(reports_dir, enforce_variance_gate=enforce_variance_gate)
 
     if not reports:
         print("ERROR: No PASS reports found", file=sys.stderr)
