@@ -6,6 +6,7 @@ Runs comprehensive energy benchmarks on gradient datasets, measuring CAQ-E metri
 Author: Athanase Nshombo (Matabaro)
 Date: 2025-10-16
 Phase: H.5 - Energy-Aware Compression
+Phase: B1 - Runtime Guardrails Integration (2025-10-17)
 """
 
 import sys
@@ -13,7 +14,7 @@ import json
 import time
 import argparse
 from pathlib import Path
-from typing import Dict, List
+from typing import Dict, List, Optional
 import numpy as np
 
 # Add parent directory to path for imports
@@ -29,6 +30,15 @@ from metrics.caq_energy_metric import (
     compute_energy_variance,
     PHASE_H5_CAQE_THRESHOLD,
 )
+
+# Phase B1: Import GuardrailManager (optional, for enhanced runtime monitoring)
+try:
+    from runtime.guardrails import GuardrailManager, BaselineStats
+    GUARDRAILS_B1_AVAILABLE = True
+except ImportError:
+    GUARDRAILS_B1_AVAILABLE = False
+    GuardrailManager = None
+    BaselineStats = None
 
 
 def compress_gradient_baseline(gradient_data: np.ndarray) -> bytes:
@@ -190,7 +200,8 @@ def run_single_benchmark(
 def run_energy_benchmark_suite(
     datasets: Dict[str, Path],
     output_path: Path,
-    num_runs: int = 3
+    num_runs: int = 3,
+    b1_guardrail_manager: Optional[any] = None
 ) -> Dict:
     """
     Run complete energy benchmark suite.
@@ -199,12 +210,15 @@ def run_energy_benchmark_suite(
         datasets: Dictionary mapping dataset name to file path.
         output_path: Output path for results JSON.
         num_runs: Number of runs per benchmark.
+        b1_guardrail_manager: Optional Phase B1 GuardrailManager for runtime monitoring.
 
     Returns:
         Complete benchmark results.
     """
     print("=" * 70)
     print("PHASE H.5 - ENERGY-AWARE COMPRESSION BENCHMARK")
+    if b1_guardrail_manager:
+        print("PHASE B1 - RUNTIME GUARDRAILS ENABLED")
     print("=" * 70)
 
     cpu_info = EnergyProfiler.get_cpu_info()
@@ -253,9 +267,54 @@ def run_energy_benchmark_suite(
         print(f"  Running baseline compression...")
         baseline_results = run_single_benchmark(gradient, "baseline", num_runs)
 
+        # Phase B1: Update guardrail with baseline metrics
+        if b1_guardrail_manager:
+            try:
+                b1_update = b1_guardrail_manager.update_metrics(
+                    caq_e=baseline_results["averages"]["caq_e"],
+                    energy=baseline_results["averages"]["energy_joules"]
+                )
+                b1_stability = b1_guardrail_manager.check_stability()
+                baseline_results["b1_guardrails"] = {
+                    "variance_percent": b1_update.get("variance_percent", 0),
+                    "drift_percent": b1_update.get("drift_percent", 0),
+                    "stable": b1_stability["stable"],
+                    "violations": b1_stability.get("violations", [])
+                }
+                if not b1_stability["stable"]:
+                    print(f"    ⚠ B1 UNSTABLE (baseline): {b1_stability['violations']}")
+            except Exception as e:
+                print(f"    ⚠ B1 guardrail error (baseline): {e}")
+                baseline_results["b1_guardrails"] = {"error": str(e)}
+
         # Run adaptive
         print(f"  Running adaptive compression...")
         adaptive_results = run_single_benchmark(gradient, "adaptive", num_runs)
+
+        # Phase B1: Update guardrail with adaptive metrics
+        if b1_guardrail_manager:
+            try:
+                b1_update = b1_guardrail_manager.update_metrics(
+                    caq_e=adaptive_results["averages"]["caq_e"],
+                    energy=adaptive_results["averages"]["energy_joules"]
+                )
+                b1_stability = b1_guardrail_manager.check_stability()
+                adaptive_results["b1_guardrails"] = {
+                    "variance_percent": b1_update.get("variance_percent", 0),
+                    "drift_percent": b1_update.get("drift_percent", 0),
+                    "stable": b1_stability["stable"],
+                    "violations": b1_stability.get("violations", [])
+                }
+                if not b1_stability["stable"]:
+                    print(f"    ⚠ B1 UNSTABLE (adaptive): {b1_stability['violations']}")
+                    # Trigger rollback if unstable
+                    b1_rollback = b1_guardrail_manager.trigger_rollback(
+                        reason=f"Dataset {dataset_name} adaptive: {'; '.join(b1_stability['violations'])}"
+                    )
+                    adaptive_results["b1_guardrails"]["rollback"] = b1_rollback
+            except Exception as e:
+                print(f"    ⚠ B1 guardrail error (adaptive): {e}")
+                adaptive_results["b1_guardrails"] = {"error": str(e)}
 
         # Compute comparison
         baseline_caqe = baseline_results["averages"]["caq_e"]
@@ -402,6 +461,37 @@ def main():
         help="Random seed for reproducibility (default: 42)"
     )
 
+    # Phase B1: Guardrail options
+    parser.add_argument(
+        "--enable-b1-guardrails",
+        action="store_true",
+        help="Enable Phase B1 runtime guardrails (requires runtime/guardrails.py)"
+    )
+    parser.add_argument(
+        "--b1-baseline",
+        type=Path,
+        default=None,
+        help="Path to baseline stats JSON for B1 guardrails"
+    )
+    parser.add_argument(
+        "--b1-window",
+        type=int,
+        default=20,
+        help="B1 guardrail rolling window size (default: 20)"
+    )
+    parser.add_argument(
+        "--b1-drift-threshold",
+        type=float,
+        default=0.15,
+        help="B1 guardrail drift threshold as fraction (default: 0.15 = 15%%)"
+    )
+    parser.add_argument(
+        "--b1-variance-threshold",
+        type=float,
+        default=0.75,
+        help="B1 guardrail variance threshold as fraction (default: 0.75 = 75%%)"
+    )
+
     args = parser.parse_args()
 
     # Set random seeds for reproducibility
@@ -427,8 +517,54 @@ def main():
         print("  python3 energy/datasets/generate_gradients.py")
         sys.exit(1)
 
+    # Phase B1: Initialize guardrail manager if requested
+    b1_manager = None
+    if args.enable_b1_guardrails:
+        if not GUARDRAILS_B1_AVAILABLE:
+            print("ERROR: Phase B1 guardrails requested but runtime.guardrails module not found")
+            print("Please ensure runtime/guardrails.py exists")
+            sys.exit(1)
+
+        print("\n" + "=" * 70)
+        print("INITIALIZING PHASE B1 RUNTIME GUARDRAILS")
+        print("=" * 70)
+
+        # Load or create baseline
+        if args.b1_baseline and args.b1_baseline.exists():
+            print(f"Loading baseline from: {args.b1_baseline}")
+            with open(args.b1_baseline) as f:
+                baseline_data = json.load(f)
+            baseline = BaselineStats.from_dict(baseline_data)
+        else:
+            # Use reasonable defaults based on Phase C2 baseline config
+            print("No baseline provided, using Phase C2 baseline defaults")
+            baseline = BaselineStats(
+                mean_caq_e=87.92,  # From Phase C2 baseline
+                std_caq_e=42.62,
+                mean_energy=0.041,
+                std_energy=0.023,
+                config_name="baseline",
+                num_samples=6
+            )
+
+        # Create guardrail manager
+        b1_manager = GuardrailManager(
+            baseline_stats=baseline,
+            window=args.b1_window,
+            drift_threshold=args.b1_drift_threshold,
+            variance_threshold=args.b1_variance_threshold,
+            state_file=Path("runtime/guardrail_state.json")
+        )
+
+        print(f"  Baseline CAQ-E: {baseline.mean_caq_e:.2f} ± {baseline.std_caq_e:.2f}")
+        print(f"  Window size: {args.b1_window}")
+        print(f"  Drift threshold: {args.b1_drift_threshold*100:.0f}%")
+        print(f"  Variance threshold: {args.b1_variance_threshold*100:.0f}%")
+        print("=" * 70)
+        print()
+
     # Run benchmarks
-    run_energy_benchmark_suite(datasets, args.output, args.runs)
+    run_energy_benchmark_suite(datasets, args.output, args.runs, b1_manager)
 
 
 if __name__ == "__main__":
