@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "SRC Leaderboard Submission",
-  "description": "Schema for submitting CAQ benchmark results to the SRC Research Lab leaderboard",
+  "description": "Schema for submitting CAQ and CAQ-E benchmark results to the SRC Research Lab leaderboard (v2.0 - Energy-Aware)",
   "type": "object",
   "required": [
     "submitter",
@@ -27,7 +27,11 @@
     },
     "dataset": {
       "type": "string",
-      "enum": ["text_medium", "image_small", "mixed_stream"],
+      "enum": [
+        "text_medium",
+        "image_small",
+        "mixed_stream"
+      ],
       "description": "Dataset used for benchmarking"
     },
     "codec": {
@@ -52,10 +56,13 @@
     },
     "runs": {
       "type": "array",
-      "description": "Individual run measurements for reproducibility verification",
+      "description": "At least 3 runs required for reproducibility",
       "items": {
         "type": "object",
-        "required": ["ratio", "cpu_seconds"],
+        "required": [
+          "ratio",
+          "cpu_seconds"
+        ],
         "properties": {
           "ratio": {
             "type": "number",
@@ -66,12 +73,16 @@
             "type": "number",
             "exclusiveMinimum": 0,
             "description": "CPU time in seconds for this run"
+          },
+          "energy_joules": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Energy consumed in joules for this run"
           }
         },
         "additionalProperties": false
       },
-      "minItems": 3,
-      "description": "At least 3 runs required for reproducibility"
+      "minItems": 3
     },
     "variance": {
       "type": "number",
@@ -87,6 +98,41 @@
     "notes": {
       "type": "string",
       "description": "Additional notes, including reproducible command if available"
+    },
+    "energy_joules": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Mean energy consumption in joules across runs (Phase H.5)"
+    },
+    "caq_e": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "description": "Compression-Accuracy-Energy Quotient (CAQ-E = ratio / (joules + seconds))"
+    },
+    "device_info": {
+      "type": "object",
+      "description": "Device information for energy measurements",
+      "properties": {
+        "cpu_model": {
+          "type": "string",
+          "description": "CPU model name"
+        },
+        "cores": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Number of physical cores"
+        },
+        "threads": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Number of threads"
+        },
+        "base_freq_mhz": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Base frequency in MHz"
+        }
+      }
     }
   },
   "additionalProperties": false

@@ -1,5 +1,6 @@
 {
-  "generated_at": "2025-10-16T13:19:36.230630",
+  "generated_at": "2025-10-17T00:22:19.091033",
+  "version": "2.0",
   "datasets": {
     "synthetic_gradients": {
       "entries": [
@@ -16,7 +17,10 @@
           "timestamp": "2025-10-16T12:32:07.879824",
           "adaptive_flag": true,
           "delta_vs_src_baseline": 20.3,
-          "validated_by": "leaderboard/reports/athanase_lab_2025-10-16_12-32-07-879884.json"
+          "validated_by": "leaderboard/reports/athanase_lab_2025-10-16_12-32-07-879884.json",
+          "energy_joules": null,
+          "caq_e": null,
+          "device_info": null
         },
         {
           "report_file": "athanase_lab_2025-10-16_12-32-07-879368.json",
@@ -31,7 +35,10 @@
           "timestamp": "2025-10-16T12:32:07.879292",
           "adaptive_flag": true,
           "delta_vs_src_baseline": 15.15,
-          "validated_by": "leaderboard/reports/athanase_lab_2025-10-16_12-32-07-879368.json"
+          "validated_by": "leaderboard/reports/athanase_lab_2025-10-16_12-32-07-879368.json",
+          "energy_joules": null,
+          "caq_e": null,
+          "device_info": null
         }
       ],
       "stats": {
@@ -40,7 +47,12 @@
         "median_caq": 1.56,
         "stddev_caq": 0.04,
         "max_caq": 1.6,
-        "min_caq": 1.52
+        "min_caq": 1.52,
+        "mean_caq_e": null,
+        "median_caq_e": null,
+        "max_caq_e": null,
+        "min_caq_e": null,
+        "mean_energy_joules": null
       }
     },
     "text_medium": {
@@ -58,7 +70,10 @@
           "timestamp": "2025-10-13 21:37:38",
           "adaptive_flag": false,
           "delta_vs_src_baseline": 0.0,
-          "validated_by": ""
+          "validated_by": "",
+          "energy_joules": null,
+          "caq_e": null,
+          "device_info": null
         },
         {
           "report_file": "jane_doe_institute_2025-10-13_21-38-48.json",
@@ -73,7 +88,10 @@
           "timestamp": "2025-10-13 21:38:48",
           "adaptive_flag": false,
           "delta_vs_src_baseline": 0.0,
-          "validated_by": ""
+          "validated_by": "",
+          "energy_joules": null,
+          "caq_e": null,
+          "device_info": null
         },
         {
           "report_file": "jane_doe_institute_2025-10-13_21-37-56.json",
@@ -88,7 +106,10 @@
           "timestamp": "2025-10-13 21:37:56",
           "adaptive_flag": false,
           "delta_vs_src_baseline": 0.0,
-          "validated_by": ""
+          "validated_by": "",
+          "energy_joules": null,
+          "caq_e": null,
+          "device_info": null
         },
         {
           "report_file": "jane_doe_institute_2025-10-13_21-15-49.json",
@@ -103,7 +124,10 @@
           "timestamp": "2025-10-13 21:15:49",
           "adaptive_flag": false,
           "delta_vs_src_baseline": 0.0,
-          "validated_by": ""
+          "validated_by": "",
+          "energy_joules": null,
+          "caq_e": null,
+          "device_info": null
         },
         {
           "report_file": "jane_doe_institute_2025-10-13_21-08-23.json",
@@ -118,7 +142,10 @@
           "timestamp": "2025-10-13 21:08:23",
           "adaptive_flag": false,
           "delta_vs_src_baseline": 0.0,
-          "validated_by": ""
+          "validated_by": "",
+          "energy_joules": null,
+          "caq_e": null,
+          "device_info": null
         }
       ],
       "stats": {
@@ -127,7 +154,12 @@
         "median_caq": 4.47,
         "stddev_caq": 0.0,
         "max_caq": 4.47,
-        "min_caq": 4.47
+        "min_caq": 4.47,
+        "mean_caq_e": null,
+        "median_caq_e": null,
+        "max_caq_e": null,
+        "min_caq_e": null,
+        "mean_energy_joules": null
       }
     }
   },
@@ -146,7 +178,10 @@
         "timestamp": "2025-10-13 21:37:38",
         "adaptive_flag": false,
         "delta_vs_src_baseline": 0.0,
-        "validated_by": ""
+        "validated_by": "",
+        "energy_joules": null,
+        "caq_e": null,
+        "device_info": null
       },
       {
         "report_file": "jane_doe_institute_2025-10-13_21-38-48.json",
@@ -161,7 +196,10 @@
         "timestamp": "2025-10-13 21:38:48",
         "adaptive_flag": false,
         "delta_vs_src_baseline": 0.0,
-        "validated_by": ""
+        "validated_by": "",
+        "energy_joules": null,
+        "caq_e": null,
+        "device_info": null
       },
       {
         "report_file": "jane_doe_institute_2025-10-13_21-37-56.json",
@@ -176,7 +214,10 @@
         "timestamp": "2025-10-13 21:37:56",
         "adaptive_flag": false,
         "delta_vs_src_baseline": 0.0,
-        "validated_by": ""
+        "validated_by": "",
+        "energy_joules": null,
+        "caq_e": null,
+        "device_info": null
       },
       {
         "report_file": "jane_doe_institute_2025-10-13_21-15-49.json",
@@ -191,7 +232,10 @@
         "timestamp": "2025-10-13 21:15:49",
         "adaptive_flag": false,
         "delta_vs_src_baseline": 0.0,
-        "validated_by": ""
+        "validated_by": "",
+        "energy_joules": null,
+        "caq_e": null,
+        "device_info": null
       },
       {
         "report_file": "jane_doe_institute_2025-10-13_21-08-23.json",
@@ -206,7 +250,10 @@
         "timestamp": "2025-10-13 21:08:23",
         "adaptive_flag": false,
         "delta_vs_src_baseline": 0.0,
-        "validated_by": ""
+        "validated_by": "",
+        "energy_joules": null,
+        "caq_e": null,
+        "device_info": null
       },
       {
         "report_file": "athanase_lab_2025-10-16_12-32-07-879884.json",
@@ -221,7 +268,10 @@
         "timestamp": "2025-10-16T12:32:07.879824",
         "adaptive_flag": true,
         "delta_vs_src_baseline": 20.3,
-        "validated_by": "leaderboard/reports/athanase_lab_2025-10-16_12-32-07-879884.json"
+        "validated_by": "leaderboard/reports/athanase_lab_2025-10-16_12-32-07-879884.json",
+        "energy_joules": null,
+        "caq_e": null,
+        "device_info": null
       },
       {
         "report_file": "athanase_lab_2025-10-16_12-32-07-879368.json",
@@ -236,7 +286,10 @@
         "timestamp": "2025-10-16T12:32:07.879292",
         "adaptive_flag": true,
         "delta_vs_src_baseline": 15.15,
-        "validated_by": "leaderboard/reports/athanase_lab_2025-10-16_12-32-07-879368.json"
+        "validated_by": "leaderboard/reports/athanase_lab_2025-10-16_12-32-07-879368.json",
+        "energy_joules": null,
+        "caq_e": null,
+        "device_info": null
       }
     ],
     "stats": {
@@ -245,7 +298,12 @@
       "median_caq": 4.47,
       "stddev_caq": 1.31,
       "max_caq": 4.47,
-      "min_caq": 1.52
+      "min_caq": 1.52,
+      "mean_caq_e": null,
+      "median_caq_e": null,
+      "max_caq_e": null,
+      "min_caq_e": null,
+      "mean_energy_joules": null
     }
   }
 }
