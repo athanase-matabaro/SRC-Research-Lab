@@ -71,16 +71,20 @@ def compute_caqe(
         CAQ-E value (higher is better).
 
     Formula:
-        CAQ-E = compression_ratio / (energy_joules + cpu_seconds)
+        CAQ-E = compression_ratio / max(energy_joules + cpu_seconds, epsilon)
 
     Note:
         We add cpu_seconds to the denominator to maintain dimensional balance
         and prevent division by zero for very low-energy operations.
+        Epsilon protection prevents division by zero or extremely small values.
 
     Example:
         >>> compute_caqe(2.5, 0.5, 17.5)  # 2.5x ratio, 0.5s, 17.5J
         0.1389  # CAQ-E value
     """
+    # Epsilon for numeric stability (prevents division by zero)
+    MIN_DENOMINATOR = 1e-9
+
     if compression_ratio <= 0:
         raise ValueError("Compression ratio must be positive")
 
@@ -90,8 +94,13 @@ def compute_caqe(
     if energy_joules < 0:
         raise ValueError("Energy must be non-negative")
 
-    # CAQ-E formula
-    caq_e = compression_ratio / (energy_joules + cpu_seconds)
+    # CAQ-E formula with epsilon protection
+    denominator = max(energy_joules + cpu_seconds, MIN_DENOMINATOR)
+    caq_e = compression_ratio / denominator
+
+    # Sanity check: result must be finite
+    if not np.isfinite(caq_e):
+        raise ValueError(f"CAQ-E computation resulted in non-finite value: {caq_e}")
 
     return caq_e
 

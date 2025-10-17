@@ -310,8 +310,20 @@ def main():
         default=3,
         help="Number of runs per benchmark (default: 3)"
     )
+    parser.add_argument(
+        "--seed",
+        type=int,
+        default=42,
+        help="Random seed for reproducibility (default: 42)"
+    )
 
     args = parser.parse_args()
+
+    # Set random seeds for reproducibility
+    import random
+    np.random.seed(args.seed)
+    random.seed(args.seed)
+    print(f"Random seed set to: {args.seed}")
 
     # Define datasets to test
     base_dir = Path(__file__).parent.parent / "energy" / "datasets"
