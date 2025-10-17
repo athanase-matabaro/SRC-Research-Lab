@@ -39,7 +39,7 @@ class TestEnergyProfilerConstantMode:
 
     def test_constant_mode_basic(self):
         """Test basic energy measurement with constant power."""
-        profiler = EnergyProfiler()
+        profiler = EnergyProfiler(quiet=True)
 
         # Should default to constant mode if RAPL not available
         assert profiler.method in ["constant", "rapl"]
@@ -49,7 +49,7 @@ class TestEnergyProfilerConstantMode:
 
     def test_context_manager(self):
         """Test context manager functionality."""
-        with EnergyProfiler() as profiler:
+        with EnergyProfiler(quiet=True) as profiler:
             time.sleep(0.01)  # 10ms work
 
         joules, seconds = profiler.read()
@@ -60,7 +60,7 @@ class TestEnergyProfilerConstantMode:
 
     def test_multiple_reads(self):
         """Test multiple energy readings."""
-        profiler = EnergyProfiler()
+        profiler = EnergyProfiler(quiet=True)
         profiler.start()
         time.sleep(0.01)
         profiler.stop()
@@ -75,7 +75,7 @@ class TestEnergyProfilerConstantMode:
     def test_custom_power(self):
         """Test custom power consumption value."""
         custom_power = 50.0
-        profiler = EnergyProfiler(constant_power=custom_power)
+        profiler = EnergyProfiler(constant_power=custom_power, quiet=True)
 
         profiler.start()
         time.sleep(0.1)  # 100ms
@@ -93,7 +93,7 @@ class TestEnergyProfilerRAPLMode:
 
     def test_rapl_detection(self):
         """Test RAPL detection and initialization."""
-        profiler = EnergyProfiler()
+        profiler = EnergyProfiler(quiet=True)
 
         # RAPL is detected if available, otherwise falls back to constant
         if (Path("/sys/class/powercap/intel-rapl") / "intel-rapl:0").exists():
@@ -110,7 +110,7 @@ class TestEnergyProfilerRAPLMode:
     )
     def test_rapl_measurement(self):
         """Test actual RAPL energy measurement."""
-        with EnergyProfiler() as profiler:
+        with EnergyProfiler(quiet=True) as profiler:
             # Do some CPU work
             _ = sum(i**2 for i in range(100000))
 
@@ -134,7 +134,7 @@ class TestMeasureEnergyFunction:
             time.sleep(0.01)
             return 42
 
-        result, joules, seconds = measure_energy(sample_function)
+        result, joules, seconds = measure_energy(sample_function, quiet=True)
 
         assert result == 42
         assert joules > 0
@@ -146,7 +146,7 @@ class TestMeasureEnergyFunction:
         def add(a, b):
             return a + b
 
-        result, joules, seconds = measure_energy(add, 10, 20)
+        result, joules, seconds = measure_energy(add, 10, 20, quiet=True)
 
         assert result == 30
         assert joules > 0

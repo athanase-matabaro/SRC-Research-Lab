@@ -20,11 +20,15 @@ Phase: H.5 - Energy-Aware Compression
 import os
 import time
 import warnings
+import logging
 from pathlib import Path
 from typing import Optional, Tuple, Dict
 
 # Security: No network imports allowed
 # RAPL interface: /sys/class/powercap/intel-rapl/
+
+# Configure logger
+logger = logging.getLogger(__name__)
 
 class EnergyProfiler:
     """
@@ -49,15 +53,17 @@ class EnergyProfiler:
     # RAPL sysfs paths
     RAPL_BASE = Path("/sys/class/powercap/intel-rapl")
 
-    def __init__(self, constant_power: Optional[float] = None):
+    def __init__(self, constant_power: Optional[float] = None, quiet: bool = False):
         """
         Initialize energy profiler.
 
         Args:
             constant_power: Override constant power (Watts) for fallback mode.
                           If None, uses DEFAULT_POWER_WATTS.
+            quiet: If True, suppress RAPL fallback warnings (default: False).
         """
         self.constant_power = constant_power or self.DEFAULT_POWER_WATTS
+        self.quiet = quiet
         self.method = None
         self.start_energy = None
         self.start_time = None
@@ -79,11 +85,13 @@ class EnergyProfiler:
             self.method = "rapl"
         else:
             self.method = "constant"
-            warnings.warn(
-                f"RAPL not available. Using constant power model: "
-                f"{self.constant_power}W",
-                RuntimeWarning
-            )
+            if not self.quiet:
+                # Use logger.info instead of warnings.warn
+                # This is informational, not a warning
+                logger.info(
+                    f"RAPL not available. Using constant power model: "
+                    f"{self.constant_power}W"
+                )
 
     def _rapl_available(self) -> bool:
         """
@@ -333,13 +341,14 @@ class EnergyProfiler:
 
 
 # Convenience function for simple measurements
-def measure_energy(func, *args, **kwargs) -> Tuple[any, float, float]:
+def measure_energy(func, *args, quiet: bool = False, **kwargs) -> Tuple[any, float, float]:
     """
     Measure energy consumption of a function call.
 
     Args:
         func: Function to measure.
         *args: Positional arguments for func.
+        quiet: If True, suppress RAPL fallback warnings (default: False).
         **kwargs: Keyword arguments for func.
 
     Returns:
@@ -349,7 +358,7 @@ def measure_energy(func, *args, **kwargs) -> Tuple[any, float, float]:
         result, joules, seconds = measure_energy(compress_data, data, output_path)
         caq_e = ratio / (seconds * (joules/seconds) + 1)
     """
-    with EnergyProfiler() as profiler:
+    with EnergyProfiler(quiet=quiet) as profiler:
         result = func(*args, **kwargs)
 
     joules, seconds = profiler.read()

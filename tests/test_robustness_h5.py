@@ -135,7 +135,7 @@ class TestSanityChecks:
         from energy.profiler import EnergyProfiler
         import time
 
-        with EnergyProfiler() as profiler:
+        with EnergyProfiler(quiet=True) as profiler:
             time.sleep(0.01)  # 10ms work
 
         joules, seconds = profiler.read()
