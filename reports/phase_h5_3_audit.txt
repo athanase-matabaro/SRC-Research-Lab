@@ -1,0 +1,32 @@
+======================================================================
+PHASE H.5.3 - CROSS-DATASET STABILITY AUDIT REPORT
+======================================================================
+
+OVERALL STABILITY METRICS
+----------------------------------------------------------------------
+Number of Datasets: 3
+Grand Mean CAQ-E: 89.4510
+Cross-Dataset Variance: 43.13%
+Drift Index: 123.77%
+Energy-CAQ Correlation: -0.9678
+Energy-CPU Correlation: 1.0000
+
+ACCEPTANCE CRITERIA
+----------------------------------------------------------------------
+✓ Variance ≤ 5%: FAIL (43.13%)
+✓ Drift Index ≤ 10%: FAIL (123.77%)
+✓ Energy Coherence ≥ 0.8: FAIL (-0.9678)
+
+Overall Status: ⚠ NEEDS REVIEW
+
+PER-DATASET STATISTICS
+----------------------------------------------------------------------
+Dataset                   Mean CAQ-E      Baseline        Std Dev        
+----------------------------------------------------------------------
+synthetic_gradients       39.9754         6.0238          5.1345         
+cifar10_resnet8           94.2814         90.2958         42.0156        
+mixed_gradients           134.0963        140.3097        3.1690         
+
+======================================================================
+END OF STABILITY AUDIT REPORT
+======================================================================
