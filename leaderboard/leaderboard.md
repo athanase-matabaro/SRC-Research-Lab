@@ -1,6 +1,6 @@
 # SRC Research Lab — CAQ Leaderboard
 
-*Generated: 2025-10-16 13:19:36*
+*Generated: 2025-10-17 07:02:03*
 
 ## Overview
 
@@ -9,6 +9,12 @@ CAQ balances compression ratio with computational efficiency:
 
 ```
 CAQ = compression_ratio / (cpu_seconds + 1)
+```
+
+**NEW: CAQ-E (Energy-Aware)** balances compression with both time and energy:
+
+```
+CAQ-E = compression_ratio / (energy_joules + cpu_seconds)
 ```
 
 ## 🔬 Adaptive Top 5
