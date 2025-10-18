@@ -1,0 +1,910 @@
+{
+  "metadata": {
+    "phase": "H.5",
+    "timestamp": "2025-10-17T08:23:07Z",
+    "cpu_info": {
+      "model": "Intel(R) Core(TM) i5-8265U CPU @ 1.60GHz",
+      "cores": "4",
+      "threads": "8",
+      "base_freq_mhz": "3578.939"
+    },
+    "energy_method": "constant",
+    "num_runs_per_test": 5
+  },
+  "datasets": {
+    "synthetic_gradients": {
+      "dataset_path": "/home/athanase-matabaro/Dev/compression_lab/src-research-lab/energy/datasets/synthetic_gradients.npy",
+      "gradient_shape": [
+        100,
+        100
+      ],
+      "gradient_size_bytes": 40000,
+      "baseline": {
+        "method": "baseline",
+        "runs": [
+          {
+            "run": 0,
+            "original_size": 40000,
+            "compressed_size": 30322,
+            "compression_ratio": 1.3191741969527075,
+            "cpu_seconds": 0.00841975212097168,
+            "energy_joules": 0.2946913242340088,
+            "caq": 1.308159815570984,
+            "caq_e": 4.352114785168035,
+            "avg_power_watts": 35.0,
+            "energy_efficiency": 4.476460921887122,
+            "guardrail_status": {
+              "finite": true,
+              "variance_pass": true,
+              "sanity_pass": true,
+              "rollback": false,
+              "details": {}
+            }
+          },
+          {
+            "run": 1,
+            "original_size": 40000,
+            "compressed_size": 30322,
+            "compression_ratio": 1.3191741969527075,
+            "cpu_seconds": 0.0064814090728759766,
+            "energy_joules": 0.22684931755065918,
+            "caq": 1.3106791492233023,
+            "caq_e": 5.653666861806479,
+            "avg_power_watts": 35.0,
+            "energy_efficiency": 5.8152002007152355,
+            "guardrail_status": {
+              "finite": true,
+              "variance_pass": true,
+              "sanity_pass": true,
+              "rollback": false,
+              "details": {}
+            }
+          },
+          {
+            "run": 2,
+            "original_size": 40000,
+            "compressed_size": 30322,
+            "compression_ratio": 1.3191741969527075,
+            "cpu_seconds": 0.005583047866821289,
+            "energy_joules": 0.19540667533874512,
+            "caq": 1.3118500751888351,
+            "caq_e": 6.563391281471117,
+            "avg_power_watts": 35.0,
+            "energy_efficiency": 6.750916746656006,
+            "guardrail_status": {
+              "finite": true,
+              "variance_pass": true,
+              "sanity_pass": true,
+              "rollback": false,
+              "details": {}
+            }
+          },
+          {
+            "run": 3,
+            "original_size": 40000,
+            "compressed_size": 30322,
+            "compression_ratio": 1.3191741969527075,
+            "cpu_seconds": 0.005506753921508789,
+            "energy_joules": 0.19273638725280762,
+            "caq": 1.3119496132749835,
+            "caq_e": 6.654324528649138,
+            "avg_power_watts": 35.0,
+            "energy_efficiency": 6.844448086610542,
+            "guardrail_status": {
+              "finite": true,
+              "variance_pass": true,
+              "sanity_pass": true,
+              "rollback": false,
+              "details": {}
+            }
+          },
+          {
+            "run": 4,
+            "original_size": 40000,
+            "compressed_size": 30322,
+            "compression_ratio": 1.3191741969527075,
+            "cpu_seconds": 0.0053141117095947266,
+            "energy_joules": 0.18599390983581543,
+            "caq": 1.3122010141779226,
+            "caq_e": 6.89555088331505,
+            "avg_power_watts": 35.0,
+            "energy_efficiency": 7.092566622838337,
+            "guardrail_status": {
+              "finite": true,
+              "variance_pass": true,
+              "sanity_pass": true,
+              "rollback": false,
+              "details": {}
+            }
+          }
+        ],
+        "guardrails": {
+          "all_valid": true,
+          "variance_gate_pass": true,
+          "sanity_violations": [],
+          "variance_stats": {
+            "iqr": 1.0006576668426588,
+            "median": 6.563391281471117,
+            "q25": 5.653666861806479,
+            "q75": 6.654324528649138,
+            "variance_percent": 15.246046196690738,
+            "threshold_percent": 25.0,
+            "passes": true
+          }
+        },
+        "averages": {
+          "compression_ratio": 1.3191741969527075,
+          "caq": 1.3109679334872055,
+          "caq_e": 6.023809668081964,
+          "energy_joules": 0.21913552284240723,
+          "cpu_seconds": 0.006261014938354492,
+          "avg_power_watts": 35.0,
+          "energy_variance_percent": 20.56882799392398,
+          "caqe_variance_stats": {
+            "count": 5,
+            "iqr": 1.0006576668426588,
+            "median": 6.563391281471117,
+            "q25": 5.653666861806479,
+            "q75": 6.654324528649138,
+            "variance_percent": 15.246046196690738,
+            "mean": 6.023809668081964,
+            "std": 0.9359700349731125
+          }
+        }
+      },
+      "adaptive": {
+        "method": "adaptive",
+        "runs": [
+          {
+            "run": 0,
+            "original_size": 40000,
+            "compressed_size": 10845,
+            "compression_ratio": 3.6883356385431076,
+            "cpu_seconds": 0.0027594566345214844,
+            "energy_joules": 0.09658098220825195,
+            "caq": 3.678185844212293,
+            "caq_e": 37.12823983373632,
+            "avg_power_watts": 35.0,
+            "energy_efficiency": 38.18904668612879,
+            "guardrail_status": {
+              "finite": true,
+              "variance_pass": true,
+              "sanity_pass": true,
+              "rollback": false,
+              "details": {}
+            }
+          },
+          {
+            "run": 1,
+            "original_size": 40000,
+            "compressed_size": 10845,
+            "compression_ratio": 3.6883356385431076,
+            "cpu_seconds": 0.0021584033966064453,
+            "energy_joules": 0.07554411888122559,
+            "caq": 3.680391868233869,
+            "caq_e": 47.467386262638264,
+            "avg_power_watts": 35.0,
+            "energy_efficiency": 48.82359729871364,
+            "guardrail_status": {
+              "finite": true,
+              "variance_pass": true,
+              "sanity_pass": true,
+              "rollback": false,
+              "details": {}
+            }
+          },
+          {
+            "run": 2,
+            "original_size": 40000,
+            "compressed_size": 10845,
+            "compression_ratio": 3.6883356385431076,
+            "cpu_seconds": 0.002293825149536133,
+            "energy_joules": 0.08028388023376465,
+            "caq": 3.6798946037533757,
+            "caq_e": 44.665029397740796,
+            "avg_power_watts": 35.0,
+            "energy_efficiency": 45.9411730948191,
+            "guardrail_status": {
+              "finite": true,
+              "variance_pass": true,
+              "sanity_pass": true,
+              "rollback": false,
+              "details": {}
+            }
+          },
+          {
+            "run": 3,
+            "original_size": 40000,
+            "compressed_size": 10845,
+            "compression_ratio": 3.6883356385431076,
+            "cpu_seconds": 0.0029866695404052734,
+            "energy_joules": 0.10453343391418457,
+            "caq": 3.677352601538762,
+            "caq_e": 34.303683869694595,
+            "avg_power_watts": 35.0,
+            "energy_efficiency": 35.28378912311444,
+            "guardrail_status": {
+              "finite": true,
+              "variance_pass": true,
+              "sanity_pass": true,
+              "rollback": false,
+              "details": {}
+            }
+          },
+          {
+            "run": 4,
+            "original_size": 40000,
+            "compressed_size": 10845,
+            "compression_ratio": 3.6883356385431076,
+            "cpu_seconds": 0.0028214454650878906,
+            "energy_joules": 0.09875059127807617,
+            "caq": 3.677958479270987,
+            "caq_e": 36.31251037989388,
+            "avg_power_watts": 35.0,
+            "energy_efficiency": 37.350010676462276,
+            "guardrail_status": {
+              "finite": true,
+              "variance_pass": true,
+              "sanity_pass": true,
+              "rollback": false,
+              "details": {}
+            }
+          }
+        ],
+        "guardrails": {
+          "all_valid": true,
+          "variance_gate_pass": true,
+          "sanity_violations": [],
+          "variance_stats": {
+            "iqr": 8.352519017846916,
+            "median": 37.12823983373632,
+            "q25": 36.31251037989388,
+            "q75": 44.665029397740796,
+            "variance_percent": 22.496404503015132,
+            "threshold_percent": 25.0,
+            "passes": true
+          }
+        },
+        "averages": {
+          "compression_ratio": 3.6883356385431076,
+          "caq": 3.6787566794018574,
+          "caq_e": 39.97536994874078,
+          "energy_joules": 0.09113860130310059,
+          "cpu_seconds": 0.002603960037231445,
+          "avg_power_watts": 35.0,
+          "energy_variance_percent": 13.748210890130771,
+          "caqe_variance_stats": {
+            "count": 5,
+            "iqr": 8.352519017846916,
+            "median": 37.12823983373632,
+            "q25": 36.31251037989388,
+            "q75": 44.665029397740796,
+            "variance_percent": 22.496404503015132,
+            "mean": 39.97536994874078,
+            "std": 5.134470319076859
+          }
+        }
+      },
+      "comparison": {
+        "delta_caqe_percent": 563.6227263380534,
+        "threshold_percent": 10.0,
+        "threshold_met": true
+      },
+      "guardrails": {
+        "all_guards_pass": true,
+        "rollback_triggered": false,
+        "rollback_info": {
+          "previous_median": 6.023809668081964,
+          "current_median": 39.97536994874078,
+          "drop_percent": -563.6227263380534,
+          "threshold_percent": 5.0,
+          "should_rollback": false
+        },
+        "baseline_variance_pass": true,
+        "adaptive_variance_pass": true
+      }
+    },
+    "cifar10_resnet8": {
+      "dataset_path": "/home/athanase-matabaro/Dev/compression_lab/src-research-lab/energy/datasets/real_gradients_cifar10.pkl",
+      "gradient_shape": [
+        3,
+        3,
+        3,
+        16
+      ],
+      "gradient_size_bytes": 1728,
+      "baseline": {
+        "method": "baseline",
+        "runs": [
+          {
+            "run": 0,
+            "original_size": 1728,
+            "compressed_size": 1638,
+            "compression_ratio": 1.054945054945055,
+            "cpu_seconds": 0.0014159679412841797,
+            "energy_joules": 0.04955887794494629,
+            "caq": 1.053453398704852,
+            "caq_e": 20.695404500085424,
+            "avg_power_watts": 35.0,
+            "energy_efficiency": 21.286701771516434,
+            "guardrail_status": {
+              "finite": true,
+              "variance_pass": true,
+              "sanity_pass": true,
+              "rollback": false,
+              "details": {}
+            }
+          },
+          {
+            "run": 1,
+            "original_size": 1728,
+            "compressed_size": 1638,
+            "compression_ratio": 1.054945054945055,
+            "cpu_seconds": 0.000316619873046875,
+            "energy_joules": 0.011081695556640625,
+            "caq": 1.0546111440984967,
+            "caq_e": 92.55271635994528,
+            "avg_power_watts": 35.0,
+            "energy_efficiency": 95.19707968451515,
+            "guardrail_status": {
+              "finite": true,
+              "variance_pass": true,
+              "sanity_pass": true,
+              "rollback": false,
+              "details": {}
+            }
+          },
+          {
+            "run": 2,
+            "original_size": 1728,
+            "compressed_size": 1638,
+            "compression_ratio": 1.054945054945055,
+            "cpu_seconds": 0.00026988983154296875,
+            "energy_joules": 0.009446144104003906,
+            "caq": 1.054660412823903,
+            "caq_e": 108.57774498763898,
+            "avg_power_watts": 35.0,
+            "energy_efficiency": 111.67996627300009,
+            "guardrail_status": {
+              "finite": true,
+              "variance_pass": true,
+              "sanity_pass": true,
+              "rollback": false,
+              "details": {}
+            }
+          },
+          {
+            "run": 3,
+            "original_size": 1728,
+            "compressed_size": 1638,
+            "compression_ratio": 1.054945054945055,
+            "cpu_seconds": 0.00025773048400878906,
+            "energy_joules": 0.009020566940307617,
+            "caq": 1.0546732335021134,
+            "caq_e": 113.70028429787912,
+            "avg_power_watts": 35.0,
+            "energy_efficiency": 116.94886384924709,
+            "guardrail_status": {
+              "finite": true,
+              "variance_pass": true,
+              "sanity_pass": true,
+              "rollback": false,
+              "details": {}
+            }
+          },
+          {
+            "run": 4,
+            "original_size": 1728,
+            "compressed_size": 1638,
+            "compression_ratio": 1.054945054945055,
+            "cpu_seconds": 0.00025272369384765625,
+            "energy_joules": 0.008845329284667969,
+            "caq": 1.0546785126955047,
+            "caq_e": 115.95283710000692,
+            "avg_power_watts": 35.0,
+            "energy_efficiency": 119.26577530286426,
+            "guardrail_status": {
+              "finite": true,
+              "variance_pass": true,
+              "sanity_pass": true,
+              "rollback": false,
+              "details": {}
+            }
+          }
+        ],
+        "guardrails": {
+          "all_valid": true,
+          "variance_gate_pass": true,
+          "sanity_violations": [],
+          "variance_stats": {
+            "iqr": 21.147567937933843,
+            "median": 108.57774498763898,
+            "q25": 92.55271635994528,
+            "q75": 113.70028429787912,
+            "variance_percent": 19.476889983616243,
+            "threshold_percent": 25.0,
+            "passes": true
+          }
+        },
+        "averages": {
+          "compression_ratio": 1.054945054945055,
+          "caq": 1.054415340364974,
+          "caq_e": 90.29579744911113,
+          "energy_joules": 0.01759052276611328,
+          "cpu_seconds": 0.0005025863647460938,
+          "avg_power_watts": 35.0,
+          "energy_variance_percent": 101.71780804062868,
+          "caqe_variance_stats": {
+            "count": 5,
+            "iqr": 21.147567937933843,
+            "median": 108.57774498763898,
+            "q25": 92.55271635994528,
+            "q75": 113.70028429787912,
+            "variance_percent": 19.476889983616243,
+            "mean": 90.29579744911113,
+            "std": 35.74798365147927
+          }
+        }
+      },
+      "adaptive": {
+        "method": "adaptive",
+        "runs": [
+          {
+            "run": 0,
+            "original_size": 1728,
+            "compressed_size": 796,
+            "compression_ratio": 2.170854271356784,
+            "cpu_seconds": 0.0005521774291992188,
+            "energy_joules": 0.019326210021972656,
+            "caq": 2.1696562361540583,
+            "caq_e": 109.20675918452366,
+            "avg_power_watts": 35.0,
+            "energy_efficiency": 112.32695230408147,
+            "guardrail_status": {
+              "finite": true,
+              "variance_pass": true,
+              "sanity_pass": true,
+              "rollback": false,
+              "details": {}
+            }
+          },
+          {
+            "run": 1,
+            "original_size": 1728,
+            "compressed_size": 796,
+            "compression_ratio": 2.170854271356784,
+            "cpu_seconds": 0.0006825923919677734,
+            "energy_joules": 0.02389073371887207,
+            "caq": 2.1693734735284167,
+            "caq_e": 88.34189810386196,
+            "avg_power_watts": 35.0,
+            "energy_efficiency": 90.86595233540088,
+            "guardrail_status": {
+              "finite": true,
+              "variance_pass": true,
+              "sanity_pass": true,
+              "rollback": false,
+              "details": {}
+            }
+          },
+          {
+            "run": 2,
+            "original_size": 1728,
+            "compressed_size": 796,
+            "compression_ratio": 2.170854271356784,
+            "cpu_seconds": 0.0035941600799560547,
+            "energy_joules": 0.12579560279846191,
+            "caq": 2.163079816231526,
+            "caq_e": 16.777635440886023,
+            "avg_power_watts": 35.0,
+            "energy_efficiency": 17.256996453482767,
+            "guardrail_status": {
+              "finite": true,
+              "variance_pass": true,
+              "sanity_pass": true,
+              "rollback": false,
+              "details": {}
+            }
+          },
+          {
+            "run": 3,
+            "original_size": 1728,
+            "compressed_size": 796,
+            "compression_ratio": 2.170854271356784,
+            "cpu_seconds": 0.0005102157592773438,
+            "energy_joules": 0.01785755157470703,
+            "caq": 2.1697472321253053,
+            "caq_e": 118.18824965951252,
+            "avg_power_watts": 35.0,
+            "energy_efficiency": 121.56505679264144,
+            "guardrail_status": {
+              "finite": true,
+              "variance_pass": true,
+              "sanity_pass": true,
+              "rollback": false,
+              "details": {}
+            }
+          },
+          {
+            "run": 4,
+            "original_size": 1728,
+            "compressed_size": 796,
+            "compression_ratio": 2.170854271356784,
+            "cpu_seconds": 0.0004341602325439453,
+            "energy_joules": 0.015195608139038086,
+            "caq": 2.1699121817793428,
+            "caq_e": 138.89228680469895,
+            "avg_power_watts": 35.0,
+            "energy_efficiency": 142.86063785626177,
+            "guardrail_status": {
+              "finite": true,
+              "variance_pass": true,
+              "sanity_pass": true,
+              "rollback": false,
+              "details": {}
+            }
+          }
+        ],
+        "guardrails": {
+          "all_valid": true,
+          "variance_gate_pass": false,
+          "sanity_violations": [],
+          "variance_stats": {
+            "iqr": 29.846351555650557,
+            "median": 109.20675918452366,
+            "q25": 88.34189810386196,
+            "q75": 118.18824965951252,
+            "variance_percent": 27.33013210768392,
+            "threshold_percent": 25.0,
+            "passes": false
+          }
+        },
+        "averages": {
+          "compression_ratio": 2.170854271356784,
+          "caq": 2.16835378796373,
+          "caq_e": 94.28136583869664,
+          "energy_joules": 0.04041314125061035,
+          "cpu_seconds": 0.0011546611785888672,
+          "avg_power_watts": 35.0,
+          "energy_variance_percent": 118.36330236983737,
+          "caqe_variance_stats": {
+            "count": 5,
+            "iqr": 29.846351555650557,
+            "median": 109.20675918452366,
+            "q25": 88.34189810386196,
+            "q75": 118.18824965951252,
+            "variance_percent": 27.33013210768392,
+            "mean": 94.28136583869664,
+            "std": 42.0155833769667
+          }
+        }
+      },
+      "comparison": {
+        "delta_caqe_percent": 4.4139024209091176,
+        "threshold_percent": 10.0,
+        "threshold_met": false
+      },
+      "guardrails": {
+        "all_guards_pass": false,
+        "rollback_triggered": false,
+        "rollback_info": {
+          "previous_median": 90.29579744911113,
+          "current_median": 94.28136583869664,
+          "drop_percent": -4.4139024209091176,
+          "threshold_percent": 5.0,
+          "should_rollback": false
+        },
+        "baseline_variance_pass": true,
+        "adaptive_variance_pass": false
+      }
+    },
+    "mixed_gradients": {
+      "dataset_path": "/home/athanase-matabaro/Dev/compression_lab/src-research-lab/energy/datasets/mixed_gradients.pkl",
+      "gradient_shape": [
+        3,
+        3,
+        3,
+        16
+      ],
+      "gradient_size_bytes": 1728,
+      "baseline": {
+        "method": "baseline",
+        "runs": [
+          {
+            "run": 0,
+            "original_size": 1728,
+            "compressed_size": 1638,
+            "compression_ratio": 1.054945054945055,
+            "cpu_seconds": 0.0002262592315673828,
+            "energy_joules": 0.007919073104858398,
+            "caq": 1.0547064178814158,
+            "caq_e": 129.5152869610193,
+            "avg_power_watts": 35.0,
+            "energy_efficiency": 133.21572373133415,
+            "guardrail_status": {
+              "finite": true,
+              "variance_pass": true,
+              "sanity_pass": true,
+              "rollback": false,
+              "details": {}
+            }
+          },
+          {
+            "run": 1,
+            "original_size": 1728,
+            "compressed_size": 1638,
+            "compression_ratio": 1.054945054945055,
+            "cpu_seconds": 0.00018835067749023438,
+            "energy_joules": 0.006592273712158203,
+            "caq": 1.0547463927474006,
+            "caq_e": 155.58228775443965,
+            "avg_power_watts": 35.0,
+            "energy_efficiency": 160.02749597599507,
+            "guardrail_status": {
+              "finite": true,
+              "variance_pass": true,
+              "sanity_pass": true,
+              "rollback": false,
+              "details": {}
+            }
+          },
+          {
+            "run": 2,
+            "original_size": 1728,
+            "compressed_size": 1638,
+            "compression_ratio": 1.054945054945055,
+            "cpu_seconds": 0.0002269744873046875,
+            "energy_joules": 0.007944107055664062,
+            "caq": 1.0547056636677867,
+            "caq_e": 129.1071505525287,
+            "avg_power_watts": 35.0,
+            "energy_efficiency": 132.79592628260096,
+            "guardrail_status": {
+              "finite": true,
+              "variance_pass": true,
+              "sanity_pass": true,
+              "rollback": false,
+              "details": {}
+            }
+          },
+          {
+            "run": 3,
+            "original_size": 1728,
+            "compressed_size": 1638,
+            "compression_ratio": 1.054945054945055,
+            "cpu_seconds": 0.000194549560546875,
+            "energy_joules": 0.006809234619140625,
+            "caq": 1.0547398557696237,
+            "caq_e": 150.62500897795016,
+            "avg_power_watts": 35.0,
+            "energy_efficiency": 154.92858066303444,
+            "guardrail_status": {
+              "finite": true,
+              "variance_pass": true,
+              "sanity_pass": true,
+              "rollback": false,
+              "details": {}
+            }
+          },
+          {
+            "run": 4,
+            "original_size": 1728,
+            "compressed_size": 1638,
+            "compression_ratio": 1.054945054945055,
+            "cpu_seconds": 0.0002143383026123047,
+            "energy_joules": 0.007501840591430664,
+            "caq": 1.0547189882673769,
+            "caq_e": 136.71858434483573,
+            "avg_power_watts": 35.0,
+            "energy_efficiency": 140.62482961183105,
+            "guardrail_status": {
+              "finite": true,
+              "variance_pass": true,
+              "sanity_pass": true,
+              "rollback": false,
+              "details": {}
+            }
+          }
+        ],
+        "guardrails": {
+          "all_valid": true,
+          "variance_gate_pass": true,
+          "sanity_violations": [],
+          "variance_stats": {
+            "iqr": 21.109722016930846,
+            "median": 136.71858434483573,
+            "q25": 129.5152869610193,
+            "q75": 150.62500897795016,
+            "variance_percent": 15.440272526291867,
+            "threshold_percent": 25.0,
+            "passes": true
+          }
+        },
+        "averages": {
+          "compression_ratio": 1.054945054945055,
+          "caq": 1.0547234636667207,
+          "caq_e": 140.3096637181547,
+          "energy_joules": 0.007353305816650391,
+          "cpu_seconds": 0.00021009445190429689,
+          "avg_power_watts": 35.0,
+          "energy_variance_percent": 8.510137634195951,
+          "caqe_variance_stats": {
+            "count": 5,
+            "iqr": 21.109722016930846,
+            "median": 136.71858434483573,
+            "q25": 129.5152869610193,
+            "q75": 150.62500897795016,
+            "variance_percent": 15.440272526291867,
+            "mean": 140.3096637181547,
+            "std": 10.904770650031836
+          }
+        }
+      },
+      "adaptive": {
+        "method": "adaptive",
+        "runs": [
+          {
+            "run": 0,
+            "original_size": 1728,
+            "compressed_size": 796,
+            "compression_ratio": 2.170854271356784,
+            "cpu_seconds": 0.00046896934509277344,
+            "energy_joules": 0.01641392707824707,
+            "caq": 2.169836684467911,
+            "caq_e": 128.58304741807666,
+            "avg_power_watts": 35.0,
+            "energy_efficiency": 132.25684877287884,
+            "guardrail_status": {
+              "finite": true,
+              "variance_pass": true,
+              "sanity_pass": true,
+              "rollback": false,
+              "details": {}
+            }
+          },
+          {
+            "run": 1,
+            "original_size": 1728,
+            "compressed_size": 796,
+            "compression_ratio": 2.170854271356784,
+            "cpu_seconds": 0.0004410743713378906,
+            "energy_joules": 0.015437602996826172,
+            "caq": 2.169897185319901,
+            "caq_e": 136.71505636289555,
+            "avg_power_watts": 35.0,
+            "energy_efficiency": 140.62120083040688,
+            "guardrail_status": {
+              "finite": true,
+              "variance_pass": true,
+              "sanity_pass": true,
+              "rollback": false,
+              "details": {}
+            }
+          },
+          {
+            "run": 2,
+            "original_size": 1728,
+            "compressed_size": 796,
+            "compression_ratio": 2.170854271356784,
+            "cpu_seconds": 0.0004482269287109375,
+            "energy_joules": 0.015687942504882812,
+            "caq": 2.1698816719592955,
+            "caq_e": 134.5334331230621,
+            "avg_power_watts": 35.0,
+            "energy_efficiency": 138.37724549800674,
+            "guardrail_status": {
+              "finite": true,
+              "variance_pass": true,
+              "sanity_pass": true,
+              "rollback": false,
+              "details": {}
+            }
+          },
+          {
+            "run": 3,
+            "original_size": 1728,
+            "compressed_size": 796,
+            "compression_ratio": 2.170854271356784,
+            "cpu_seconds": 0.00043845176696777344,
+            "energy_joules": 0.01534581184387207,
+            "caq": 2.169902873607702,
+            "caq_e": 137.5328190708846,
+            "avg_power_watts": 35.0,
+            "energy_efficiency": 141.4623281871956,
+            "guardrail_status": {
+              "finite": true,
+              "variance_pass": true,
+              "sanity_pass": true,
+              "rollback": false,
+              "details": {}
+            }
+          },
+          {
+            "run": 4,
+            "original_size": 1728,
+            "compressed_size": 796,
+            "compression_ratio": 2.170854271356784,
+            "cpu_seconds": 0.00045299530029296875,
+            "energy_joules": 0.015854835510253906,
+            "caq": 2.1698713298421253,
+            "caq_e": 133.11729172176672,
+            "avg_power_watts": 35.0,
+            "energy_efficiency": 136.9206429138172,
+            "guardrail_status": {
+              "finite": true,
+              "variance_pass": true,
+              "sanity_pass": true,
+              "rollback": false,
+              "details": {}
+            }
+          }
+        ],
+        "guardrails": {
+          "all_valid": true,
+          "variance_gate_pass": true,
+          "sanity_violations": [],
+          "variance_stats": {
+            "iqr": 3.5977646411288333,
+            "median": 134.5334331230621,
+            "q25": 133.11729172176672,
+            "q75": 136.71505636289555,
+            "variance_percent": 2.6742532005689923,
+            "threshold_percent": 25.0,
+            "passes": true
+          }
+        },
+        "averages": {
+          "compression_ratio": 2.170854271356784,
+          "caq": 2.169877949039387,
+          "caq_e": 134.09632953933712,
+          "energy_joules": 0.015748023986816406,
+          "cpu_seconds": 0.00044994354248046876,
+          "avg_power_watts": 35.0,
+          "energy_variance_percent": 2.6876743423710976,
+          "caqe_variance_stats": {
+            "count": 5,
+            "iqr": 3.5977646411288333,
+            "median": 134.5334331230621,
+            "q25": 133.11729172176672,
+            "q75": 136.71505636289555,
+            "variance_percent": 2.6742532005689923,
+            "mean": 134.09632953933712,
+            "std": 3.1690075675709086
+          }
+        }
+      },
+      "comparison": {
+        "delta_caqe_percent": -4.428300955305925,
+        "threshold_percent": 10.0,
+        "threshold_met": false
+      },
+      "guardrails": {
+        "all_guards_pass": true,
+        "rollback_triggered": false,
+        "rollback_info": {
+          "previous_median": 140.3096637181547,
+          "current_median": 134.09632953933712,
+          "drop_percent": 4.428300955305925,
+          "threshold_percent": 5.0,
+          "should_rollback": false
+        },
+        "baseline_variance_pass": true,
+        "adaptive_variance_pass": true
+      }
+    }
+  },
+  "summary": {
+    "num_datasets": 3,
+    "mean_delta_caqe_percent": 187.8694426012189,
+    "min_delta_caqe_percent": -4.428300955305925,
+    "max_delta_caqe_percent": 563.6227263380534,
+    "num_threshold_met": 1,
+    "all_thresholds_met": false,
+    "guardrails": {
+      "num_guards_pass": 2,
+      "all_guards_pass": false,
+      "num_rollbacks": 0,
+      "no_rollbacks": true
+    }
+  }
+}

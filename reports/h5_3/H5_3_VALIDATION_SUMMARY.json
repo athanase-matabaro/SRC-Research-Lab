@@ -1,0 +1,20 @@
+{
+  "commit": "3765316",
+  "tag": "v0.4.3-H5.3",
+  "date": "2025-10-17T09:31:48Z",
+  "pytest_report": "reports/h5_3/pytest_h5_3.txt",
+  "audit_report": "reports/phase_h5_3_audit.txt",
+  "test_count": 69,
+  "test_result": "69 passed",
+  "stability_metrics": {
+    "cross_dataset_variance": "43.13%",
+    "drift_index": "123.77%",
+    "energy_caq_correlation": -0.9678,
+    "energy_cpu_correlation": 1.0
+  },
+  "artifacts": {
+    "audit_report": "reports/phase_h5_3_audit.txt",
+    "pytest_results": "reports/h5_3/pytest_h5_3.txt",
+    "validation_doc": "release/PHASE_H5.3_VALIDATION.txt"
+  }
+}

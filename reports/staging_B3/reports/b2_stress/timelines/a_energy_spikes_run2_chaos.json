@@ -1,0 +1,148 @@
+{
+  "scenario": "a_energy_spikes",
+  "seed": 44,
+  "start_time": 1760758291.9735024,
+  "total_events": 14,
+  "events": [
+    {
+      "timestamp": 1760758292.12191,
+      "elapsed_ms": 148.4076976776123,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 2.5,
+      "duration_ms": 1527.1887592288642,
+      "correlation_id": "a_energy_spikes_r2_s005",
+      "metadata": {}
+    },
+    {
+      "timestamp": 1760758292.1979513,
+      "elapsed_ms": 224.44891929626465,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 2.5,
+      "duration_ms": 1934.7451763956497,
+      "correlation_id": "a_energy_spikes_r2_s007",
+      "metadata": {}
+    },
+    {
+      "timestamp": 1760758292.4746754,
+      "elapsed_ms": 501.1730194091797,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 2.5,
+      "duration_ms": 1583.3942868882027,
+      "correlation_id": "a_energy_spikes_r2_s016",
+      "metadata": {}
+    },
+    {
+      "timestamp": 1760758292.5959024,
+      "elapsed_ms": 622.4000453948975,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 2.5,
+      "duration_ms": 1077.6811805475013,
+      "correlation_id": "a_energy_spikes_r2_s020",
+      "metadata": {}
+    },
+    {
+      "timestamp": 1760758292.6253738,
+      "elapsed_ms": 651.8714427947998,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 2.5,
+      "duration_ms": 695.32032673285,
+      "correlation_id": "a_energy_spikes_r2_s021",
+      "metadata": {}
+    },
+    {
+      "timestamp": 1760758292.7812846,
+      "elapsed_ms": 807.7821731567383,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 2.5,
+      "duration_ms": 1369.5465904925913,
+      "correlation_id": "a_energy_spikes_r2_s026",
+      "metadata": {}
+    },
+    {
+      "timestamp": 1760758293.06944,
+      "elapsed_ms": 1095.9374904632568,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 2.5,
+      "duration_ms": 1679.2699925972072,
+      "correlation_id": "a_energy_spikes_r2_s033",
+      "metadata": {}
+    },
+    {
+      "timestamp": 1760758293.2439737,
+      "elapsed_ms": 1270.4713344573975,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 2.5,
+      "duration_ms": 1853.9773997182874,
+      "correlation_id": "a_energy_spikes_r2_s037",
+      "metadata": {}
+    },
+    {
+      "timestamp": 1760758293.8602877,
+      "elapsed_ms": 1886.7852687835693,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 2.5,
+      "duration_ms": 954.26738577804,
+      "correlation_id": "a_energy_spikes_r2_s053",
+      "metadata": {}
+    },
+    {
+      "timestamp": 1760758293.953825,
+      "elapsed_ms": 1980.3225994110107,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 2.5,
+      "duration_ms": 1758.4862789525323,
+      "correlation_id": "a_energy_spikes_r2_s056",
+      "metadata": {}
+    },
+    {
+      "timestamp": 1760758294.2922325,
+      "elapsed_ms": 2318.730115890503,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 2.5,
+      "duration_ms": 1838.231106821233,
+      "correlation_id": "a_energy_spikes_r2_s067",
+      "metadata": {}
+    },
+    {
+      "timestamp": 1760758294.3579946,
+      "elapsed_ms": 2384.4921588897705,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 2.5,
+      "duration_ms": 1112.2680483029262,
+      "correlation_id": "a_energy_spikes_r2_s069",
+      "metadata": {}
+    },
+    {
+      "timestamp": 1760758294.6643136,
+      "elapsed_ms": 2690.8111572265625,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 2.5,
+      "duration_ms": 1996.1188554592038,
+      "correlation_id": "a_energy_spikes_r2_s079",
+      "metadata": {}
+    },
+    {
+      "timestamp": 1760758294.9774332,
+      "elapsed_ms": 3003.9308071136475,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 2.5,
+      "duration_ms": 1653.3555603430707,
+      "correlation_id": "a_energy_spikes_r2_s089",
+      "metadata": {}
+    }
+  ]
+}

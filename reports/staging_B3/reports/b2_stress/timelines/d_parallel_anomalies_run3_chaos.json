@@ -1,0 +1,108 @@
+{
+  "scenario": "d_parallel_anomalies",
+  "seed": 45,
+  "start_time": 1760758322.8428154,
+  "total_events": 10,
+  "events": [
+    {
+      "timestamp": 1760758322.8637116,
+      "elapsed_ms": 20.896196365356445,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 2.5,
+      "duration_ms": 877.9741399901696,
+      "correlation_id": "d_parallel_anomalies_r3_s002",
+      "metadata": {}
+    },
+    {
+      "timestamp": 1760758322.95216,
+      "elapsed_ms": 109.344482421875,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 2.5,
+      "duration_ms": 1261.6658662445407,
+      "correlation_id": "d_parallel_anomalies_r3_s005",
+      "metadata": {}
+    },
+    {
+      "timestamp": 1760758323.0804505,
+      "elapsed_ms": 237.63513565063477,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 2.5,
+      "duration_ms": 1498.8793223443154,
+      "correlation_id": "d_parallel_anomalies_r3_s009",
+      "metadata": {}
+    },
+    {
+      "timestamp": 1760758323.4884644,
+      "elapsed_ms": 645.6489562988281,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 2.5,
+      "duration_ms": 803.243179098196,
+      "correlation_id": "d_parallel_anomalies_r3_s022",
+      "metadata": {}
+    },
+    {
+      "timestamp": 1760758323.7033417,
+      "elapsed_ms": 860.5263233184814,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 2.5,
+      "duration_ms": 1901.362746904576,
+      "correlation_id": "d_parallel_anomalies_r3_s028",
+      "metadata": {}
+    },
+    {
+      "timestamp": 1760758323.8372357,
+      "elapsed_ms": 994.4202899932861,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 2.5,
+      "duration_ms": 1894.3013461161404,
+      "correlation_id": "d_parallel_anomalies_r3_s032",
+      "metadata": {}
+    },
+    {
+      "timestamp": 1760758324.2031903,
+      "elapsed_ms": 1360.374927520752,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 2.5,
+      "duration_ms": 1835.0167464389838,
+      "correlation_id": "d_parallel_anomalies_r3_s043",
+      "metadata": {}
+    },
+    {
+      "timestamp": 1760758324.4662387,
+      "elapsed_ms": 1623.4233379364014,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 2.5,
+      "duration_ms": 1636.1984265646304,
+      "correlation_id": "d_parallel_anomalies_r3_s051",
+      "metadata": {}
+    },
+    {
+      "timestamp": 1760758325.0099494,
+      "elapsed_ms": 2167.1340465545654,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 2.5,
+      "duration_ms": 777.5639543801251,
+      "correlation_id": "d_parallel_anomalies_r3_s067",
+      "metadata": {}
+    },
+    {
+      "timestamp": 1760758325.1406398,
+      "elapsed_ms": 2297.8243827819824,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 2.5,
+      "duration_ms": 1961.4155313135354,
+      "correlation_id": "d_parallel_anomalies_r3_s071",
+      "metadata": {}
+    }
+  ]
+}

@@ -1,0 +1,231 @@
+{
+  "run_tag": "20251017_135423",
+  "timestamp": "2025-10-17T13:54:23.687067",
+  "seed": 42,
+  "repeats": 3,
+  "configurations": [
+    {
+      "name": "baseline",
+      "description": "Default system configuration (no changes)",
+      "requires_sudo": false,
+      "status": "completed",
+      "skip_reason": null,
+      "taskset_args": null
+    },
+    {
+      "name": "governor_powersave",
+      "description": "CPU governor set to powersave",
+      "requires_sudo": true,
+      "status": "skipped",
+      "skip_reason": "Requires sudo privileges (not available)",
+      "taskset_args": null
+    },
+    {
+      "name": "governor_performance",
+      "description": "CPU governor set to performance",
+      "requires_sudo": true,
+      "status": "skipped",
+      "skip_reason": "Requires sudo privileges (not available)",
+      "taskset_args": null
+    },
+    {
+      "name": "cores_half",
+      "description": "Limited to 4 cores (half of 8)",
+      "requires_sudo": false,
+      "status": "completed",
+      "skip_reason": null,
+      "taskset_args": "0-3"
+    },
+    {
+      "name": "single_core",
+      "description": "Limited to single core (core 0)",
+      "requires_sudo": false,
+      "status": "completed",
+      "skip_reason": null,
+      "taskset_args": "0"
+    },
+    {
+      "name": "turbo_disabled",
+      "description": "Turbo Boost disabled (if supported)",
+      "requires_sudo": true,
+      "status": "skipped",
+      "skip_reason": "Requires sudo privileges (not available)",
+      "taskset_args": null
+    }
+  ],
+  "per_config_results": {
+    "baseline": {
+      "config": "baseline",
+      "num_runs": 6,
+      "num_datasets": 3,
+      "caq_e": {
+        "mean": 87.91843458538382,
+        "median": 105.7149567346723,
+        "std": 42.616969028365844,
+        "min": 12.072076529419297,
+        "max": 136.11373588585067,
+        "iqr": 49.73657081195418,
+        "iqr_median_ratio_percent": 47.04780888931833
+      },
+      "energy_joules": {
+        "mean": 0.04101720121171739,
+        "median": 0.01701613267262777
+      },
+      "cpu_seconds": {
+        "mean": 0.001171920034620497,
+        "median": 0.0004861752192179362
+      },
+      "compression_ratio": {
+        "mean": 1.9098514146832486
+      },
+      "elapsed_seconds": 0.21476173400878906,
+      "log_file": "reports/c2_emulation/baseline/benchmark.log"
+    },
+    "governor_powersave": {
+      "config": "governor_powersave",
+      "status": "skipped",
+      "reason": "Requires sudo privileges (not available)"
+    },
+    "governor_performance": {
+      "config": "governor_performance",
+      "status": "skipped",
+      "reason": "Requires sudo privileges (not available)"
+    },
+    "cores_half": {
+      "config": "cores_half",
+      "num_runs": 6,
+      "num_datasets": 3,
+      "caq_e": {
+        "mean": 123.44541303482227,
+        "median": 151.5326227362982,
+        "std": 59.30271074683025,
+        "min": 15.374954340526179,
+        "max": 176.80183972426622,
+        "iqr": 78.4380927148332,
+        "iqr_median_ratio_percent": 51.76317237729965
+      },
+      "energy_joules": {
+        "mean": 0.030008289549085826,
+        "median": 0.012326439221700031
+      },
+      "cpu_seconds": {
+        "mean": 0.0008573797014024522,
+        "median": 0.00035218397776285804
+      },
+      "compression_ratio": {
+        "mean": 1.9098514146832486
+      },
+      "elapsed_seconds": 0.21445536613464355,
+      "log_file": "reports/c2_emulation/cores_half/benchmark.log"
+    },
+    "single_core": {
+      "config": "single_core",
+      "num_runs": 6,
+      "num_datasets": 3,
+      "caq_e": {
+        "mean": 96.78147623751873,
+        "median": 92.6690897263054,
+        "std": 51.165634256904156,
+        "min": 13.875207110619597,
+        "max": 165.03931939951045,
+        "iqr": 68.7870935187782,
+        "iqr_median_ratio_percent": 74.2287355168139
+      },
+      "energy_joules": {
+        "mean": 0.035989085833231606,
+        "median": 0.019152363141377766
+      },
+      "cpu_seconds": {
+        "mean": 0.0010282595952351887,
+        "median": 0.0005472103754679362
+      },
+      "compression_ratio": {
+        "mean": 1.9098514146832486
+      },
+      "elapsed_seconds": 0.21456503868103027,
+      "log_file": "reports/c2_emulation/single_core/benchmark.log"
+    },
+    "turbo_disabled": {
+      "config": "turbo_disabled",
+      "status": "skipped",
+      "reason": "Requires sudo privileges (not available)"
+    }
+  },
+  "cross_config_metrics": {
+    "num_configs": 3,
+    "config_names": [
+      "baseline",
+      "cores_half",
+      "single_core"
+    ],
+    "cross_config_variance_percent": 14.699405968339965,
+    "caq_e_grand_mean": 102.71510795257494,
+    "caq_e_std": 15.09851070876764,
+    "caq_e_min": 87.91843458538382,
+    "caq_e_max": 123.44541303482227,
+    "drift_indices": {
+      "cores_half": 40.409020721286474,
+      "single_core": 10.080982098842288
+    },
+    "max_drift_percent": 40.409020721286474,
+    "energy_caq_correlation": -0.973283134171522,
+    "baseline_mean_caqe": 87.91843458538382
+  },
+  "evaluation": {
+    "evaluations": {
+      "cross_config_variance": {
+        "value": 14.699405968339965,
+        "threshold": 10.0,
+        "pass": false
+      },
+      "drift_indices": {
+        "cores_half": {
+          "value": 40.409020721286474,
+          "threshold": 15.0,
+          "pass": false
+        },
+        "single_core": {
+          "value": 10.080982098842288,
+          "threshold": 15.0,
+          "pass": true
+        }
+      },
+      "energy_coherence": {
+        "value": 0.973283134171522,
+        "threshold": 0.8,
+        "pass": true
+      },
+      "per_config_variance": {
+        "baseline": {
+          "value": 47.04780888931833,
+          "threshold": 25.0,
+          "pass": false
+        },
+        "cores_half": {
+          "value": 51.76317237729965,
+          "threshold": 25.0,
+          "pass": false
+        },
+        "single_core": {
+          "value": 74.2287355168139,
+          "threshold": 25.0,
+          "pass": false
+        }
+      }
+    },
+    "flags": [
+      "High cross-config variance: 14.70% > 10.0%",
+      "High drift in cores_half: 40.41% > 15.0%",
+      "High intra-config variance in baseline: 47.05%",
+      "High intra-config variance in cores_half: 51.76%",
+      "High intra-config variance in single_core: 74.23%"
+    ],
+    "overall_pass": false,
+    "num_flags": 5
+  },
+  "mitigations": [
+    "MITIGATION: High cross-config variance detected. Consider:\n  - Running benchmarks with longer warmup periods\n  - Increasing number of repeats for better statistical power\n  - Normalizing CAQ-E by system-specific baseline\n  - Using RuntimeGuard variance gate to filter unstable runs",
+    "MITIGATION: Significant configuration drift detected. Consider:\n  - Documenting expected performance ranges per configuration\n  - Using configuration-specific baselines instead of single baseline\n  - Implementing adaptive thresholds based on configuration type",
+    "MITIGATION: High variance within configurations. Consider:\n  - Disabling CPU frequency scaling during benchmarks\n  - Isolating CPU cores for benchmark process\n  - Increasing process priority (nice -20)\n  - Checking for thermal throttling"
+  ]
+}

@@ -1,0 +1,252 @@
+{
+  "release": {
+    "version": "0.4.6-B3",
+    "name": "SRC Research Lab - Consolidated Release",
+    "date": "2025-10-18T07:02:23.819731",
+    "git_commit": "7d0fa67",
+    "total_artifacts": 20,
+    "total_size_bytes": 395086
+  },
+  "phases": {
+    "H5": {
+      "description": "energy-aware compression",
+      "artifact_count": 0,
+      "total_size": 0
+    },
+    "C2": {
+      "description": "cross-platform variance",
+      "artifact_count": 7,
+      "total_size": 59519
+    },
+    "B1": {
+      "description": "runtime guardrails",
+      "artifact_count": 5,
+      "total_size": 75892
+    },
+    "B2": {
+      "description": "stress verification",
+      "artifact_count": 8,
+      "total_size": 259675
+    },
+    "B3": {
+      "description": "release bundle rebuild",
+      "artifact_count": 0,
+      "total_size": 0
+    }
+  },
+  "artifacts": [
+    {
+      "path": "reports/c2_emulation/host_info_detailed.json",
+      "phase": "C2",
+      "size_bytes": 17539,
+      "sha256": "0e20f87412de37bb1c69b70e38aeeb01caac34a4f8f47996379f18483552c19d",
+      "timestamp": "2025-10-17T14:08:48.747239",
+      "origin_commit": "",
+      "description": "cross-platform variance"
+    },
+    {
+      "path": "reports/c2_emulation/host_info.json",
+      "phase": "C2",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "timestamp": "2025-10-17T14:08:37.921246",
+      "origin_commit": "",
+      "description": "cross-platform variance"
+    },
+    {
+      "path": "reports/c2_emulation/c2_audit_complete.json",
+      "phase": "C2",
+      "size_bytes": 5743,
+      "sha256": "eec889779d3e13d2c7149ff4759f4b28429c5829fa177f99b9222d3ab97f9f13",
+      "timestamp": "2025-10-17T16:10:50.625765",
+      "origin_commit": "",
+      "description": "cross-platform variance"
+    },
+    {
+      "path": "reports/c2_emulation/c2_audit.json",
+      "phase": "C2",
+      "size_bytes": 7208,
+      "sha256": "7d569883ac7cb9c7a90a44f8af9f67668665cbc1cbb2fd9d7b947161a5247e3a",
+      "timestamp": "2025-10-17T13:54:23.687171",
+      "origin_commit": "",
+      "description": "cross-platform variance"
+    },
+    {
+      "path": "reports/c2_emulation/all_configs_collected.json",
+      "phase": "C2",
+      "size_bytes": 4677,
+      "sha256": "592e01dae4a9949f2fd395aebc873d501170b6a681d5e6c49e6ec09ff750cf8b",
+      "timestamp": "2025-10-17T16:10:24.020506",
+      "origin_commit": "",
+      "description": "cross-platform variance"
+    },
+    {
+      "path": "reports/c2_emulation/aggregation_summary.json",
+      "phase": "C2",
+      "size_bytes": 2179,
+      "sha256": "182c9f75d83dbf738c5b845b0301fa779a7e6bfa674687a93ee4c2ba39b0b2b8",
+      "timestamp": "2025-10-17T16:26:19.030514",
+      "origin_commit": "",
+      "description": "cross-platform variance"
+    },
+    {
+      "path": "release/PHASE_C2_SIGNOFF.txt",
+      "phase": "C2",
+      "size_bytes": 22173,
+      "sha256": "0990c9e7c8c1983c6262cccfb27b8ef595d54b1c92bf816d9eed53a68b144105",
+      "timestamp": "2025-10-17T16:28:37.259454",
+      "origin_commit": "",
+      "description": "cross-platform variance"
+    },
+    {
+      "path": "release/PHASE_B1_SIGNOFF_BUNDLE.tar.xz",
+      "phase": "B1",
+      "size_bytes": 8000,
+      "sha256": "0cc071826bc5a00d94e6148bb361278bc63ac3b8bbc0f52924d2f6cfd2e21eeb",
+      "timestamp": "2025-10-18T06:04:50.095177",
+      "origin_commit": "",
+      "description": "runtime guardrails"
+    },
+    {
+      "path": "release/PHASE_B1_SIGNOFF_BUNDLE.sha256",
+      "phase": "B1",
+      "size_bytes": 105,
+      "sha256": "e99fc577a6032f0051c07aa80a65dcbf19991d82dccf4640a2d86a78ad6020f9",
+      "timestamp": "2025-10-18T06:04:54.929200",
+      "origin_commit": "",
+      "description": "runtime guardrails"
+    },
+    {
+      "path": "src-research-lab/runtime/guardrails.py",
+      "phase": "B1",
+      "size_bytes": 20021,
+      "sha256": "5a232facfaee292ab99f293ece8397a192053605bcff8672ba5340c8c1dc659b",
+      "timestamp": "2025-10-17T21:11:32.204631",
+      "origin_commit": "",
+      "description": "runtime guardrails"
+    },
+    {
+      "path": "tests/test_guardrails_runtime.py",
+      "phase": "B1",
+      "size_bytes": 25284,
+      "sha256": "a172575109ba955a14cde52fcbd872171f3590b32a8a2c04ffcb3d122dcbebe4",
+      "timestamp": "2025-10-17T21:07:50.078934",
+      "origin_commit": "",
+      "description": "runtime guardrails"
+    },
+    {
+      "path": "docs/guardrails_design.md",
+      "phase": "B1",
+      "size_bytes": 22482,
+      "sha256": "f6610b4b3b4d8f4243e5274d7f6c54a8063ece7ac79d971cce4d174fc5701736",
+      "timestamp": "2025-10-17T21:08:34.339132",
+      "origin_commit": "",
+      "description": "runtime guardrails"
+    },
+    {
+      "path": "release/PHASE_B2_FINAL_BUNDLE.tar.xz",
+      "phase": "B2",
+      "size_bytes": 162248,
+      "sha256": "e4b14f847ffa46db296ef2804e63e2a620e2bbbe398e482caec4989083f41ea0",
+      "timestamp": "2025-10-18T06:40:49.772265",
+      "origin_commit": "",
+      "description": "stress verification"
+    },
+    {
+      "path": "release/PHASE_B2_FINAL_BUNDLE.sha256",
+      "phase": "B2",
+      "size_bytes": 103,
+      "sha256": "dd522b7d1647c30f020e44523960e06d8416a9d720f578223ed268400a1e2a90",
+      "timestamp": "2025-10-18T06:40:58.200727",
+      "origin_commit": "",
+      "description": "stress verification"
+    },
+    {
+      "path": "release/PHASE_B2_SIGNOFF.txt",
+      "phase": "B2",
+      "size_bytes": 19003,
+      "sha256": "3220977ce49258d67fd0b32cdeeffac35d94b6b39ec8c1f0b5d40f0fa0c4fb98",
+      "timestamp": "2025-10-18T06:34:56.272233",
+      "origin_commit": "",
+      "description": "stress verification"
+    },
+    {
+      "path": "reports/b2_stress/latency.csv",
+      "phase": "B2",
+      "size_bytes": 1803,
+      "sha256": "3044d1951a98cd340dd02797b4b50362f9dd038f95bb497443970276ddad9103",
+      "timestamp": "2025-10-18T06:32:25.021820",
+      "origin_commit": "",
+      "description": "stress verification"
+    },
+    {
+      "path": "reports/b2_stress/caq_e_recovery.json",
+      "phase": "B2",
+      "size_bytes": 3281,
+      "sha256": "07a72c76ad2db649acaf8c0b07e12a4879b2bcfb0f9380b22e41c68f023e5796",
+      "timestamp": "2025-10-18T06:32:25.022155",
+      "origin_commit": "",
+      "description": "stress verification"
+    },
+    {
+      "path": "reports/b2_stress/B2_VALIDATION_REPORT.txt",
+      "phase": "B2",
+      "size_bytes": 25582,
+      "sha256": "a2ed1256cbc9f065401f85eeb0ae92bd4e9ae44058e79fa4ed69b38cfe932210",
+      "timestamp": "2025-10-18T06:51:01.345353",
+      "origin_commit": "",
+      "description": "stress verification"
+    },
+    {
+      "path": "tests/test_guardrails_stress.py",
+      "phase": "B2",
+      "size_bytes": 29970,
+      "sha256": "87b9030ee658739344b5bfd6725e49e4a1c89e054b9d3d8b10889b08d0da2ded",
+      "timestamp": "2025-10-18T06:30:21.730082",
+      "origin_commit": "",
+      "description": "stress verification"
+    },
+    {
+      "path": "docs/phase_b2_stress_testing.md",
+      "phase": "B2",
+      "size_bytes": 17685,
+      "sha256": "13d207dae8c11728562a552139448f00b5194acb52d84053954b97f00ff1e196",
+      "timestamp": "2025-10-18T06:32:53.661088",
+      "origin_commit": "",
+      "description": "stress verification"
+    }
+  ],
+  "provenance_chain": [
+    {
+      "phase": "H5.x",
+      "commit": "unknown",
+      "date": "2025-10-17"
+    },
+    {
+      "phase": "C2",
+      "commit": "unknown",
+      "date": "2025-10-17"
+    },
+    {
+      "phase": "B1",
+      "commit": "4b8e695",
+      "date": "2025-10-17"
+    },
+    {
+      "phase": "B2",
+      "commit": "1a72c25",
+      "date": "2025-10-18"
+    },
+    {
+      "phase": "B3",
+      "commit": "7d0fa67",
+      "date": "2025-10-18"
+    }
+  ],
+  "integrity": {
+    "algorithm": "SHA256",
+    "verification_procedure": "scripts/verify_audit_consistency.py",
+    "offline_only": true,
+    "no_network_calls": true
+  }
+}

@@ -1,0 +1,35 @@
+================================================================================
+THRESHOLD EVALUATION - Phase C2
+================================================================================
+
+Cross-Configuration Variance: 14.70%
+Threshold: 10.0%
+>>> FLAG: Cross-config variance 14.70% > 10%
+
+Configuration Drift Indices:
+  cores_half: 40.41%
+  >>> FLAG: Drift 40.41% > 15%
+  single_core: 10.08%
+  ✓ PASS
+
+Per-Configuration Variance (IQR/median):
+  baseline: 47.05%
+  >>> FLAG: Intra-config variance 47.05% > 25%
+  cores_half: 51.76%
+  >>> FLAG: Intra-config variance 51.76% > 25%
+  single_core: 74.23%
+  >>> FLAG: Intra-config variance 74.23% > 25%
+
+================================================================================
+OVERALL STATUS: ⚠ ISSUES FOUND
+Total flags: 5
+
+Flags:
+  1. Cross-config variance exceeds threshold
+  2. cores_half drift exceeds 15%
+  3. baseline intra-variance exceeds RuntimeGuard threshold
+  4. cores_half intra-variance exceeds RuntimeGuard threshold
+  5. single_core intra-variance exceeds RuntimeGuard threshold
+================================================================================
+
+ALL_OK: False

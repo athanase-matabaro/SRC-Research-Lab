@@ -1,0 +1,28 @@
+{
+  "scenario": "b_zero_caq",
+  "seed": 44,
+  "start_time": 1760758301.3858292,
+  "total_events": 2,
+  "events": [
+    {
+      "timestamp": 1760758301.5672116,
+      "elapsed_ms": 181.382417678833,
+      "type": "zero_caq",
+      "target": "caq_e",
+      "magnitude": 0.0,
+      "duration_ms": 0,
+      "correlation_id": "b_zero_caq_r2_s007",
+      "metadata": {}
+    },
+    {
+      "timestamp": 1760758303.778661,
+      "elapsed_ms": 2392.831802368164,
+      "type": "zero_caq",
+      "target": "caq_e",
+      "magnitude": 0.0,
+      "duration_ms": 0,
+      "correlation_id": "b_zero_caq_r2_s079",
+      "metadata": {}
+    }
+  ]
+}

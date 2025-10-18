@@ -1,0 +1,54 @@
+================================================================================
+THRESHOLD EVALUATION - Phase C2 (ALL 8 CONFIGURATIONS)
+================================================================================
+
+Cross-Configuration Variance: 43.77%
+Threshold: 10.0%
+>>> FLAG: Cross-config variance 43.77% > 10%
+
+Configuration Drift Indices:
+  freq_limit_1_2ghz          66.86% >>> FLAG
+  hyperthreading_off         62.60% >>> FLAG
+  turbo_off                  57.28% >>> FLAG
+  governor_powersave         56.24% >>> FLAG
+  cores_half                 40.41% >>> FLAG
+  governor_performance       12.64% ✓ PASS
+  single_core                10.08% ✓ PASS
+
+Per-Configuration Variance (IQR/median):
+  baseline                   47.05% >>> FLAG
+  governor_powersave         65.91% >>> FLAG
+  governor_performance       62.80% >>> FLAG
+  cores_half                 51.76% >>> FLAG
+  single_core                74.23% >>> FLAG
+  hyperthreading_off         64.17% >>> FLAG
+  turbo_off                  65.32% >>> FLAG
+  freq_limit_1_2ghz          55.78% >>> FLAG
+
+Energy-CAQ Correlation: -0.9190
+Threshold: |r| >= 0.8
+✓ PASS: Strong correlation
+
+================================================================================
+OVERALL STATUS: ⚠ ISSUES FOUND
+Total flags: 14
+
+Flags:
+  1. Cross-config variance exceeds threshold
+  2. freq_limit_1_2ghz drift exceeds 15%
+  3. hyperthreading_off drift exceeds 15%
+  4. turbo_off drift exceeds 15%
+  5. governor_powersave drift exceeds 15%
+  6. cores_half drift exceeds 15%
+  7. baseline intra-variance exceeds RuntimeGuard threshold
+  8. governor_powersave intra-variance exceeds RuntimeGuard threshold
+  9. governor_performance intra-variance exceeds RuntimeGuard threshold
+  10. cores_half intra-variance exceeds RuntimeGuard threshold
+  11. single_core intra-variance exceeds RuntimeGuard threshold
+  12. hyperthreading_off intra-variance exceeds RuntimeGuard threshold
+  13. turbo_off intra-variance exceeds RuntimeGuard threshold
+  14. freq_limit_1_2ghz intra-variance exceeds RuntimeGuard threshold
+================================================================================
+
+ALL_OK: False
+

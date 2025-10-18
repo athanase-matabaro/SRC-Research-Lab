@@ -1,0 +1,172 @@
+{
+  "per_config_results": {
+    "baseline": {
+      "config": "baseline",
+      "num_runs": 6,
+      "num_datasets": 3,
+      "caq_e": {
+        "mean": 87.91843458538382,
+        "median": 105.7149567346723,
+        "std": 42.616969028365844,
+        "min": 12.072076529419297,
+        "max": 136.11373588585067,
+        "iqr": 49.73657081195418,
+        "iqr_median_ratio_percent": 47.04780888931833
+      },
+      "energy_joules": {
+        "mean": 0.04101720121171739,
+        "median": 0.01701613267262777
+      },
+      "cpu_seconds": {
+        "mean": 0.001171920034620497
+      }
+    },
+    "governor_powersave": {
+      "config": "governor_powersave",
+      "num_runs": 6,
+      "num_datasets": 3,
+      "caq_e": {
+        "mean": 137.36534620616666,
+        "median": 164.59433245575053,
+        "std": 73.6891298355714,
+        "min": 12.338257460578049,
+        "max": 210.45173563190895,
+        "iqr": 108.48987644725042,
+        "iqr_median_ratio_percent": 65.91349460736554
+      },
+      "energy_joules": {
+        "mean": 0.03332297007242839,
+        "median": 0.010122060775756836
+      },
+      "cpu_seconds": {
+        "mean": 0.0009520848592122397
+      }
+    },
+    "governor_performance": {
+      "config": "governor_performance",
+      "num_runs": 6,
+      "num_datasets": 3,
+      "caq_e": {
+        "mean": 76.80507040990814,
+        "median": 92.84072951514374,
+        "std": 40.71491031057987,
+        "min": 6.494845818316634,
+        "max": 116.92224286152218,
+        "iqr": 58.30741408586238,
+        "iqr_median_ratio_percent": 62.803700908394475
+      },
+      "energy_joules": {
+        "mean": 0.06481846173604329,
+        "median": 0.020812948544820152
+      },
+      "cpu_seconds": {
+        "mean": 0.001851956049601237
+      }
+    },
+    "cores_half": {
+      "config": "cores_half",
+      "num_runs": 6,
+      "num_datasets": 3,
+      "caq_e": {
+        "mean": 123.44541303482227,
+        "median": 151.5326227362982,
+        "std": 59.30271074683025,
+        "min": 15.374954340526179,
+        "max": 176.80183972426622,
+        "iqr": 78.4380927148332,
+        "iqr_median_ratio_percent": 51.76317237729965
+      },
+      "energy_joules": {
+        "mean": 0.030008289549085826,
+        "median": 0.012326439221700031
+      },
+      "cpu_seconds": {
+        "mean": 0.0008573797014024522
+      }
+    },
+    "single_core": {
+      "config": "single_core",
+      "num_runs": 6,
+      "num_datasets": 3,
+      "caq_e": {
+        "mean": 96.78147623751873,
+        "median": 92.6690897263054,
+        "std": 51.165634256904156,
+        "min": 13.875207110619597,
+        "max": 165.03931939951045,
+        "iqr": 68.7870935187782,
+        "iqr_median_ratio_percent": 74.2287355168139
+      },
+      "energy_joules": {
+        "mean": 0.035989085833231606,
+        "median": 0.019152363141377766
+      },
+      "cpu_seconds": {
+        "mean": 0.0010282595952351887
+      }
+    },
+    "hyperthreading_off": {
+      "config": "hyperthreading_off",
+      "num_runs": 6,
+      "num_datasets": 3,
+      "caq_e": {
+        "mean": 142.95709097759644,
+        "median": 170.18384700894165,
+        "std": 75.20604257703214,
+        "min": 15.617680085287033,
+        "max": 221.50836119270187,
+        "iqr": 109.20596657046796,
+        "iqr_median_ratio_percent": 64.16940766695099
+      },
+      "energy_joules": {
+        "mean": 0.029298530684577093,
+        "median": 0.009839733441670736
+      },
+      "cpu_seconds": {
+        "mean": 0.0008371008767022026
+      }
+    },
+    "turbo_off": {
+      "config": "turbo_off",
+      "num_runs": 6,
+      "num_datasets": 3,
+      "caq_e": {
+        "mean": 37.556431732841794,
+        "median": 43.830386792785134,
+        "std": 19.019928420064932,
+        "min": 4.697089208108976,
+        "max": 56.32274415298909,
+        "iqr": 28.628655736780544,
+        "iqr_median_ratio_percent": 65.31691329151828
+      },
+      "energy_joules": {
+        "mean": 0.10163784027099608,
+        "median": 0.03767748673756917
+      },
+      "cpu_seconds": {
+        "mean": 0.0029039382934570312
+      }
+    },
+    "freq_limit_1_2ghz": {
+      "config": "freq_limit_1_2ghz",
+      "num_runs": 6,
+      "num_datasets": 3,
+      "caq_e": {
+        "mean": 29.134815404429162,
+        "median": 35.251724805625784,
+        "std": 14.332108140639361,
+        "min": 3.554402602796506,
+        "max": 42.46951662097019,
+        "iqr": 19.662569970547676,
+        "iqr_median_ratio_percent": 55.77761110687482
+      },
+      "energy_joules": {
+        "mean": 0.13242635462019178,
+        "median": 0.050113797187805176
+      },
+      "cpu_seconds": {
+        "mean": 0.0037836101320054796
+      }
+    }
+  }
+}

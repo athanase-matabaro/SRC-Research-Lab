@@ -1,0 +1,56 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.2, pluggy-1.6.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+rootdir: /home/athanase-matabaro/Dev/compression_lab
+collecting ... collected 38 items
+
+tests/test_guardrails_runtime.py::TestBaselineStats::test_baseline_serialization PASSED [  2%]
+tests/test_guardrails_runtime.py::TestBaselineStats::test_valid_baseline_creation PASSED [  5%]
+tests/test_guardrails_runtime.py::TestGuardrailManagerInitialization::test_invalid_baseline_caq_e_mean PASSED [  7%]
+tests/test_guardrails_runtime.py::TestGuardrailManagerInitialization::test_invalid_baseline_caq_e_nan PASSED [ 10%]
+tests/test_guardrails_runtime.py::TestGuardrailManagerInitialization::test_invalid_drift_threshold PASSED [ 13%]
+tests/test_guardrails_runtime.py::TestGuardrailManagerInitialization::test_invalid_variance_threshold PASSED [ 15%]
+tests/test_guardrails_runtime.py::TestGuardrailManagerInitialization::test_invalid_window_size PASSED [ 18%]
+tests/test_guardrails_runtime.py::TestGuardrailManagerInitialization::test_valid_initialization PASSED [ 21%]
+tests/test_guardrails_runtime.py::TestMetricUpdates::test_update_with_infinite_energy PASSED [ 23%]
+tests/test_guardrails_runtime.py::TestMetricUpdates::test_update_with_nan_caq_e PASSED [ 26%]
+tests/test_guardrails_runtime.py::TestMetricUpdates::test_update_with_negative_caq_e PASSED [ 28%]
+tests/test_guardrails_runtime.py::TestMetricUpdates::test_update_with_valid_metrics PASSED [ 31%]
+tests/test_guardrails_runtime.py::TestMetricUpdates::test_window_size_limit PASSED [ 34%]
+tests/test_guardrails_runtime.py::TestVarianceComputation::test_variance_with_constant_values PASSED [ 36%]
+tests/test_guardrails_runtime.py::TestVarianceComputation::test_variance_with_high_spread PASSED [ 39%]
+tests/test_guardrails_runtime.py::TestVarianceComputation::test_variance_with_low_spread PASSED [ 42%]
+tests/test_guardrails_runtime.py::TestDriftComputation::test_negative_drift PASSED [ 44%]
+tests/test_guardrails_runtime.py::TestDriftComputation::test_no_drift PASSED [ 47%]
+tests/test_guardrails_runtime.py::TestDriftComputation::test_positive_drift PASSED [ 50%]
+tests/test_guardrails_runtime.py::TestStabilityChecks::test_consecutive_stable_counter PASSED [ 52%]
+tests/test_guardrails_runtime.py::TestStabilityChecks::test_high_drift_violation PASSED [ 55%]
+tests/test_guardrails_runtime.py::TestStabilityChecks::test_high_variance_violation PASSED [ 57%]
+tests/test_guardrails_runtime.py::TestStabilityChecks::test_insufficient_data_is_stable PASSED [ 60%]
+tests/test_guardrails_runtime.py::TestStabilityChecks::test_stable_metrics PASSED [ 63%]
+tests/test_guardrails_runtime.py::TestRollbackMechanism::test_resume_after_stability PASSED [ 65%]
+tests/test_guardrails_runtime.py::TestRollbackMechanism::test_resume_requires_consecutive_stability PASSED [ 68%]
+tests/test_guardrails_runtime.py::TestRollbackMechanism::test_rollback_persistence PASSED [ 71%]
+tests/test_guardrails_runtime.py::TestRollbackMechanism::test_trigger_rollback PASSED [ 73%]
+tests/test_guardrails_runtime.py::TestEnergyCorrelation::test_negative_correlation PASSED [ 76%]
+tests/test_guardrails_runtime.py::TestEnergyCorrelation::test_positive_correlation_violation PASSED [ 78%]
+tests/test_guardrails_runtime.py::TestFilePersistence::test_load_nonexistent_file_raises_error PASSED [ 81%]
+tests/test_guardrails_runtime.py::TestFilePersistence::test_save_and_load_state PASSED [ 84%]
+tests/test_guardrails_runtime.py::TestWindowMetrics::test_window_metrics_insufficient_data PASSED [ 86%]
+tests/test_guardrails_runtime.py::TestWindowMetrics::test_window_metrics_with_data PASSED [ 89%]
+tests/test_guardrails_runtime.py::TestClearWindow::test_clear_window PASSED [ 92%]
+tests/test_guardrails_runtime.py::TestEdgeCases::test_large_window PASSED [ 94%]
+tests/test_guardrails_runtime.py::TestEdgeCases::test_very_small_window PASSED [ 97%]
+tests/test_guardrails_runtime.py::TestEdgeCases::test_zero_baseline_mean_edge_case PASSED [100%]
+
+=============================== warnings summary ===============================
+tests/test_guardrails_runtime.py: 10 warnings
+  /home/athanase-matabaro/.local/lib/python3.12/site-packages/numpy/lib/_function_base_impl.py:3065: RuntimeWarning: invalid value encountered in divide
+    c /= stddev[:, None]
+
+tests/test_guardrails_runtime.py: 10 warnings
+  /home/athanase-matabaro/.local/lib/python3.12/site-packages/numpy/lib/_function_base_impl.py:3066: RuntimeWarning: invalid value encountered in divide
+    c /= stddev[None, :]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================= 38 passed, 20 warnings in 0.24s ========================

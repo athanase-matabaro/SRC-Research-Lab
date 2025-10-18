@@ -1,0 +1,18 @@
+{
+  "scenario": "b_zero_caq",
+  "seed": 43,
+  "start_time": 1760758298.3603075,
+  "total_events": 1,
+  "events": [
+    {
+      "timestamp": 1760758300.6128461,
+      "elapsed_ms": 2252.5386810302734,
+      "type": "zero_caq",
+      "target": "caq_e",
+      "magnitude": 0.0,
+      "duration_ms": 0,
+      "correlation_id": "b_zero_caq_r1_s074",
+      "metadata": {}
+    }
+  ]
+}

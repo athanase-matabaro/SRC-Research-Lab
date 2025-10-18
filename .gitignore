@@ -57,3 +57,8 @@ ENV/
 # Temporary files
 *.tmp
 .DS_Store
+
+# Phase H.5.2: Mock Bridge Calibration Files (PRIVATE - DO NOT COMMIT)
+# These files contain statistical fingerprints from private benchmarks
+/release/mock_bridge_calibration/*.json
+!/release/mock_bridge_calibration/README.md

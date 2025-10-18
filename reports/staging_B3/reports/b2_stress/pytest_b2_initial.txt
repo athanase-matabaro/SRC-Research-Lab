@@ -1,0 +1,507 @@
+.................................................F.F...F....FF......F... [ 86%]
+...........                                                              [100%]
+=================================== FAILURES ===================================
+_________________ TestStressScenarios.test_scenario_b_zero_caq _________________
+
+self = <test_guardrails_stress.TestStressScenarios testMethod=test_scenario_b_zero_caq>
+
+    def test_scenario_b_zero_caq(self):
+        """Test Scenario B: Zero CAQ-E injection."""
+        metrics = self.harness.run_scenario(
+            scenario_name="b_zero_caq",
+            run_id=1,
+            seed=42,
+            num_samples=50
+        )
+    
+        self.assertEqual(metrics.scenario, "b_zero_caq")
+>       self.assertEqual(metrics.total_updates, 50)
+E       AssertionError: 49 != 50
+
+tests/test_guardrails_stress.py:241: AssertionError
+------------------------------ Captured log call -------------------------------
+INFO     runtime.stress_runner:stress_runner.py:135 ================================================================================
+INFO     runtime.stress_runner:stress_runner.py:136 STRESS TEST HARNESS INITIALIZED
+INFO     runtime.stress_runner:stress_runner.py:137 ================================================================================
+INFO     runtime.stress_runner:stress_runner.py:138 Baseline CAQ-E: 87.92 ± 42.62
+INFO     runtime.stress_runner:stress_runner.py:139 Output dir: /tmp/tmpxe4nv9hn
+INFO     runtime.stress_runner:stress_runner.py:140 Dry run: False
+INFO     runtime.stress_runner:stress_runner.py:164 
+================================================================================
+INFO     runtime.stress_runner:stress_runner.py:165 SCENARIO: b_zero_caq | Run 1 | Seed 42
+INFO     runtime.stress_runner:stress_runner.py:166 ================================================================================
+INFO     runtime.stress_runner:stress_runner.py:201 Running 50 samples...
+WARNING  runtime.stress_runner:stress_runner.py:283 [002] FALSE POSITIVE: ['Energy-CAQ correlation 0.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [002] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [002] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [003] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [003] Rollback completed in 0.3ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [003] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [004] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [004] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [004] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [005] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [005] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [005] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [006] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [006] Rollback completed in 0.3ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [006] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [007] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [007] Rollback completed in 0.3ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [007] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [008] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [008] Rollback completed in 0.3ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [008] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [009] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [009] Rollback completed in 0.3ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [009] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [010] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [010] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [010] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [011] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [011] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [011] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [012] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [012] Rollback completed in 0.3ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [012] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [013] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [013] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [013] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [014] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [014] Rollback completed in 0.4ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [014] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [015] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [015] Rollback completed in 0.5ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [015] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [016] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [016] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [016] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [017] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [017] Rollback completed in 0.3ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [017] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [018] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [018] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [018] Failed to recover after 50 samples
+WARNING  runtime.chaos_injectors:chaos_injectors.py:169 [CHAOS] Zero CAQ-E injected: 87.9200 → 0.0 | correlation_id=b_zero_caq_r1_s019
+DEBUG    runtime.stress_runner:stress_runner.py:257 Guardrail rejected input: CAQ-E must be positive, got 0.0
+WARNING  runtime.stress_runner:stress_runner.py:283 [020] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [020] Rollback completed in 0.3ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [020] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [021] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [021] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [021] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [022] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [022] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [022] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [023] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [023] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [023] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [024] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [024] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [024] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [025] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [025] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [025] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [026] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [026] Rollback completed in 0.3ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [026] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [027] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [027] Rollback completed in 0.4ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [027] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [028] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [028] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [028] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [029] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [029] Rollback completed in 0.3ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [029] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [030] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [030] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [030] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [031] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [031] Rollback completed in 0.3ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [031] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [032] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [032] Rollback completed in 0.4ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [032] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [033] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [033] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [033] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [034] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [034] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [034] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [035] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [035] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [035] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [036] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [036] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [036] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [037] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [037] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [037] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [038] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [038] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [038] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [039] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [039] Rollback completed in 0.3ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [039] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [040] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [040] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [040] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [041] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [041] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [041] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [042] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [042] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [042] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [043] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [043] Rollback completed in 0.4ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [043] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [044] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [044] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [044] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [045] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [045] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [045] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [046] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [046] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [046] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [047] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [047] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [047] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [048] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [048] Rollback completed in 0.5ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [048] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [049] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [049] Rollback completed in 0.3ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [049] Failed to recover after 50 samples
+INFO     runtime.stress_runner:stress_runner.py:453 Timeline saved: /tmp/tmpxe4nv9hn/timelines/b_zero_caq_run1.json
+INFO     runtime.chaos_injectors:chaos_injectors.py:408 Timeline saved: /tmp/tmpxe4nv9hn/timelines/b_zero_caq_run1_chaos.json (1 events)
+INFO     runtime.stress_runner:stress_runner.py:410 
+================================================================================
+INFO     runtime.stress_runner:stress_runner.py:411 SCENARIO COMPLETE: b_zero_caq | Run 1
+INFO     runtime.stress_runner:stress_runner.py:412 ================================================================================
+INFO     runtime.stress_runner:stress_runner.py:413 Total updates: 49
+INFO     runtime.stress_runner:stress_runner.py:414 Anomalies injected: 1
+INFO     runtime.stress_runner:stress_runner.py:415 Anomalies detected: 47
+INFO     runtime.stress_runner:stress_runner.py:416 False positives: 47 (97.92%)
+INFO     runtime.stress_runner:stress_runner.py:417 False negatives: 0 (0.00%)
+INFO     runtime.stress_runner:stress_runner.py:418 Median detection latency: 0.0ms
+INFO     runtime.stress_runner:stress_runner.py:419 Median rollback time: 0.2ms
+INFO     runtime.stress_runner:stress_runner.py:420 Median recovery time: 0.0ms
+____________ TestStressScenarios.test_scenario_d_parallel_anomalies ____________
+
+self = <test_guardrails_stress.TestStressScenarios testMethod=test_scenario_d_parallel_anomalies>
+
+    def test_scenario_d_parallel_anomalies(self):
+        """Test Scenario D: Parallel anomalies."""
+        metrics = self.harness.run_scenario(
+            scenario_name="d_parallel_anomalies",
+            run_id=1,
+            seed=42,
+            num_samples=50
+        )
+    
+        self.assertEqual(metrics.scenario, "d_parallel_anomalies")
+        # Should have multiple types of violations
+>       self.assertGreaterEqual(metrics.total_updates, 50)
+E       AssertionError: 49 not greater than or equal to 50
+
+tests/test_guardrails_stress.py:267: AssertionError
+------------------------------ Captured log call -------------------------------
+INFO     runtime.stress_runner:stress_runner.py:135 ================================================================================
+INFO     runtime.stress_runner:stress_runner.py:136 STRESS TEST HARNESS INITIALIZED
+INFO     runtime.stress_runner:stress_runner.py:137 ================================================================================
+INFO     runtime.stress_runner:stress_runner.py:138 Baseline CAQ-E: 87.92 ± 42.62
+INFO     runtime.stress_runner:stress_runner.py:139 Output dir: /tmp/tmpizjqkkx7
+INFO     runtime.stress_runner:stress_runner.py:140 Dry run: False
+INFO     runtime.stress_runner:stress_runner.py:164 
+================================================================================
+INFO     runtime.stress_runner:stress_runner.py:165 SCENARIO: d_parallel_anomalies | Run 1 | Seed 42
+INFO     runtime.stress_runner:stress_runner.py:166 ================================================================================
+INFO     runtime.stress_runner:stress_runner.py:201 Running 50 samples...
+WARNING  runtime.stress_runner:stress_runner.py:283 [002] FALSE POSITIVE: ['Energy-CAQ correlation 0.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [002] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [002] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [003] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [003] Rollback completed in 0.3ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [003] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [004] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [004] Rollback completed in 0.3ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [004] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [005] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [005] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [005] Failed to recover after 50 samples
+WARNING  runtime.chaos_injectors:chaos_injectors.py:131 [CHAOS] Energy spike injected: 0.0410 → 0.1025 (×2.5) | correlation_id=d_parallel_anomalies_r1_s006
+INFO     runtime.stress_runner:stress_runner.py:275 [006] Guardrail TRIGGERED | Latency: 0.5ms | Violations: Energy-CAQ correlation 0.000 outside expected range [-0.950, -0.850]
+INFO     runtime.stress_runner:stress_runner.py:323 [006] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [006] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [007] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [007] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [007] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [008] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [008] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [008] Failed to recover after 50 samples
+WARNING  runtime.chaos_injectors:chaos_injectors.py:169 [CHAOS] Zero CAQ-E injected: 87.9200 → 0.0 | correlation_id=d_parallel_anomalies_r1_s009
+DEBUG    runtime.stress_runner:stress_runner.py:257 Guardrail rejected input: CAQ-E must be positive, got 0.0
+WARNING  runtime.stress_runner:stress_runner.py:283 [010] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [010] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [010] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [011] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [011] Rollback completed in 0.3ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [011] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [012] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [012] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [012] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [013] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [013] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [013] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [014] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [014] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [014] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [015] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [015] Rollback completed in 0.3ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [015] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [016] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [016] Rollback completed in 0.5ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [016] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [017] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [017] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [017] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [018] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [018] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [018] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [019] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [019] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [019] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [020] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [020] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [020] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [021] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [021] Rollback completed in 0.3ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [021] Failed to recover after 50 samples
+WARNING  runtime.chaos_injectors:chaos_injectors.py:131 [CHAOS] Energy spike injected: 0.0410 → 0.1025 (×2.5) | correlation_id=d_parallel_anomalies_r1_s022
+INFO     runtime.stress_runner:stress_runner.py:275 [022] Guardrail TRIGGERED | Latency: 0.5ms | Violations: Energy-CAQ correlation 0.000 outside expected range [-0.950, -0.850]
+INFO     runtime.stress_runner:stress_runner.py:323 [022] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [022] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [023] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [023] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [023] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [024] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [024] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [024] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [025] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [025] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [025] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [026] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [026] Rollback completed in 0.4ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [026] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [027] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [027] Rollback completed in 0.6ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [027] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [028] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [028] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [028] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [029] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [029] Rollback completed in 0.3ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [029] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [030] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [030] Rollback completed in 0.3ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [030] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [031] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [031] Rollback completed in 0.3ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [031] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [032] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [032] Rollback completed in 0.3ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [032] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [033] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [033] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [033] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [034] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [034] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [034] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [035] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [035] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [035] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [036] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [036] Rollback completed in 0.3ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [036] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [037] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [037] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [037] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [038] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [038] Rollback completed in 0.3ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [038] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [039] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [039] Rollback completed in 0.3ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [039] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [040] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [040] Rollback completed in 0.3ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [040] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [041] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [041] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [041] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [042] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [042] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [042] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [043] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [043] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [043] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [044] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [044] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [044] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [045] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [045] Rollback completed in 0.2ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [045] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [046] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [046] Rollback completed in 0.3ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [046] Failed to recover after 50 samples
+WARNING  runtime.chaos_injectors:chaos_injectors.py:131 [CHAOS] Energy spike injected: 0.0410 → 0.1025 (×2.5) | correlation_id=d_parallel_anomalies_r1_s047
+INFO     runtime.stress_runner:stress_runner.py:275 [047] Guardrail TRIGGERED | Latency: 0.6ms | Violations: Energy-CAQ correlation 0.000 outside expected range [-0.950, -0.850]
+INFO     runtime.stress_runner:stress_runner.py:323 [047] Rollback completed in 0.3ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [047] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [048] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [048] Rollback completed in 0.3ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [048] Failed to recover after 50 samples
+WARNING  runtime.stress_runner:stress_runner.py:283 [049] FALSE POSITIVE: ['Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]']
+INFO     runtime.stress_runner:stress_runner.py:323 [049] Rollback completed in 0.3ms
+WARNING  runtime.stress_runner:stress_runner.py:370 [049] Failed to recover after 50 samples
+INFO     runtime.stress_runner:stress_runner.py:453 Timeline saved: /tmp/tmpizjqkkx7/timelines/d_parallel_anomalies_run1.json
+INFO     runtime.chaos_injectors:chaos_injectors.py:408 Timeline saved: /tmp/tmpizjqkkx7/timelines/d_parallel_anomalies_run1_chaos.json (4 events)
+INFO     runtime.stress_runner:stress_runner.py:410 
+================================================================================
+INFO     runtime.stress_runner:stress_runner.py:411 SCENARIO COMPLETE: d_parallel_anomalies | Run 1
+INFO     runtime.stress_runner:stress_runner.py:412 ================================================================================
+INFO     runtime.stress_runner:stress_runner.py:413 Total updates: 49
+INFO     runtime.stress_runner:stress_runner.py:414 Anomalies injected: 4
+INFO     runtime.stress_runner:stress_runner.py:415 Anomalies detected: 47
+INFO     runtime.stress_runner:stress_runner.py:416 False positives: 44 (97.78%)
+INFO     runtime.stress_runner:stress_runner.py:417 False negatives: 0 (0.00%)
+INFO     runtime.stress_runner:stress_runner.py:418 Median detection latency: 0.5ms
+INFO     runtime.stress_runner:stress_runner.py:419 Median rollback time: 0.2ms
+INFO     runtime.stress_runner:stress_runner.py:420 Median recovery time: 0.0ms
+____________ TestDetectionLatency.test_drift_accumulation_detection ____________
+
+self = <test_guardrails_stress.TestDetectionLatency testMethod=test_drift_accumulation_detection>
+
+    def test_drift_accumulation_detection(self):
+        """Test drift detection after accumulation."""
+        # Gradually drift away
+        for i in range(20):
+            caq = 90.0 * (1.0 + 0.01 * i)  # 1% drift per sample
+            self.guardrail.update_metrics(caq, 0.05)
+    
+        check = self.guardrail.check_stability()
+    
+        # Should eventually detect drift
+        if not check["stable"]:
+>           self.assertTrue(any("Drift" in v or "drift" in v for v in check["violations"]))
+E           AssertionError: False is not true
+
+tests/test_guardrails_stress.py:374: AssertionError
+____________ TestRollbackAndRecovery.test_consecutive_stable_checks ____________
+
+self = <test_guardrails_stress.TestRollbackAndRecovery testMethod=test_consecutive_stable_checks>
+
+    def test_consecutive_stable_checks(self):
+        """Test consecutive stable checks for recovery."""
+        # Trigger rollback
+        for _ in range(10):
+            self.guardrail.update_metrics(150.0, 0.08)
+    
+        self.guardrail.trigger_rollback("test_consecutive")
+    
+        # Recovery requires consecutive stable readings
+        stable_count = 0
+        for i in range(30):
+            self.guardrail.update_metrics(90.0, 0.05)
+            check = self.guardrail.check_stability()
+    
+            if check["stable"]:
+                stable_count += 1
+            else:
+                stable_count = 0
+    
+            if stable_count >= 3:  # Recovered
+                break
+    
+>       self.assertGreaterEqual(stable_count, 3)
+E       AssertionError: 0 not greater than or equal to 3
+
+tests/test_guardrails_stress.py:545: AssertionError
+_____________ TestRollbackAndRecovery.test_recovery_after_rollback _____________
+
+self = <test_guardrails_stress.TestRollbackAndRecovery testMethod=test_recovery_after_rollback>
+
+    def test_recovery_after_rollback(self):
+        """Test system recovers after rollback."""
+        # Trigger rollback
+        for _ in range(15):
+            self.guardrail.update_metrics(150.0, 0.08)
+    
+        self.guardrail.trigger_rollback("test_recovery")
+    
+        # Feed clean data for recovery
+        recovery_samples = 0
+        for i in range(50):
+            self.guardrail.update_metrics(90.0, 0.05)
+            check = self.guardrail.check_stability()
+            recovery_samples += 1
+    
+            if check["stable"] and abs(check.get("current_drift_percent", 100)) < 5:
+                # Recovered!
+                break
+    
+        # Should recover within 50 samples (per spec: < 15s with ~0.1s/sample)
+>       self.assertLess(recovery_samples, 50)
+E       AssertionError: 50 not less than 50
+
+tests/test_guardrails_stress.py:481: AssertionError
+______ TestFalsePositivesNegatives.test_clean_baseline_no_false_positives ______
+
+self = <test_guardrails_stress.TestFalsePositivesNegatives testMethod=test_clean_baseline_no_false_positives>
+
+    def test_clean_baseline_no_false_positives(self):
+        """Test clean baseline doesn't trigger false positives."""
+        baseline = BaselineStats(mean_caq_e=90.0, std_caq_e=10.0, mean_energy=0.05, std_energy=0.01)
+    
+        with tempfile.NamedTemporaryFile(delete=False, suffix='.json') as f:
+            state_file = Path(f.name)
+    
+        guardrail = GuardrailManager(baseline_stats=baseline, state_file=state_file)
+    
+        # Feed clean data
+        false_positives = 0
+        for i in range(100):
+            guardrail.update_metrics(90.0, 0.05)
+            check = guardrail.check_stability()
+    
+            if not check["stable"]:
+                false_positives += 1
+    
+        state_file.unlink()
+    
+        # Should have very few false positives (< 1% = 1 out of 100)
+>       self.assertLessEqual(false_positives, 1)
+E       AssertionError: 98 not less than or equal to 1
+
+tests/test_guardrails_stress.py:618: AssertionError
+=============================== warnings summary ===============================
+tests/test_guardrails_runtime.py: 10 warnings
+tests/test_guardrails_stress.py: 19 warnings
+  /home/athanase-matabaro/.local/lib/python3.12/site-packages/numpy/lib/_function_base_impl.py:3065: RuntimeWarning: invalid value encountered in divide
+    c /= stddev[:, None]
+
+tests/test_guardrails_runtime.py: 10 warnings
+tests/test_guardrails_stress.py: 19 warnings
+  /home/athanase-matabaro/.local/lib/python3.12/site-packages/numpy/lib/_function_base_impl.py:3066: RuntimeWarning: invalid value encountered in divide
+    c /= stddev[None, :]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_guardrails_stress.py::TestStressScenarios::test_scenario_b_zero_caq
+FAILED tests/test_guardrails_stress.py::TestStressScenarios::test_scenario_d_parallel_anomalies
+FAILED tests/test_guardrails_stress.py::TestDetectionLatency::test_drift_accumulation_detection
+FAILED tests/test_guardrails_stress.py::TestRollbackAndRecovery::test_consecutive_stable_checks
+FAILED tests/test_guardrails_stress.py::TestRollbackAndRecovery::test_recovery_after_rollback
+FAILED tests/test_guardrails_stress.py::TestFalsePositivesNegatives::test_clean_baseline_no_false_positives
+6 failed, 77 passed, 58 warnings in 12.05s

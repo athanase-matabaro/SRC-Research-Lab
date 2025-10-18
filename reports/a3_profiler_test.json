@@ -1,0 +1,176 @@
+{
+  "profiler_version": "2.1",
+  "num_samples": 10,
+  "samples": [
+    {
+      "method": "constant_power_model",
+      "constant_power_watts": 35.0,
+      "rapl_available": false,
+      "energy_joules": 3.463672399520874,
+      "elapsed_seconds": 0.09896206855773926,
+      "avg_power_watts": 35.0,
+      "metadata": {
+        "method": "constant_power_model",
+        "error_pct": 0.0,
+        "calibration_ref": "5cc4029a091c3469",
+        "schema_version": "2.1",
+        "timestamp": "2025-10-18T09:14:24.954419Z",
+        "cpu_model": "Intel(R) Core(TM) i5-8265U CPU @ 1.60GHz",
+        "system_id": null
+      }
+    },
+    {
+      "method": "constant_power_model",
+      "constant_power_watts": 35.0,
+      "rapl_available": false,
+      "energy_joules": 1.6454899311065674,
+      "elapsed_seconds": 0.04701399803161621,
+      "avg_power_watts": 35.0,
+      "metadata": {
+        "method": "constant_power_model",
+        "error_pct": 0.0,
+        "calibration_ref": "9f73b8d869a20d51",
+        "schema_version": "2.1",
+        "timestamp": "2025-10-18T09:14:25.002317Z",
+        "cpu_model": "Intel(R) Core(TM) i5-8265U CPU @ 1.60GHz",
+        "system_id": null
+      }
+    },
+    {
+      "method": "constant_power_model",
+      "constant_power_watts": 35.0,
+      "rapl_available": false,
+      "energy_joules": 2.215704917907715,
+      "elapsed_seconds": 0.06330585479736328,
+      "avg_power_watts": 35.0,
+      "metadata": {
+        "method": "constant_power_model",
+        "error_pct": 0.0,
+        "calibration_ref": "8eaf62ce36875b83",
+        "schema_version": "2.1",
+        "timestamp": "2025-10-18T09:14:25.066377Z",
+        "cpu_model": "Intel(R) Core(TM) i5-8265U CPU @ 1.60GHz",
+        "system_id": null
+      }
+    },
+    {
+      "method": "constant_power_model",
+      "constant_power_watts": 35.0,
+      "rapl_available": false,
+      "energy_joules": 2.7513647079467773,
+      "elapsed_seconds": 0.07861042022705078,
+      "avg_power_watts": 35.0,
+      "metadata": {
+        "method": "constant_power_model",
+        "error_pct": 0.0,
+        "calibration_ref": "b50e7cd87742ec0f",
+        "schema_version": "2.1",
+        "timestamp": "2025-10-18T09:14:25.145763Z",
+        "cpu_model": "Intel(R) Core(TM) i5-8265U CPU @ 1.60GHz",
+        "system_id": null
+      }
+    },
+    {
+      "method": "constant_power_model",
+      "constant_power_watts": 35.0,
+      "rapl_available": false,
+      "energy_joules": 3.072984218597412,
+      "elapsed_seconds": 0.0877995491027832,
+      "avg_power_watts": 35.0,
+      "metadata": {
+        "method": "constant_power_model",
+        "error_pct": 0.0,
+        "calibration_ref": "7c784eeb66aeaec7",
+        "schema_version": "2.1",
+        "timestamp": "2025-10-18T09:14:25.234443Z",
+        "cpu_model": "Intel(R) Core(TM) i5-8265U CPU @ 1.60GHz",
+        "system_id": null
+      }
+    },
+    {
+      "method": "constant_power_model",
+      "constant_power_watts": 35.0,
+      "rapl_available": false,
+      "energy_joules": 0.8991694450378418,
+      "elapsed_seconds": 0.025690555572509766,
+      "avg_power_watts": 35.0,
+      "metadata": {
+        "method": "constant_power_model",
+        "error_pct": 0.0,
+        "calibration_ref": "866f7e4fdf5c7253",
+        "schema_version": "2.1",
+        "timestamp": "2025-10-18T09:14:25.260711Z",
+        "cpu_model": "Intel(R) Core(TM) i5-8265U CPU @ 1.60GHz",
+        "system_id": null
+      }
+    },
+    {
+      "method": "constant_power_model",
+      "constant_power_watts": 35.0,
+      "rapl_available": false,
+      "energy_joules": 1.6194796562194824,
+      "elapsed_seconds": 0.04627084732055664,
+      "avg_power_watts": 35.0,
+      "metadata": {
+        "method": "constant_power_model",
+        "error_pct": 0.0,
+        "calibration_ref": "77376ef10676e8f2",
+        "schema_version": "2.1",
+        "timestamp": "2025-10-18T09:14:25.307525Z",
+        "cpu_model": "Intel(R) Core(TM) i5-8265U CPU @ 1.60GHz",
+        "system_id": null
+      }
+    },
+    {
+      "method": "constant_power_model",
+      "constant_power_watts": 35.0,
+      "rapl_available": false,
+      "energy_joules": 1.8773043155670166,
+      "elapsed_seconds": 0.05363726615905762,
+      "avg_power_watts": 35.0,
+      "metadata": {
+        "method": "constant_power_model",
+        "error_pct": 0.0,
+        "calibration_ref": "bb53cd6f770ccf3c",
+        "schema_version": "2.1",
+        "timestamp": "2025-10-18T09:14:25.361739Z",
+        "cpu_model": "Intel(R) Core(TM) i5-8265U CPU @ 1.60GHz",
+        "system_id": null
+      }
+    },
+    {
+      "method": "constant_power_model",
+      "constant_power_watts": 35.0,
+      "rapl_available": false,
+      "energy_joules": 1.9055259227752686,
+      "elapsed_seconds": 0.0544435977935791,
+      "avg_power_watts": 35.0,
+      "metadata": {
+        "method": "constant_power_model",
+        "error_pct": 0.0,
+        "calibration_ref": "69f0eb223bd01e75",
+        "schema_version": "2.1",
+        "timestamp": "2025-10-18T09:14:25.416695Z",
+        "cpu_model": "Intel(R) Core(TM) i5-8265U CPU @ 1.60GHz",
+        "system_id": null
+      }
+    },
+    {
+      "method": "constant_power_model",
+      "constant_power_watts": 35.0,
+      "rapl_available": false,
+      "energy_joules": 0.8938288688659668,
+      "elapsed_seconds": 0.025537967681884766,
+      "avg_power_watts": 35.0,
+      "metadata": {
+        "method": "constant_power_model",
+        "error_pct": 0.0,
+        "calibration_ref": "68f036b517dec190",
+        "schema_version": "2.1",
+        "timestamp": "2025-10-18T09:14:25.442729Z",
+        "cpu_model": "Intel(R) Core(TM) i5-8265U CPU @ 1.60GHz",
+        "system_id": null
+      }
+    }
+  ]
+}

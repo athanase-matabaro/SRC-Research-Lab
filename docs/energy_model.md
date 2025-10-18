@@ -495,6 +495,136 @@ print(f"Threshold met: {results['summary']['all_thresholds_met']}")
 
 ---
 
+## Runtime Guardrails (Phase H.5.1)
+
+**Added:** 2025-10-17
+**Status:** Implemented ✓
+
+### Overview
+
+Phase H.5.1 introduces **runtime guardrails** to protect energy measurements against numeric and statistical anomalies. These guardrails ensure stability, reproducibility, and validity of CAQ-E benchmarks.
+
+### Motivation
+
+Energy measurements can be noisy due to:
+- **System interference**: Background processes, thermal throttling
+- **Hardware variance**: CPU frequency scaling, power state transitions
+- **Statistical outliers**: Anomalous runs skewing averages
+- **Numeric instability**: Division by zero, floating-point errors
+
+**Solution**: In-process validation with automatic rejection of unstable runs.
+
+### Guardrail Components
+
+#### 1. Finite Metrics Check
+
+Detects NaN/Inf values in real-time:
+
+```python
+from energy.runtime_guard import RuntimeGuard
+
+guard = RuntimeGuard()
+is_valid, error = guard.check_finite_metrics({
+    "caq_e": 0.238,
+    "energy_joules": 10.5,
+    "cpu_seconds": 0.5
+})
+# → (True, None)
+```
+
+#### 2. Variance Gate
+
+Rejects runs with excessive cross-run variance using **IQR/median ratio**:
+
+```python
+caqe_values = [10.25, 10.24, 10.25, 10.26, 10.25]
+passes, stats = guard.check_variance_gate(caqe_values)
+
+# stats = {
+#   "variance_percent": 0.097%,  ← Well below 25% threshold
+#   "passes": True
+# }
+```
+
+**Threshold**: IQR/median ≤ 25%
+
+**Why IQR/median?**
+- Robust to outliers (unlike standard deviation)
+- Percentile-based (not affected by extreme values)
+- Validated against Phase H.5 benchmarks (achieved <1% variance)
+
+#### 3. Sanity Range Checks
+
+Validates values are within physically plausible ranges:
+
+| Metric              | Min          | Max        |
+|---------------------|--------------|------------|
+| Compression Ratio   | 1e-6         | 1e4        |
+| CPU Seconds         | 1e-9         | 1e5 (27h)  |
+| Energy Joules       | 0.0          | 1e6 (1 MJ) |
+
+#### 4. Rollback Trigger
+
+Detects performance regressions requiring rollback:
+
+```python
+guard.create_checkpoint(baseline_caqe, metadata={"version": "v1"})
+should_rollback, info = guard.check_rollback_trigger(new_caqe)
+
+if should_rollback:
+    print(f"⚠ Performance dropped {info['drop_percent']:.1f}%")
+```
+
+**Threshold**: Median CAQ-E drop > 5%
+
+### Integration
+
+Guardrails are automatically applied in:
+
+1. **Benchmark Runner** (`run_energy_benchmark.py`):
+   - Per-run validation
+   - Aggregate variance check
+   - Rollback detection
+
+2. **Leaderboard Update** (`leaderboard_energy_update.py`):
+   - Rejects high-variance submissions
+   - `--no-variance-gate` option for legacy support
+
+### Example Output
+
+```
+======================================================================
+BENCHMARK SUMMARY
+======================================================================
+Datasets Tested: 3
+Mean CAQ-E Improvement: 97.41%
+Threshold Met: 3/3
+Overall Status: ✓ PASS
+
+GUARDRAIL STATUS (Phase H.5.1)
+======================================================================
+Variance Gate: 3/3 passed
+Rollback Checks: 0 triggered
+Guardrails Overall: ✓ PASS
+```
+
+### Test Coverage
+
+- **Total Tests**: 25 comprehensive tests
+- **Test Suite**: `tests/test_runtime_guard.py`
+- **Coverage**: 100% of RuntimeGuard public API
+
+```bash
+pytest tests/test_runtime_guard.py -v
+# → 25 passed in 0.15s
+```
+
+### For More Information
+
+See comprehensive documentation: [runtime_guard.md](runtime_guard.md)
+
+---
+
 **End of Energy Model Documentation**
 
 For questions or contributions, see: https://github.com/athanase-matabaro/SRC-Research-Lab

@@ -1,0 +1,98 @@
+{
+  "scenario": "f_concurrency",
+  "seed": 44,
+  "start_time": 1760758338.7487566,
+  "total_events": 9,
+  "events": [
+    {
+      "timestamp": 1760758338.8650122,
+      "elapsed_ms": 116.25552177429199,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 1.8,
+      "duration_ms": 1237.0056757561706,
+      "correlation_id": "f_concurrency_r2_s005",
+      "metadata": {}
+    },
+    {
+      "timestamp": 1760758338.925673,
+      "elapsed_ms": 176.91636085510254,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 1.8,
+      "duration_ms": 1576.2865730510355,
+      "correlation_id": "f_concurrency_r2_s007",
+      "metadata": {}
+    },
+    {
+      "timestamp": 1760758339.5552619,
+      "elapsed_ms": 806.5052032470703,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 1.8,
+      "duration_ms": 1751.2623450447786,
+      "correlation_id": "f_concurrency_r2_s026",
+      "metadata": {}
+    },
+    {
+      "timestamp": 1760758339.7884724,
+      "elapsed_ms": 1039.7157669067383,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 1.8,
+      "duration_ms": 1980.2019412287477,
+      "correlation_id": "f_concurrency_r2_s033",
+      "metadata": {}
+    },
+    {
+      "timestamp": 1760758339.9291728,
+      "elapsed_ms": 1180.4161071777344,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 1.8,
+      "duration_ms": 1934.2433625631531,
+      "correlation_id": "f_concurrency_r2_s037",
+      "metadata": {}
+    },
+    {
+      "timestamp": 1760758340.4297798,
+      "elapsed_ms": 1681.023120880127,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 1.8,
+      "duration_ms": 1096.789762932792,
+      "correlation_id": "f_concurrency_r2_s053",
+      "metadata": {}
+    },
+    {
+      "timestamp": 1760758340.527534,
+      "elapsed_ms": 1778.7773609161377,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 1.8,
+      "duration_ms": 1491.166533909699,
+      "correlation_id": "f_concurrency_r2_s056",
+      "metadata": {}
+    },
+    {
+      "timestamp": 1760758340.9321332,
+      "elapsed_ms": 2183.3765506744385,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 1.8,
+      "duration_ms": 1738.9112218691203,
+      "correlation_id": "f_concurrency_r2_s069",
+      "metadata": {}
+    },
+    {
+      "timestamp": 1760758341.2473068,
+      "elapsed_ms": 2498.5501766204834,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 1.8,
+      "duration_ms": 1080.4738050696976,
+      "correlation_id": "f_concurrency_r2_s079",
+      "metadata": {}
+    }
+  ]
+}

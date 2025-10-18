@@ -1,0 +1,16 @@
+================================================================================
+PROFILER SCHEMA VALIDATION REPORT
+================================================================================
+
+✓ VALID: src-research-lab/reports/a3_profiler_test.json
+  Schema version: 2.1
+  Records validated: 10
+
+================================================================================
+SUMMARY: 1 file(s) processed
+  Valid: 1
+  Invalid: 0
+  Total records validated: 10
+  Total records failed: 0
+================================================================================
+✓ ALL FILES VALID

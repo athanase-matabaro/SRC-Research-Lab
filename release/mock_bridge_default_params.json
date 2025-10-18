@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "datasets": {
+    "text_medium": {
+      "compression_ratio": {"distribution": "lognormal", "params": {"mean": 1.5, "sigma": 0.3}},
+      "cpu_seconds": {"distribution": "lognormal", "params": {"mean": -1.0, "sigma": 0.2}},
+      "energy_joules": {"method": "linear_model", "params": {"base_power_watts": 35.0, "noise_sigma": 0.05}},
+      "noise_model": {"ratio_multiplier_sigma": 0.02, "cpu_jitter_sigma": 0.001, "tail_mixture_weight": 0.05, "tail_scale_factor": 1.5}
+    },
+    "mixed_stream": {
+      "compression_ratio": {"distribution": "lognormal", "params": {"mean": 1.2, "sigma": 0.41}},
+      "cpu_seconds": {"distribution": "lognormal", "params": {"mean": -0.8, "sigma": 0.3}},
+      "energy_joules": {"method": "linear_model", "params": {"base_power_watts": 35.0, "noise_sigma": 0.06}},
+      "noise_model": {"ratio_multiplier_sigma": 0.020, "cpu_jitter_sigma": 0.0015, "tail_mixture_weight": 0.05, "tail_scale_factor": 1.5},
+      "per_layer_defaults": {
+        "mean_abs": {"distribution": "lognormal", "params": {"mean": -2.0, "sigma": 0.5}},
+        "std": {"distribution": "lognormal", "params": {"mean": -2.5, "sigma": 0.3}},
+        "sparsity": {"distribution": "beta", "params": {"a": 2.0, "b": 5.0}},
+        "quant_error": {"distribution": "normal", "params": {"loc": 0.0, "scale": 0.01}}
+      }
+    }
+  }
+}

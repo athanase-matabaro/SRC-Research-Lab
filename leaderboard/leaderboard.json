@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-10-17T07:02:03.644476",
+  "generated_at": "2025-10-17T11:23:47.029075",
   "version": "2.0",
   "datasets": {
     "synthetic_gradients": {
@@ -20,7 +20,9 @@
           "validated_by": "leaderboard/reports/athanase_lab_2025-10-16_12-32-07-879884.json",
           "energy_joules": null,
           "caq_e": null,
-          "device_info": null
+          "device_info": null,
+          "variance_gate_pass": true,
+          "variance_stats": null
         },
         {
           "report_file": "athanase_lab_2025-10-16_12-32-07-879368.json",
@@ -38,7 +40,9 @@
           "validated_by": "leaderboard/reports/athanase_lab_2025-10-16_12-32-07-879368.json",
           "energy_joules": null,
           "caq_e": null,
-          "device_info": null
+          "device_info": null,
+          "variance_gate_pass": true,
+          "variance_stats": null
         }
       ],
       "stats": {
@@ -73,7 +77,9 @@
           "validated_by": "",
           "energy_joules": null,
           "caq_e": null,
-          "device_info": null
+          "device_info": null,
+          "variance_gate_pass": true,
+          "variance_stats": null
         },
         {
           "report_file": "jane_doe_institute_2025-10-13_21-38-48.json",
@@ -91,7 +97,9 @@
           "validated_by": "",
           "energy_joules": null,
           "caq_e": null,
-          "device_info": null
+          "device_info": null,
+          "variance_gate_pass": true,
+          "variance_stats": null
         },
         {
           "report_file": "jane_doe_institute_2025-10-13_21-37-56.json",
@@ -109,7 +117,9 @@
           "validated_by": "",
           "energy_joules": null,
           "caq_e": null,
-          "device_info": null
+          "device_info": null,
+          "variance_gate_pass": true,
+          "variance_stats": null
         },
         {
           "report_file": "jane_doe_institute_2025-10-13_21-15-49.json",
@@ -127,7 +137,9 @@
           "validated_by": "",
           "energy_joules": null,
           "caq_e": null,
-          "device_info": null
+          "device_info": null,
+          "variance_gate_pass": true,
+          "variance_stats": null
         },
         {
           "report_file": "jane_doe_institute_2025-10-13_21-08-23.json",
@@ -145,7 +157,9 @@
           "validated_by": "",
           "energy_joules": null,
           "caq_e": null,
-          "device_info": null
+          "device_info": null,
+          "variance_gate_pass": true,
+          "variance_stats": null
         }
       ],
       "stats": {
@@ -181,7 +195,9 @@
         "validated_by": "",
         "energy_joules": null,
         "caq_e": null,
-        "device_info": null
+        "device_info": null,
+        "variance_gate_pass": true,
+        "variance_stats": null
       },
       {
         "report_file": "jane_doe_institute_2025-10-13_21-38-48.json",
@@ -199,7 +215,9 @@
         "validated_by": "",
         "energy_joules": null,
         "caq_e": null,
-        "device_info": null
+        "device_info": null,
+        "variance_gate_pass": true,
+        "variance_stats": null
       },
       {
         "report_file": "jane_doe_institute_2025-10-13_21-37-56.json",
@@ -217,7 +235,9 @@
         "validated_by": "",
         "energy_joules": null,
         "caq_e": null,
-        "device_info": null
+        "device_info": null,
+        "variance_gate_pass": true,
+        "variance_stats": null
       },
       {
         "report_file": "jane_doe_institute_2025-10-13_21-15-49.json",
@@ -235,7 +255,9 @@
         "validated_by": "",
         "energy_joules": null,
         "caq_e": null,
-        "device_info": null
+        "device_info": null,
+        "variance_gate_pass": true,
+        "variance_stats": null
       },
       {
         "report_file": "jane_doe_institute_2025-10-13_21-08-23.json",
@@ -253,7 +275,9 @@
         "validated_by": "",
         "energy_joules": null,
         "caq_e": null,
-        "device_info": null
+        "device_info": null,
+        "variance_gate_pass": true,
+        "variance_stats": null
       },
       {
         "report_file": "athanase_lab_2025-10-16_12-32-07-879884.json",
@@ -271,7 +295,9 @@
         "validated_by": "leaderboard/reports/athanase_lab_2025-10-16_12-32-07-879884.json",
         "energy_joules": null,
         "caq_e": null,
-        "device_info": null
+        "device_info": null,
+        "variance_gate_pass": true,
+        "variance_stats": null
       },
       {
         "report_file": "athanase_lab_2025-10-16_12-32-07-879368.json",
@@ -289,7 +315,9 @@
         "validated_by": "leaderboard/reports/athanase_lab_2025-10-16_12-32-07-879368.json",
         "energy_joules": null,
         "caq_e": null,
-        "device_info": null
+        "device_info": null,
+        "variance_gate_pass": true,
+        "variance_stats": null
       }
     ],
     "stats": {

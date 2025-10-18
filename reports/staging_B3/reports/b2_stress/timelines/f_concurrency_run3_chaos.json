@@ -1,0 +1,68 @@
+{
+  "scenario": "f_concurrency",
+  "seed": 45,
+  "start_time": 1760758341.8922722,
+  "total_events": 6,
+  "events": [
+    {
+      "timestamp": 1760758342.001176,
+      "elapsed_ms": 108.90388488769531,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 1.8,
+      "duration_ms": 582.2325232548126,
+      "correlation_id": "f_concurrency_r3_s005",
+      "metadata": {}
+    },
+    {
+      "timestamp": 1760758342.159646,
+      "elapsed_ms": 267.37380027770996,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 1.8,
+      "duration_ms": 513.2302853695336,
+      "correlation_id": "f_concurrency_r3_s010",
+      "metadata": {}
+    },
+    {
+      "timestamp": 1760758343.213657,
+      "elapsed_ms": 1321.3846683502197,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 1.8,
+      "duration_ms": 1395.4929226621575,
+      "correlation_id": "f_concurrency_r3_s044",
+      "metadata": {}
+    },
+    {
+      "timestamp": 1760758343.598149,
+      "elapsed_ms": 1705.8768272399902,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 1.8,
+      "duration_ms": 1217.5448293644595,
+      "correlation_id": "f_concurrency_r3_s056",
+      "metadata": {}
+    },
+    {
+      "timestamp": 1760758343.8524284,
+      "elapsed_ms": 1960.1562023162842,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 1.8,
+      "duration_ms": 1776.3028946972038,
+      "correlation_id": "f_concurrency_r3_s064",
+      "metadata": {}
+    },
+    {
+      "timestamp": 1760758344.346394,
+      "elapsed_ms": 2454.1218280792236,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 1.8,
+      "duration_ms": 906.0630948833538,
+      "correlation_id": "f_concurrency_r3_s079",
+      "metadata": {}
+    }
+  ]
+}

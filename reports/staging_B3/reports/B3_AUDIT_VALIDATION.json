@@ -1,0 +1,63 @@
+{
+  "verification_date": "2025-10-18T07:02:29.954229",
+  "total_checks": 8,
+  "passed": 7,
+  "failed": 0,
+  "warnings": 1,
+  "checks": [
+    {
+      "check_name": "manifest_structure",
+      "status": "PASS",
+      "message": "Manifest structure valid",
+      "details": null
+    },
+    {
+      "check_name": "artifact_existence",
+      "status": "PASS",
+      "message": "All 20 artifacts found",
+      "details": null
+    },
+    {
+      "check_name": "hash_integrity",
+      "status": "PASS",
+      "message": "20 hashes verified",
+      "details": null
+    },
+    {
+      "check_name": "timestamp_chronology",
+      "status": "WARN",
+      "message": "Some timestamp irregularities",
+      "details": {
+        "issues": [
+          "C2: timestamps not chronological",
+          "B1: timestamps not chronological",
+          "B2: timestamps not chronological"
+        ]
+      }
+    },
+    {
+      "check_name": "signoff_completeness",
+      "status": "PASS",
+      "message": "All required sign-offs present",
+      "details": null
+    },
+    {
+      "check_name": "duplicate_entries",
+      "status": "PASS",
+      "message": "No duplicate entries",
+      "details": null
+    },
+    {
+      "check_name": "provenance_chain",
+      "status": "PASS",
+      "message": "Provenance chain complete (5 phases)",
+      "details": null
+    },
+    {
+      "check_name": "offline_integrity",
+      "status": "PASS",
+      "message": "Offline-only verification confirmed",
+      "details": null
+    }
+  ]
+}
