@@ -53,32 +53,46 @@ class MockBridgeEmulator:
 
     def _load_parameters(self, calibration_file: Optional[Path]) -> Dict:
         """Load emulation parameters from calibration or defaults."""
-        # Try calibration file first
-        if calibration_file and calibration_file.exists():
-            with open(calibration_file, 'r') as f:
-                calib = json.load(f)
-                print(f"Loaded calibration from {calibration_file}", file=sys.stderr)
-                return calib
-
-        # Try local calibration directory
-        calib_dir = Path(__file__).parent / "mock_bridge_calibration"
-        calib_path = calib_dir / f"{self.dataset}.json"
-        if calib_path.exists():
-            with open(calib_path, 'r') as f:
-                calib = json.load(f)
-                print(f"Loaded local calibration: {calib_path}", file=sys.stderr)
-                return calib
-
-        # Fall back to defaults
+        # Always load defaults first
         default_path = Path(__file__).parent / "mock_bridge_default_params.json"
         with open(default_path, 'r') as f:
             defaults = json.load(f)
-            print(f"Using default parameters (no calibration found)", file=sys.stderr)
 
             if self.dataset not in defaults["datasets"]:
                 raise ValueError(f"Unknown dataset: {self.dataset}. Available: {list(defaults['datasets'].keys())}")
 
-            return defaults["datasets"][self.dataset]
+            params = defaults["datasets"][self.dataset].copy()
+
+        # Try to merge with calibration file
+        calib = None
+        if calibration_file and calibration_file.exists():
+            with open(calibration_file, 'r') as f:
+                calib = json.load(f)
+                print(f"Loaded calibration from {calibration_file}", file=sys.stderr)
+        else:
+            # Try local calibration directory
+            calib_dir = Path(__file__).parent / "mock_bridge_calibration"
+            calib_path = calib_dir / f"{self.dataset}.json"
+            if calib_path.exists():
+                with open(calib_path, 'r') as f:
+                    calib = json.load(f)
+                    print(f"Loaded local calibration: {calib_path}", file=sys.stderr)
+
+        # Merge calibration into params (calibration overrides defaults)
+        if calib:
+            # Merge per-layer stats if present
+            if "per_layer_stats" in calib:
+                params["per_layer_stats"] = calib["per_layer_stats"]
+            # Merge global metrics if present
+            if "global_metrics" in calib:
+                params["global_metrics"] = calib["global_metrics"]
+            # Merge metadata if present
+            if "metadata" in calib:
+                params["metadata"] = calib["metadata"]
+        else:
+            print(f"Using default parameters (no calibration found)", file=sys.stderr)
+
+        return params
 
     def sample_compression_ratio(self) -> float:
         """Sample compression ratio from configured distribution."""
@@ -88,7 +102,8 @@ class MockBridgeEmulator:
 
         if dist == "lognormal":
             # Sample from log-normal distribution
-            ratio = self.rng.lognormal(mean=params["mu"], sigma=params["sigma"])
+            mu = params.get("mu", params.get("mean", 0.0))
+            ratio = self.rng.lognormal(mean=mu, sigma=params["sigma"])
         elif dist == "gamma":
             # Sample from gamma distribution
             ratio = self.rng.gamma(shape=params["shape"], scale=params["scale"])
@@ -116,7 +131,8 @@ class MockBridgeEmulator:
         params = cpu_config["params"]
 
         if dist == "lognormal":
-            cpu_time = self.rng.lognormal(mean=params["mu"], sigma=params["sigma"])
+            mu = params.get("mu", params.get("mean", 0.0))
+            cpu_time = self.rng.lognormal(mean=mu, sigma=params["sigma"])
         elif dist == "gamma":
             cpu_time = self.rng.gamma(shape=params["shape"], scale=params["scale"])
         else:
@@ -148,12 +164,102 @@ class MockBridgeEmulator:
         else:
             raise ValueError(f"Unknown energy method: {method}")
 
-    def sample_run(self, original_size: int) -> Dict[str, Any]:
+    def sample_per_layer_stats(self, layer_name: str) -> Dict[str, Any]:
+        """
+        Sample per-layer statistics from calibration or defaults.
+
+        Args:
+            layer_name: Layer identifier
+
+        Returns:
+            Dictionary with per-layer statistics
+        """
+        # Check if we have calibrated per-layer stats
+        if "per_layer_stats" in self.params and layer_name in self.params["per_layer_stats"]:
+            layer_calib = self.params["per_layer_stats"][layer_name]
+
+            # Sample from fitted distribution
+            dist = layer_calib["fit_distribution"]
+            params = layer_calib["fit_params"]
+
+            if dist == "lognormal":
+                mu = params.get("mu", params.get("mean", 0.0))
+                mean_abs = self.rng.lognormal(mean=mu, sigma=params["sigma"])
+            elif dist == "gamma":
+                mean_abs = self.rng.gamma(shape=params["shape"], scale=params["scale"])
+            else:
+                mean_abs = layer_calib["mean_abs_median"]
+
+            # Sample std and sparsity from empirical stats
+            std = self.rng.lognormal(
+                mean=np.log(layer_calib["std_median"] + 1e-10),
+                sigma=layer_calib["std_std"] / (layer_calib["std_median"] + 1e-10)
+            )
+
+            sparsity = np.clip(
+                self.rng.normal(layer_calib["sparsity_mean"], layer_calib["sparsity_std"]),
+                0.0, 1.0
+            )
+
+            quant_error = self.rng.normal(
+                layer_calib["quant_error_mean"],
+                layer_calib["quant_error_std"]
+            )
+
+        else:
+            # Use per-layer defaults if available
+            if "per_layer_defaults" in self.params:
+                defaults = self.params["per_layer_defaults"]
+
+                # Sample mean_abs
+                mean_cfg = defaults.get("mean_abs", {"distribution": "lognormal", "params": {"mean": -2.0, "sigma": 0.5}})
+                if mean_cfg["distribution"] == "lognormal":
+                    mean_abs = self.rng.lognormal(**mean_cfg["params"])
+                else:
+                    mean_abs = 0.1
+
+                # Sample std
+                std_cfg = defaults.get("std", {"distribution": "lognormal", "params": {"mean": -2.5, "sigma": 0.3}})
+                if std_cfg["distribution"] == "lognormal":
+                    std = self.rng.lognormal(**std_cfg["params"])
+                else:
+                    std = 0.05
+
+                # Sample sparsity
+                spar_cfg = defaults.get("sparsity", {"distribution": "beta", "params": {"a": 2.0, "b": 5.0}})
+                if spar_cfg["distribution"] == "beta":
+                    sparsity = self.rng.beta(**spar_cfg["params"])
+                else:
+                    sparsity = 0.3
+
+                # Sample quant error
+                qe_cfg = defaults.get("quant_error", {"distribution": "normal", "params": {"mu": 0.0, "sigma": 0.01}})
+                if qe_cfg["distribution"] == "normal":
+                    quant_error = self.rng.normal(**qe_cfg["params"])
+                else:
+                    quant_error = 0.0
+            else:
+                # Absolute fallback
+                mean_abs = self.rng.lognormal(-2.0, 0.5)
+                std = self.rng.lognormal(-2.5, 0.3)
+                sparsity = self.rng.beta(2.0, 5.0)
+                quant_error = self.rng.normal(0.0, 0.01)
+
+        return {
+            "layer_name": layer_name,
+            "mean_abs": float(mean_abs),
+            "std": float(std),
+            "sparsity": float(sparsity),
+            "quantization_error": float(quant_error)
+        }
+
+    def sample_run(self, original_size: int, emulate_per_layer: bool = False) -> Dict[str, Any]:
         """
         Generate a single simulated benchmark run.
 
         Args:
             original_size: Input data size in bytes
+            emulate_per_layer: If True, include per-layer statistics
 
         Returns:
             Dictionary with compression metrics
@@ -170,7 +276,7 @@ class MockBridgeEmulator:
         caq = ratio / (cpu_seconds + 1.0)
         caq_e = ratio / (energy_joules + cpu_seconds)
 
-        return {
+        result = {
             "compression_ratio": float(ratio),
             "original_size": original_size,
             "compressed_size": compressed_size,
@@ -181,11 +287,33 @@ class MockBridgeEmulator:
             "caq_e": float(caq_e),
         }
 
-    def generate_samples(self, n_samples: int, original_size: int) -> List[Dict[str, Any]]:
+        # Add per-layer stats if requested
+        if emulate_per_layer:
+            # Determine layers to emulate
+            if "per_layer_stats" in self.params:
+                layer_names = list(self.params["per_layer_stats"].keys())
+            elif "per_layer_defaults" in self.params:
+                # Use default layer names
+                layer_names = ["conv1", "conv2", "fc1", "fc2", "output"]
+            else:
+                layer_names = []
+
+            per_tensor_stats = []
+            for layer_name in layer_names:
+                layer_stats = self.sample_per_layer_stats(layer_name)
+                # Add shape (mock)
+                layer_stats["shape"] = [64, 64] if "conv" in layer_name else [128, 128]
+                per_tensor_stats.append(layer_stats)
+
+            result["per_tensor_stats"] = per_tensor_stats
+
+        return result
+
+    def generate_samples(self, n_samples: int, original_size: int, emulate_per_layer: bool = False) -> List[Dict[str, Any]]:
         """Generate multiple independent samples."""
         samples = []
         for i in range(n_samples):
-            sample = self.sample_run(original_size)
+            sample = self.sample_run(original_size, emulate_per_layer=emulate_per_layer)
             sample["run_id"] = i
             samples.append(sample)
         return samples
@@ -273,6 +401,7 @@ Examples:
     parser.add_argument('--calibration-file', type=Path, help='Path to calibration JSON (optional)')
     parser.add_argument('--replay', type=Path, help='Replay trace from JSON file (exact reproduction)')
     parser.add_argument('--original-size', type=int, help='Original data size in bytes (default: from defaults)')
+    parser.add_argument('--emulate-per-layer', action='store_true', help='Include per-layer/tensor statistics in output')
 
     # Legacy compression mode
     parser.add_argument('operation', nargs='?', choices=['compress', 'decompress'], help='Legacy operation mode')
@@ -319,17 +448,16 @@ Examples:
 
     # Load default original size if not specified
     if args.original_size is None:
-        defaults_path = Path(__file__).parent / "mock_bridge_default_params.json"
-        with open(defaults_path, 'r') as f:
-            defaults = json.load(f)
-            args.original_size = defaults["global_defaults"]["original_size_bytes"].get(args.dataset, 1048576)
+        args.original_size = 1048576  # Default: 1 MB
 
     # Initialize emulator
     emulator = MockBridgeEmulator(args.dataset, args.seed, args.calibration_file)
 
     # Generate samples
     print(f"Generating {args.n_samples} samples for {args.dataset} (seed={args.seed})", file=sys.stderr)
-    samples = emulator.generate_samples(args.n_samples, args.original_size)
+    if args.emulate_per_layer:
+        print(f"  Per-layer emulation: ENABLED", file=sys.stderr)
+    samples = emulator.generate_samples(args.n_samples, args.original_size, emulate_per_layer=args.emulate_per_layer)
 
     # Output results
     if args.out:

@@ -1,0 +1,36 @@
+{
+  "timestamp": 1760758341.8565843,
+  "reason": "f_concurrency: Energy-CAQ correlation 1.000 outside expected range [-0.950, -0.850]",
+  "baseline": {
+    "mean_caq_e": 87.92,
+    "std_caq_e": 42.62,
+    "mean_energy": 0.041,
+    "std_energy": 0.023,
+    "config_name": "stress_test_baseline",
+    "num_samples": 0
+  },
+  "state": {
+    "is_stable": false,
+    "current_variance_percent": 0.0,
+    "current_drift_percent": 1.616339253321429e-14,
+    "window_size": 20,
+    "total_updates": 4950,
+    "last_rollback_time": 1760758341.8565836,
+    "consecutive_stable_checks": 0,
+    "rollback_count": 98
+  },
+  "window_config": {
+    "size": 20,
+    "drift_threshold": 0.15,
+    "variance_threshold": 0.75,
+    "energy_correlation_range": [
+      -0.95,
+      -0.85
+    ]
+  },
+  "current_metrics": {
+    "variance_percent": 0.0,
+    "drift_percent": 1.616339253321429e-14,
+    "window_fill": 20
+  }
+}

@@ -1,0 +1,108 @@
+================================================================================
+PHASE C2: CROSS-PLATFORM VARIANCE EMULATION AUDIT
+================================================================================
+
+Run Tag: 20251017_135423
+Timestamp: 2025-10-17T13:54:23.687067
+Seed: 42
+Repeats: 3
+
+CONFIGURATIONS TESTED:
+--------------------------------------------------------------------------------
+
+baseline: completed
+  Default system configuration (no changes)
+
+governor_powersave: skipped
+  CPU governor set to powersave
+  Reason: Requires sudo privileges (not available)
+
+governor_performance: skipped
+  CPU governor set to performance
+  Reason: Requires sudo privileges (not available)
+
+cores_half: completed
+  Limited to 4 cores (half of 8)
+
+single_core: completed
+  Limited to single core (core 0)
+
+turbo_disabled: skipped
+  Turbo Boost disabled (if supported)
+  Reason: Requires sudo privileges (not available)
+
+
+CROSS-CONFIGURATION METRICS:
+--------------------------------------------------------------------------------
+Number of configs: 3
+Cross-config variance: 14.70%
+Max drift: 40.41%
+Energy-CAQ correlation: -0.9733
+
+
+PER-CONFIGURATION RESULTS:
+--------------------------------------------------------------------------------
+
+baseline:
+  Runs: 6
+  CAQ-E mean: 87.9184
+  CAQ-E median: 105.7150
+  CAQ-E std: 42.6170
+  IQR/median ratio: 47.05%
+
+governor_powersave:
+
+governor_performance:
+
+cores_half:
+  Runs: 6
+  CAQ-E mean: 123.4454
+  CAQ-E median: 151.5326
+  CAQ-E std: 59.3027
+  IQR/median ratio: 51.76%
+
+single_core:
+  Runs: 6
+  CAQ-E mean: 96.7815
+  CAQ-E median: 92.6691
+  CAQ-E std: 51.1656
+  IQR/median ratio: 74.23%
+
+turbo_disabled:
+
+
+EVALUATION:
+--------------------------------------------------------------------------------
+Overall: ✗ FAIL
+Flags: 5
+
+  • High cross-config variance: 14.70% > 10.0%
+  • High drift in cores_half: 40.41% > 15.0%
+  • High intra-config variance in baseline: 47.05%
+  • High intra-config variance in cores_half: 51.76%
+  • High intra-config variance in single_core: 74.23%
+
+
+MITIGATIONS:
+--------------------------------------------------------------------------------
+
+1. MITIGATION: High cross-config variance detected. Consider:
+  - Running benchmarks with longer warmup periods
+  - Increasing number of repeats for better statistical power
+  - Normalizing CAQ-E by system-specific baseline
+  - Using RuntimeGuard variance gate to filter unstable runs
+
+2. MITIGATION: Significant configuration drift detected. Consider:
+  - Documenting expected performance ranges per configuration
+  - Using configuration-specific baselines instead of single baseline
+  - Implementing adaptive thresholds based on configuration type
+
+3. MITIGATION: High variance within configurations. Consider:
+  - Disabling CPU frequency scaling during benchmarks
+  - Isolating CPU cores for benchmark process
+  - Increasing process priority (nice -20)
+  - Checking for thermal throttling
+
+================================================================================
+END OF AUDIT
+================================================================================

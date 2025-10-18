@@ -1,0 +1,306 @@
+================================================================================
+PHASE B1 NAMESPACE MIGRATION REPORT
+================================================================================
+
+Date: 2025-10-17
+Migration Type: Code Relocation (Data Preserved)
+Status: COMPLETE ✓
+
+================================================================================
+MIGRATION SUMMARY
+================================================================================
+
+Objective:
+  Relocate Phase B1 runtime guardrails from project root to src-research-lab
+  namespace for proper module organization and reproducibility alignment.
+
+Approach:
+  SAFE MIGRATION - Separate code from runtime data
+  - Move ONLY Python code to src-research-lab/
+  - PRESERVE runtime data at project root for audit continuity
+
+================================================================================
+STRUCTURAL CHANGES
+================================================================================
+
+BEFORE Migration:
+```
+compression_lab/
+├── runtime/
+│   ├── guardrails.py          ← CODE (moved)
+│   ├── guardrail_state.json   ← DATA (preserved)
+│   └── logs/
+│       └── guardrail_events.log ← DATA (preserved)
+├── tests/
+│   └── test_guardrails_runtime.py
+└── scripts/
+    └── run_guardrail_monitor.py
+```
+
+AFTER Migration:
+```
+compression_lab/
+├── src-research-lab/          ← Lab namespace
+│   └── runtime/               ← NEW
+│       ├── __init__.py        ← NEW (package file)
+│       └── guardrails.py      ← MOVED from runtime/
+├── runtime/                   ← PRESERVED for data
+│   ├── guardrail_state.json   ← UNCHANGED
+│   └── logs/
+│       └── guardrail_events.log ← UNCHANGED
+├── tests/
+│   └── test_guardrails_runtime.py ← Updated imports
+└── scripts/
+    └── run_guardrail_monitor.py ← Updated imports
+```
+
+================================================================================
+FILES MODIFIED
+================================================================================
+
+1. src-research-lab/runtime/guardrails.py (NEW - copied from runtime/)
+   - File contents: UNCHANGED
+   - Location: MOVED to lab namespace
+   - Size: 20 KB (641 lines)
+
+2. src-research-lab/runtime/__init__.py (NEW - created)
+   - Package initialization file
+   - Exports: GuardrailManager, BaselineStats, GuardrailState
+   - Version: 0.4.4.1
+
+3. tests/test_guardrails_runtime.py (MODIFIED)
+   Change: sys.path.insert(0, str(Path(__file__).parent.parent / "src-research-lab"))
+   Impact: Tests now import from lab namespace
+   Result: All 38 tests pass ✓
+
+4. scripts/run_guardrail_monitor.py (MODIFIED)
+   Change: sys.path.insert(0, str(Path(__file__).parent.parent / "src-research-lab"))
+   Impact: CLI monitor imports from lab namespace
+   Result: Functional ✓
+
+5. src-research-lab/experiments/run_energy_benchmark.py (MODIFIED)
+   Change: Removed extra sys.path.insert (already pointed to parent)
+   Impact: B1 integration imports from lab namespace
+   Result: Compatible ✓
+
+6. docs/guardrails_design.md (MODIFIED)
+   Change: Updated architecture diagram path reference
+   Impact: Documentation reflects new structure
+   Result: Accurate ✓
+
+7. runtime/guardrails.py (DELETED)
+   - Removed from project root
+   - Now lives in src-research-lab/runtime/
+
+================================================================================
+FILES PRESERVED (Runtime Data)
+================================================================================
+
+✓ runtime/guardrail_state.json
+  - Purpose: Persisted rollback state for audit trails
+  - Location: UNCHANGED (project root)
+  - Impact: NONE - State persistence paths unchanged
+
+✓ runtime/logs/guardrail_events.log
+  - Purpose: Event log for monitoring history
+  - Location: UNCHANGED (project root)
+  - Impact: NONE - Log file paths unchanged
+
+✓ All historical reports in release/
+  - PHASE_B1_VALIDATION_REPORT.txt preserved as-is
+  - PHASE_B1_SIGNOFF_BUNDLE.tar.xz preserved as-is
+  - Historical references kept for audit continuity
+
+================================================================================
+IMPORT PATH CHANGES
+================================================================================
+
+OLD Import Pattern (from project root):
+```python
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from runtime.guardrails import GuardrailManager
+```
+
+NEW Import Pattern (from lab namespace):
+```python
+sys.path.insert(0, str(Path(__file__).parent.parent / "src-research-lab"))
+from runtime.guardrails import GuardrailManager
+```
+
+Files Updated:
+  ✓ tests/test_guardrails_runtime.py
+  ✓ scripts/run_guardrail_monitor.py
+  ✓ src-research-lab/experiments/run_energy_benchmark.py (simplified)
+
+================================================================================
+VALIDATION RESULTS
+================================================================================
+
+1. Unit Tests
+   Command: pytest -v tests/test_guardrails_runtime.py
+   Result: 38/38 PASSED ✓
+   Time: 0.26 seconds
+   Output: reports/pytest_B1_post_migration.txt
+
+2. CLI Monitor
+   Command: python3 scripts/run_guardrail_monitor.py --simulate --max-iterations 10
+   Result: FUNCTIONAL ✓
+   Logs: runtime/logs/guardrail_events.log (continues from pre-migration)
+
+3. Python Import Verification
+   Command: python3 -c "from runtime.guardrails import GuardrailManager"
+   Result: SUCCESS ✓
+   Output: GuardrailManager class imported successfully
+
+4. State Persistence
+   Check: runtime/guardrail_state.json exists and valid
+   Result: PRESERVED ✓
+   Content: Pre-migration state intact
+
+5. Phase C2 Integration
+   Feature: Config-aware baseline loading
+   Check: Can load from reports/c2_emulation/c2_audit_complete.json
+   Result: FUNCTIONAL ✓
+
+================================================================================
+REPRODUCIBILITY IMPACT ASSESSMENT
+================================================================================
+
+CODE (MOVED):
+  Location: runtime/ → src-research-lab/runtime/
+  Impact: Import paths changed (one-time update)
+  Risk: LOW - Systematic find/replace in 3 files
+  Result: ✓ All imports updated and tested
+
+DATA (PRESERVED):
+  Location: runtime/{state,logs}/ UNCHANGED
+  Impact: NONE - Paths remain project-root-relative
+  Risk: NONE - Data not moved
+  Result: ✓ Audit trails maintained
+
+AUDIT TRAILS:
+  Historical Reports: release/ UNCHANGED
+  C2 Integration: reports/c2_emulation/ UNCHANGED
+  Test Outputs: reports/ UNCHANGED
+  Result: ✓ Complete audit continuity
+
+BACKWARD COMPATIBILITY:
+  State File Format: UNCHANGED
+  Log Format: UNCHANGED
+  API Surface: UNCHANGED
+  Result: ✓ Fully compatible
+
+================================================================================
+RISK ANALYSIS
+================================================================================
+
+Risks Identified & Mitigated:
+
+1. ❌ Breaking state persistence
+   Mitigation: Kept data at project root, code paths unchanged
+   Status: ✓ MITIGATED
+
+2. ❌ Breaking audit trails
+   Mitigation: Preserved all historical reports as-is
+   Status: ✓ MITIGATED
+
+3. ❌ Breaking Phase C2 integration
+   Mitigation: C2 audit paths unchanged, config-aware loading tested
+   Status: ✓ MITIGATED
+
+4. ❌ Breaking test discovery
+   Mitigation: Tests remain at project root, only imports updated
+   Status: ✓ MITIGATED
+
+5. ❌ Import path confusion
+   Mitigation: Systematic updates, added __init__.py, tested all entry points
+   Status: ✓ MITIGATED
+
+Final Risk Level: NONE - All risks mitigated successfully
+
+================================================================================
+GIT COMMITS
+================================================================================
+
+Parent Repo (compression_lab):
+  Commit: 3651fe5
+  Message: "chore(structure): update B1 imports for lab namespace alignment"
+  Files: 5 changed (+59, -561)
+  Tag: v0.4.4.1-B1a
+
+Submodule (src-research-lab):
+  Commit: 2461f53
+  Message: "chore(structure): relocate runtime subsystem inside lab namespace"
+  Files: 3 changed (+713, -3)
+  Branch: feature/energy-aware-compression-phase-h5
+
+================================================================================
+MIGRATION CHECKLIST
+================================================================================
+
+Pre-Migration:
+  ✓ Analyzed current structure and dependencies
+  ✓ Identified code vs. data separation
+  ✓ Documented hardcoded paths
+  ✓ Planned safe migration approach
+  ✓ Created migration analysis document
+
+During Migration:
+  ✓ Created src-research-lab/runtime/ directory
+  ✓ Moved guardrails.py to lab namespace
+  ✓ Created __init__.py package file
+  ✓ Updated imports in tests
+  ✓ Updated imports in scripts
+  ✓ Updated imports in experiments
+  ✓ Updated documentation references
+  ✓ Preserved runtime data at project root
+  ✓ Removed old guardrails.py from project root
+
+Post-Migration:
+  ✓ All 38 unit tests pass
+  ✓ CLI monitor functional
+  ✓ Python imports verified
+  ✓ State persistence confirmed
+  ✓ C2 integration tested
+  ✓ Audit trails verified intact
+  ✓ Committed to both repos
+  ✓ Tagged v0.4.4.1-B1a
+  ✓ Generated migration report
+
+================================================================================
+CONCLUSION
+================================================================================
+
+Migration Status: ✓ COMPLETE
+Migration Type: Safe (code-only, data preserved)
+Tests: 38/38 PASSED
+Functionality: 100% MAINTAINED
+Reproducibility: 100% MAINTAINED
+Audit Trails: 100% PRESERVED
+
+The Phase B1 runtime subsystem has been successfully relocated to the
+src-research-lab namespace with:
+- ZERO functionality loss
+- ZERO data loss
+- ZERO audit trail disruption
+- 100% test pass rate
+- Complete backward compatibility
+
+The migration separates code (versioned in lab) from runtime data (audit trails),
+aligning with lab organization standards while preserving full reproducibility.
+
+================================================================================
+SIGN-OFF
+================================================================================
+
+Migration: Phase B1 Runtime Subsystem → Lab Namespace
+Date: 2025-10-17
+Status: APPROVED ✓
+Tag: v0.4.4.1-B1a
+
+Validated by: Automated Test Suite + Manual Verification
+Approved by: Athanase Nshombo (Matabaro)
+
+CLEARED FOR PRODUCTION USE ✓
+
+================================================================================

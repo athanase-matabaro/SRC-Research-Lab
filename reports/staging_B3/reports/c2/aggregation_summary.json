@@ -1,0 +1,80 @@
+{
+  "file_counts": {
+    "benchmark_results": 8,
+    "log_files": 8,
+    "report_jsons": 5,
+    "report_txts": 9
+  },
+  "audit_summary": {
+    "num_configs": 8,
+    "config_names": [
+      "baseline",
+      "governor_powersave",
+      "governor_performance",
+      "cores_half",
+      "single_core",
+      "hyperthreading_off",
+      "turbo_off",
+      "freq_limit_1_2ghz"
+    ],
+    "cross_config_variance_percent": 43.765712537594595,
+    "caq_e_grand_mean": 91.49550982358338,
+    "caq_e_std": 40.04366181419613,
+    "caq_e_min": 29.134815404429162,
+    "caq_e_max": 142.95709097759644,
+    "drift_indices": {
+      "governor_powersave": 56.24180168126338,
+      "governor_performance": 12.640539185991425,
+      "cores_half": 40.409020721286474,
+      "single_core": 10.080982098842288,
+      "hyperthreading_off": 62.601952197818854,
+      "turbo_off": 57.28264281552001,
+      "freq_limit_1_2ghz": 66.86153985586006
+    },
+    "max_drift_percent": 66.86153985586006,
+    "energy_caq_correlation": -0.9190255667341821,
+    "baseline_mean_caqe": 87.91843458538382
+  },
+  "per_config_summary": {
+    "baseline": {
+      "mean_caqe": 87.91843458538382,
+      "iqr_median_ratio": 47.04780888931833,
+      "num_runs": 6
+    },
+    "governor_powersave": {
+      "mean_caqe": 137.36534620616666,
+      "iqr_median_ratio": 65.91349460736554,
+      "num_runs": 6
+    },
+    "governor_performance": {
+      "mean_caqe": 76.80507040990814,
+      "iqr_median_ratio": 62.803700908394475,
+      "num_runs": 6
+    },
+    "cores_half": {
+      "mean_caqe": 123.44541303482227,
+      "iqr_median_ratio": 51.76317237729965,
+      "num_runs": 6
+    },
+    "single_core": {
+      "mean_caqe": 96.78147623751873,
+      "iqr_median_ratio": 74.2287355168139,
+      "num_runs": 6
+    },
+    "hyperthreading_off": {
+      "mean_caqe": 142.95709097759644,
+      "iqr_median_ratio": 64.16940766695099,
+      "num_runs": 6
+    },
+    "turbo_off": {
+      "mean_caqe": 37.556431732841794,
+      "iqr_median_ratio": 65.31691329151828,
+      "num_runs": 6
+    },
+    "freq_limit_1_2ghz": {
+      "mean_caqe": 29.134815404429162,
+      "iqr_median_ratio": 55.77761110687482,
+      "num_runs": 6
+    }
+  }
+}

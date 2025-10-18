@@ -1,0 +1,54 @@
+================================================================================
+PHASE B.2 - LATENCY SUMMARY BY SCENARIO
+================================================================================
+
+Scenario: a_energy_spikes
+  Detection Latency:     0.614 ms  (target: ≤1000 ms)
+  Rollback Time:         0.281 ms  (target: ≤5000 ms)
+  Recovery Time:         0.000 ms  (target: ≤15000 ms)
+  Runs: 3
+
+Scenario: b_zero_caq
+  Detection Latency:     0.000 ms  (target: ≤1000 ms)
+  Rollback Time:         0.293 ms  (target: ≤5000 ms)
+  Recovery Time:         0.000 ms  (target: ≤15000 ms)
+  Runs: 3
+
+Scenario: c_gradual_drift
+  Detection Latency:     0.620 ms  (target: ≤1000 ms)
+  Rollback Time:         0.270 ms  (target: ≤5000 ms)
+  Recovery Time:         0.000 ms  (target: ≤15000 ms)
+  Runs: 3
+
+Scenario: d_parallel_anomalies
+  Detection Latency:     0.615 ms  (target: ≤1000 ms)
+  Rollback Time:         0.257 ms  (target: ≤5000 ms)
+  Recovery Time:         0.000 ms  (target: ≤15000 ms)
+  Runs: 3
+
+Scenario: e_excessive_variance
+  Detection Latency:     0.568 ms  (target: ≤1000 ms)
+  Rollback Time:         0.240 ms  (target: ≤5000 ms)
+  Recovery Time:         0.000 ms  (target: ≤15000 ms)
+  Runs: 3
+
+Scenario: f_concurrency
+  Detection Latency:     0.613 ms  (target: ≤1000 ms)
+  Rollback Time:         0.258 ms  (target: ≤5000 ms)
+  Recovery Time:         0.000 ms  (target: ≤15000 ms)
+  Runs: 3
+
+================================================================================
+OVERALL STATISTICS
+================================================================================
+Total scenarios: 6
+Total runs: 18
+
+Overall median detection latency: 0.603 ms
+Overall median rollback time:     0.261 ms
+Overall median recovery time:     0.000 ms
+
+✓ Detection latency: 0.603 ms << 1000 ms (PASS)
+✓ Rollback time:     0.261 ms << 5000 ms (PASS)
+⚠ Recovery time:     0.000 ms (synthetic harness limitation)
+================================================================================

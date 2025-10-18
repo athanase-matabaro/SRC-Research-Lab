@@ -1,155 +1,23 @@
 {
-  "version": "1.0.0",
-  "description": "Default emulation parameters for mock_bridge when calibration files are unavailable. These conservative estimates provide realistic statistical behavior without exposing proprietary details.",
-  "last_updated": "2025-10-17",
+  "schema_version": "1.0",
   "datasets": {
     "text_medium": {
-      "compression_ratio": {
-        "distribution": "lognormal",
-        "params": {
-          "mu": 0.8,
-          "sigma": 0.15
-        },
-        "description": "Log-normal distribution for compression ratio (mu, sigma in log-space)"
-      },
-      "cpu_seconds": {
-        "distribution": "lognormal",
-        "params": {
-          "mu": -3.5,
-          "sigma": 0.3
-        },
-        "description": "CPU time in seconds (log-normal, typically 0.01-0.1s)"
-      },
-      "compressed_size_bytes": {
-        "method": "derived",
-        "description": "Computed as original_size / compression_ratio"
-      },
-      "energy_joules": {
-        "method": "linear_model",
-        "params": {
-          "base_power_watts": 35.0,
-          "noise_sigma": 0.05
-        },
-        "description": "energy = cpu_seconds * base_power_watts * (1 + noise)"
-      },
-      "noise_model": {
-        "cpu_jitter_sigma": 0.001,
-        "ratio_multiplier_sigma": 0.02,
-        "tail_mixture_weight": 0.05,
-        "tail_scale_factor": 1.5
-      }
-    },
-    "image_small": {
-      "compression_ratio": {
-        "distribution": "lognormal",
-        "params": {
-          "mu": 1.0,
-          "sigma": 0.18
-        }
-      },
-      "cpu_seconds": {
-        "distribution": "lognormal",
-        "params": {
-          "mu": -3.2,
-          "sigma": 0.25
-        }
-      },
-      "compressed_size_bytes": {
-        "method": "derived"
-      },
-      "energy_joules": {
-        "method": "linear_model",
-        "params": {
-          "base_power_watts": 35.0,
-          "noise_sigma": 0.05
-        }
-      },
-      "noise_model": {
-        "cpu_jitter_sigma": 0.0015,
-        "ratio_multiplier_sigma": 0.025,
-        "tail_mixture_weight": 0.05,
-        "tail_scale_factor": 1.5
-      }
+      "compression_ratio": {"distribution": "lognormal", "params": {"mean": 1.5, "sigma": 0.3}},
+      "cpu_seconds": {"distribution": "lognormal", "params": {"mean": -1.0, "sigma": 0.2}},
+      "energy_joules": {"method": "linear_model", "params": {"base_power_watts": 35.0, "noise_sigma": 0.05}},
+      "noise_model": {"ratio_multiplier_sigma": 0.02, "cpu_jitter_sigma": 0.001, "tail_mixture_weight": 0.05, "tail_scale_factor": 1.5}
     },
     "mixed_stream": {
-      "compression_ratio": {
-        "distribution": "lognormal",
-        "params": {
-          "mu": 0.9,
-          "sigma": 0.2
-        }
-      },
-      "cpu_seconds": {
-        "distribution": "lognormal",
-        "params": {
-          "mu": -3.0,
-          "sigma": 0.35
-        }
-      },
-      "compressed_size_bytes": {
-        "method": "derived"
-      },
-      "energy_joules": {
-        "method": "linear_model",
-        "params": {
-          "base_power_watts": 35.0,
-          "noise_sigma": 0.05
-        }
-      },
-      "noise_model": {
-        "cpu_jitter_sigma": 0.002,
-        "ratio_multiplier_sigma": 0.03,
-        "tail_mixture_weight": 0.08,
-        "tail_scale_factor": 1.6
-      }
-    },
-    "synthetic_gradients": {
-      "compression_ratio": {
-        "distribution": "lognormal",
-        "params": {
-          "mu": 1.1,
-          "sigma": 0.22
-        }
-      },
-      "cpu_seconds": {
-        "distribution": "lognormal",
-        "params": {
-          "mu": -2.8,
-          "sigma": 0.4
-        }
-      },
-      "compressed_size_bytes": {
-        "method": "derived"
-      },
-      "energy_joules": {
-        "method": "linear_model",
-        "params": {
-          "base_power_watts": 35.0,
-          "noise_sigma": 0.06
-        }
-      },
-      "noise_model": {
-        "cpu_jitter_sigma": 0.003,
-        "ratio_multiplier_sigma": 0.035,
-        "tail_mixture_weight": 0.1,
-        "tail_scale_factor": 1.7
+      "compression_ratio": {"distribution": "lognormal", "params": {"mean": 1.2, "sigma": 0.41}},
+      "cpu_seconds": {"distribution": "lognormal", "params": {"mean": -0.8, "sigma": 0.3}},
+      "energy_joules": {"method": "linear_model", "params": {"base_power_watts": 35.0, "noise_sigma": 0.06}},
+      "noise_model": {"ratio_multiplier_sigma": 0.020, "cpu_jitter_sigma": 0.0015, "tail_mixture_weight": 0.05, "tail_scale_factor": 1.5},
+      "per_layer_defaults": {
+        "mean_abs": {"distribution": "lognormal", "params": {"mean": -2.0, "sigma": 0.5}},
+        "std": {"distribution": "lognormal", "params": {"mean": -2.5, "sigma": 0.3}},
+        "sparsity": {"distribution": "beta", "params": {"a": 2.0, "b": 5.0}},
+        "quant_error": {"distribution": "normal", "params": {"loc": 0.0, "scale": 0.01}}
       }
     }
-  },
-  "global_defaults": {
-    "original_size_bytes": {
-      "text_medium": 1048576,
-      "image_small": 524288,
-      "mixed_stream": 786432,
-      "synthetic_gradients": 40000
-    },
-    "seed": 42,
-    "description": "Default input sizes and seed for reproducibility"
-  },
-  "notes": {
-    "calibration": "These are conservative default parameters. For higher fidelity, run scripts/calibrate_mock_bridge.py with private benchmark results to generate dataset-specific calibration files.",
-    "privacy": "Default parameters do not expose proprietary algorithm details. Calibration files (if generated) should remain local and not be committed to version control.",
-    "determinism": "All sampling is seeded for reproducibility. Use --seed argument to override.",
-    "limitations": "Mock bridge emulates statistical properties only. It does not replicate the actual compression algorithm."
   }
 }

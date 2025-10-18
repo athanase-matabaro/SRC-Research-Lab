@@ -1,0 +1,78 @@
+{
+  "scenario": "d_parallel_anomalies",
+  "seed": 43,
+  "start_time": 1760758316.6728954,
+  "total_events": 7,
+  "events": [
+    {
+      "timestamp": 1760758316.673093,
+      "elapsed_ms": 0.1976490020751953,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 2.5,
+      "duration_ms": 831.8785247020818,
+      "correlation_id": "d_parallel_anomalies_r1_s000",
+      "metadata": {}
+    },
+    {
+      "timestamp": 1760758316.7539487,
+      "elapsed_ms": 81.05325698852539,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 2.5,
+      "duration_ms": 1414.2417303927891,
+      "correlation_id": "d_parallel_anomalies_r1_s004",
+      "metadata": {}
+    },
+    {
+      "timestamp": 1760758317.0544524,
+      "elapsed_ms": 381.5569877624512,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 2.5,
+      "duration_ms": 1297.0556772830205,
+      "correlation_id": "d_parallel_anomalies_r1_s014",
+      "metadata": {}
+    },
+    {
+      "timestamp": 1760758317.7704258,
+      "elapsed_ms": 1097.5303649902344,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 2.5,
+      "duration_ms": 1644.7559921506017,
+      "correlation_id": "d_parallel_anomalies_r1_s037",
+      "metadata": {}
+    },
+    {
+      "timestamp": 1760758318.420457,
+      "elapsed_ms": 1747.5614547729492,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 2.5,
+      "duration_ms": 1679.5946828221697,
+      "correlation_id": "d_parallel_anomalies_r1_s058",
+      "metadata": {}
+    },
+    {
+      "timestamp": 1760758318.6005359,
+      "elapsed_ms": 1927.640438079834,
+      "type": "zero_caq",
+      "target": "caq_e",
+      "magnitude": 0.0,
+      "duration_ms": 0,
+      "correlation_id": "d_parallel_anomalies_r1_s064",
+      "metadata": {}
+    },
+    {
+      "timestamp": 1760758318.8986347,
+      "elapsed_ms": 2225.7392406463623,
+      "type": "energy_spike",
+      "target": "energy_joules",
+      "magnitude": 2.5,
+      "duration_ms": 1206.5817434270273,
+      "correlation_id": "d_parallel_anomalies_r1_s074",
+      "metadata": {}
+    }
+  ]
+}
