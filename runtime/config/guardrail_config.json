@@ -1,0 +1,53 @@
+{
+  "schema_version": "2.0",
+  "description": "Runtime guardrail configuration with robust aggregation support (Phase D.1)",
+  "guardrails": {
+    "use_robust": true,
+    "robust_mode": "auto",
+    "robust_params": {
+      "trim_pct": 0.1,
+      "winsor_pct": 0.05
+    },
+    "window_size": 20,
+    "drift_threshold": 0.15,
+    "variance_threshold": 0.75,
+    "energy_correlation_range": [
+      -0.95,
+      -0.85
+    ],
+    "variance_multiplier": 2.0,
+    "use_per_layer_thresholds": true,
+    "per_layer_config_path": "src-research-lab/runtime/config/per_layer_thresholds.json"
+  },
+  "rollback": {
+    "enabled": true,
+    "preserve_aggregator_state": true,
+    "max_rollback_count": 3
+  },
+  "state_persistence": {
+    "enabled": true,
+    "state_file": "runtime/guardrail_state.json",
+    "save_interval_updates": 10
+  },
+  "logging": {
+    "enabled": true,
+    "log_file": "runtime/logs/guardrail_events.log",
+    "log_level": "INFO"
+  },
+  "profiles": {
+    "production": {
+      "use_robust": true,
+      "robust_mode": "auto",
+      "window_size": 50
+    },
+    "development": {
+      "use_robust": false,
+      "window_size": 20
+    },
+    "testing": {
+      "use_robust": true,
+      "robust_mode": "trimmed",
+      "window_size": 10
+    }
+  }
+}
