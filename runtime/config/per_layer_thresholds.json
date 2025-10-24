@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "description": "Per-layer adaptive thresholds for CAQ-E anomaly detection (Phase D.2)",
+  "default_global_threshold": 0.15,
+  "use_per_layer_thresholds": true,
+  "per_layer_thresholds": {
+    "conv1": {
+      "allowed_drift_pct": 0.30668110999391,
+      "threshold_scale": 2.0445407332927337,
+      "n_samples": 2547,
+      "mean_robust_mean": 0.15260164176249993,
+      "mean_robust_std": 0.08508832588122994
+    },
+    "conv2": {
+      "allowed_drift_pct": 0.27583914716499786,
+      "threshold_scale": 1.8389276477666525,
+      "n_samples": 2547,
+      "mean_robust_mean": 0.1426045868820443,
+      "mean_robust_std": 0.09031726098133074
+    },
+    "fc1": {
+      "allowed_drift_pct": 0.307462397310371,
+      "threshold_scale": 2.0497493154024733,
+      "n_samples": 2547,
+      "mean_robust_mean": 0.16117175637067863,
+      "mean_robust_std": 0.07859840302632477
+    },
+    "fc2": {
+      "allowed_drift_pct": 0.3402541171202133,
+      "threshold_scale": 2.268360780801422,
+      "n_samples": 2547,
+      "mean_robust_mean": 0.17667763177701307,
+      "mean_robust_std": 0.09002329799840884
+    },
+    "output": {
+      "allowed_drift_pct": 0.32447999628125157,
+      "threshold_scale": 2.163199975208344,
+      "n_samples": 2547,
+      "mean_robust_mean": 0.1666220434102032,
+      "mean_robust_std": 0.08428445003681864
+    }
+  },
+  "metadata": {
+    "n_layers": 5,
+    "layer_names": [
+      "conv1",
+      "conv2",
+      "fc1",
+      "fc2",
+      "output"
+    ]
+  }
+}
