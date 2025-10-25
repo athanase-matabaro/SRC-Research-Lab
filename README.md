@@ -168,7 +168,7 @@ cat results/benchmark_zstd.json | jq
 * **Workspace-only paths**: the SDK strictly rejects paths outside the workspace to prevent data leaks.
 * **Timeouts enforced**: default task limits (e.g., 300s) are enforced to prevent runaway processes.
 * **Network disabled**: the bridge enforces no-socket / no-telemetry behavior during operations.
-* **Sanitized outputs**: errors are returned as structured JSON only — no stack traces or private paths are leaked.
+* **Sanitized outputs**: errors are returned as structured JSON, only no stack traces or private paths are leaked.
 
 ---
 
