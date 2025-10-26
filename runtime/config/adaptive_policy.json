@@ -1,0 +1,7 @@
+{
+  "lambda": 0.5,
+  "S_threshold": 0.8,
+  "max_layer_z": 3.5,
+  "smoothing_tau": 1,
+  "weight_mapping": "exponential"
+}
