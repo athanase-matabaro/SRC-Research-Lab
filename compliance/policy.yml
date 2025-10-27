@@ -1,0 +1,81 @@
+# compliance/policy.yml
+# H5-05 Compliance Policy Configuration
+# Defines thresholds and rules for automated compliance validation
+
+version: "1.0"
+last_updated: "2025-10-27"
+
+# Vulnerability severity thresholds
+# Compliance check fails if findings exceed these limits
+vulnerability_thresholds:
+  critical: 0    # No critical vulnerabilities allowed
+  high: 0        # No high severity vulnerabilities allowed
+  medium: 10     # Up to 10 medium severity findings acceptable
+  low: 50        # Up to 50 low severity findings acceptable
+
+# Allowed open-source licenses
+# Dependencies with these licenses are acceptable
+allowed_licenses:
+  - MIT
+  - Apache-2.0
+  - BSD-2-Clause
+  - BSD-3-Clause
+  - ISC
+  - Python-2.0
+  - PSF
+  - Unlicense
+  - 0BSD
+
+# Forbidden licenses
+# Dependencies with these licenses will trigger compliance failure
+forbidden_licenses:
+  - GPL-3.0
+  - GPL-3.0-only
+  - GPL-3.0-or-later
+  - AGPL-3.0
+  - AGPL-3.0-only
+  - AGPL-3.0-or-later
+  - SSPL-1.0
+
+# License exemptions (requires approval)
+# Format: package_name: reason
+license_exemptions: {}
+
+# Paths to skip during compliance scans
+# Relative to repository root
+skip_paths:
+  - tests/fixtures
+  - tests/e2e/fixtures
+  - examples/
+  - docs/
+  - "*.md"
+
+# SAST configuration
+sast:
+  tool: bandit
+  severity_threshold: MEDIUM
+  confidence_threshold: MEDIUM
+  skip_tests: true
+
+# Dependency audit configuration
+dependency_audit:
+  python:
+    tool: pip-audit
+    check_transitive: true
+  node:
+    tool: npm-audit
+    production_only: false
+
+# Code quality thresholds (future)
+code_quality:
+  test_coverage_min: 80
+  complexity_max: 10
+  
+# Compliance exceptions
+# Temporary exceptions for findings that require manual review
+exceptions:
+  # Example:
+  # CVE-2024-12345:
+  #   reason: "False positive - using safe API subset"
+  #   approved_by: "@security-team"
+  #   expires: "2025-12-31"

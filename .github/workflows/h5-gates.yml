@@ -29,14 +29,23 @@ jobs:
           python-version: '3.11'
           cache: 'pip'
       
-      - name: Install dependencies
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq
+
+      - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
           # Ensure pytest is available
           pip install pytest pytest-cov
-      
+
+      - name: Install compliance tools
+        run: |
+          pip install bandit pip-audit pip-licenses
+
       - name: Run test suite
         id: tests
         run: |
@@ -68,7 +77,15 @@ jobs:
             /tmp/*.log
             pytest.log
           if-no-files-found: ignore
-      
+
+      - name: Upload compliance artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: compliance-artifacts
+          path: artifacts/
+          if-no-files-found: ignore
+
       - name: Compliance gate summary
         if: always()
         run: |
