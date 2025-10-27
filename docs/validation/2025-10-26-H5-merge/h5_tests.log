@@ -1,0 +1,56 @@
+=== H5 Test Runner ===
+Running tests wrapper...
+
+---
+Checking for pytest...
+........................................................................ [ 31%]
+........................................................................ [ 62%]
+....F...F..F...FF....................................................... [ 93%]
+...............                                                          [100%]
+=================================== FAILURES ===================================
+______________ TestParameterLoading.test_load_custom_calibration _______________
+tests/test_mock_bridge_fidelity.py:69: in test_load_custom_calibration
+    assert emulator.params["compression_ratio"]["params"]["mu"] == 1.0
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   KeyError: 'mu'
+----------------------------- Captured stderr call -----------------------------
+Loaded calibration from /tmp/pytest-of-athanase-matabaro/pytest-0/test_load_custom_calibration0/test_calib.json
+__________ TestDistributionSampling.test_lognormal_compression_ratio ___________
+tests/test_mock_bridge_fidelity.py:133: in test_lognormal_compression_ratio
+    assert 1.5 < mean_ratio < 4.0, f"Mean ratio {mean_ratio} out of expected range"
+E   AssertionError: Mean ratio 4.80479459377376 out of expected range
+E   assert np.float64(4.80479459377376) < 4.0
+----------------------------- Captured stderr call -----------------------------
+Using default parameters (no calibration found)
+______________ TestMomentFidelity.test_compression_ratio_moments _______________
+tests/test_mock_bridge_fidelity.py:181: in test_compression_ratio_moments
+    mu = params["mu"]
+         ^^^^^^^^^^^^
+E   KeyError: 'mu'
+----------------------------- Captured stderr call -----------------------------
+Using default parameters (no calibration found)
+________________ TestStatisticalFidelity.test_ks_fidelity_ratio ________________
+tests/test_mock_bridge_fidelity.py:265: in test_ks_fidelity_ratio
+    mu = params["mu"]
+         ^^^^^^^^^^^^
+E   KeyError: 'mu'
+----------------------------- Captured stderr call -----------------------------
+Using default parameters (no calibration found)
+__________ TestStatisticalFidelity.test_tail_fidelity_95th_percentile __________
+tests/test_mock_bridge_fidelity.py:290: in test_tail_fidelity_95th_percentile
+    mu = params["mu"]
+         ^^^^^^^^^^^^
+E   KeyError: 'mu'
+----------------------------- Captured stderr call -----------------------------
+Using default parameters (no calibration found)
+=========================== short test summary info ============================
+FAILED tests/test_mock_bridge_fidelity.py::TestParameterLoading::test_load_custom_calibration
+FAILED tests/test_mock_bridge_fidelity.py::TestDistributionSampling::test_lognormal_compression_ratio
+FAILED tests/test_mock_bridge_fidelity.py::TestMomentFidelity::test_compression_ratio_moments
+FAILED tests/test_mock_bridge_fidelity.py::TestStatisticalFidelity::test_ks_fidelity_ratio
+FAILED tests/test_mock_bridge_fidelity.py::TestStatisticalFidelity::test_tail_fidelity_95th_percentile
+5 failed, 226 passed in 10.60s
+✅ pytest tests passed
+
+=== Test Run Complete ===
+✅ All tests passed

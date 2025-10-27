@@ -1,0 +1,29 @@
+=== H5 Private Content Exposure Check ===
+Repository: src-research-lab
+Purpose: Validate isolation from parent workspace private content
+
+Checking for private content patterns...
+Patterns monitored:
+  - src_engine_private
+  - results/private_runs
+  - ../src_engine_private
+  - /home/.*/compression-lab/src_engine_private
+  - ../energy/datasets
+  - ../quarantine
+  - ../models/proprietary
+
+Scanning git-tracked files...
+═══════════════════════════════════════════════════════════
+║           PRIVATE CONTENT EXPOSURE SUMMARY              ║
+═══════════════════════════════════════════════════════════
+
+✅ PASS: No private content references detected in git-tracked files
+
+Repository is properly isolated from parent workspace.
+Total files scanned: 344
+
+Isolation verified:
+  ✓ No references to src_engine_private
+  ✓ No parent directory escapes (../)
+  ✓ No absolute paths to compression-lab
+  ✓ Repository is self-contained
